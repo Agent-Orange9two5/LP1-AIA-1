@@ -6,4 +6,4 @@ Pentru fiecare student se va face un branch nou, unde isi va incarca fiecare tem
 
 Cerinte minime: 
 - mesaj de commit clar, scurt ( Laborator nr. X - Problema X )
-- numele branch-ului = Nume_Prenume
+- numele folder-ului = Nume_Prenume
