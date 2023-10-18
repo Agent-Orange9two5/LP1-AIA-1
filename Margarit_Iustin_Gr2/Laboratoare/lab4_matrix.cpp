@@ -27,10 +27,8 @@ int main()
 for(i=1;i<5;i++)
     cout<<ds[i]<<" ";
  cout<<endl;
- cout<<"Suma elem de 3 cifre: ";
- for(i=1;i<=l;i++)
-    cout<<t[i]<<" ";
-
+ cout<<"Suma elem de 3 cifre: "<<s;
+ 
 
     return 0;
 }
