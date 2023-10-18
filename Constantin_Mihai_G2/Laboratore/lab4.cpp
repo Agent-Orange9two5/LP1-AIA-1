@@ -21,7 +21,7 @@ int main()
     cout << "\nSuma elementelor de 3 cifre: ";
     for (int i = 0; i < 4; i++)
         for (int j = 0; j < 4; j++)
-            if (a[i][j] > 99)
+            if (a[i][j] > 99 && a[i][j] < 1000)
                 s += a[i][j];
     cout << s;
 }
