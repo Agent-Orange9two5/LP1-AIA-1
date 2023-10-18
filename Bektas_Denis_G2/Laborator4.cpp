@@ -1,4 +1,4 @@
-include <iostream>
+#include <iostream>
 
 using namespace std;
 
@@ -12,7 +12,11 @@ if (v[i]%2==1)
 s= s+v[i];
 
 if (v[i]%2==0)
-    cout<<v[i];}
+    cout<<"nr par "<<v[i]<<" "<<endl;}
 cout<<"Suma nr impare: "<<s<<endl;
+
+for (i=9; i>=0; i--)
+cout<<v[i]<<" "<<endl;
     return 0;
+
 }
