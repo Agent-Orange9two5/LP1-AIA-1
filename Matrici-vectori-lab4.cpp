@@ -3,7 +3,7 @@ using namespace std;
 int main()
 {
    int a[10][10],n,max,min,v[100],m,k,i,j,h=0,b[10][10],vs[10],x=0;
-   cout<<"Cate elemente va avea matricea patratica: ";
+   cout<<"Cate linii/coloane va avea matricea patratica: ";
    cin>>n;
    cout<<"Citim matricea patratica: "<<endl;
    for(i=0;i<n;i++)
