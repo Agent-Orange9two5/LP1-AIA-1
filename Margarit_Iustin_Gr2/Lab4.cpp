@@ -11,7 +11,7 @@ int main()
       else
          sip+=v[i]; }
 
- cout<<"Suma numerelor impare este"<<sip<<endl;
+ cout<<"Suma numerelor impare este: "<<sip<<endl;
 
 cout<<"Numerele pare sunt:";
 for(i=1;i<=10;i++)
