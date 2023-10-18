@@ -19,7 +19,7 @@ for(i=1;i<=10;i++)
 cout<<endl;
 
 cout<<"Vector inversat este:";
-for(i=10;i>=1;i++)
+for(i=10;i>=1;i--)
     cout<<v[i]<<" ";
 
     return 0;
