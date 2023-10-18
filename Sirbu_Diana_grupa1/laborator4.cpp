@@ -22,7 +22,7 @@ int main()
     }
     for(int i=n-1;i>=0;i--)
     {
-      cout<<"vectorul inversat"<<v[i];
+      cout<<v[i];
     }
     return 0;
 }
