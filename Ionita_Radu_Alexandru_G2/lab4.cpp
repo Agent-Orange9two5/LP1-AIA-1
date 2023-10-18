@@ -3,7 +3,7 @@ using namespace std;
 
 int main()
 {
-    int V[10],i,suimp=0,pare;
+    int V[10],i,suimp=0;
     for (i=0; i<=9; i++) {
         cin>>V[i];
         if (V[i]%2==1)
