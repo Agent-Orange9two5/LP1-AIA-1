@@ -12,8 +12,7 @@ int main()
     for (auto i: v)
         if (i % 2 == 0)
             cout << i << " ";
-    cout << "\nVectorul inersat: ";
+    cout << "\nVectorul inversat: ";
     for (int i = 9; i >= 0; i--)
         cout << v[i] << " ";
 }
-
