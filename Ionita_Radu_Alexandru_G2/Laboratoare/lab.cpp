@@ -16,22 +16,21 @@ int main()
         for (j=0; j<=n; j++) {
             if (i==j) {
                 cout<<v[i][j]<<" ";
-                
+
             }
-            if (i+j=n-1 && i<j)  {
+            if (i+j==n-1 && i<j)  {
                 cout<<v[i][j]<<" ";
             }
-            
+
         }
     }
-    
+
     for (i=0;i<=n; i++){
         for (j=0; j<=n; j++) {
             if (v[i][j]>99 && v[i][j]<1000) {
-                s+=a[i][j];
+                s=s+v[i][j];
             }
         }
     }
     return 0;
 }
-
