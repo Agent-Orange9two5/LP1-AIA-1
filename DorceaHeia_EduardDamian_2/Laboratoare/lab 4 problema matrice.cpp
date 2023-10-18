@@ -13,4 +13,4 @@ int main()
     cout<<endl;
     if (i==j) cout<<"ELEM DE PE DIAGONALA PRINCIPALA SUNT"<<a[i][j];
    }
-    
+    //se citeste o matrice patratica 4x4 nr reale. sa se afiseze nr negative din matrice si pozitia lor. sa se afiseze toate elementele de deasupra diagonalei secundare, toate elem de sub diagonala secundara , sa se afiseze toate elem palindrome de pe liniile impare si sa se creeze 4 vectori care sa contina cele 4 triunghiuri
