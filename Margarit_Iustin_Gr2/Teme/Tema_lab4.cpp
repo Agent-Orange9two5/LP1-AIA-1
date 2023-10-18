@@ -3,30 +3,27 @@ using namespace std;
 int m[4][4];
 
 int main(){
-
 int v[8],i,j,a=0,x,pal=0,vp[8],ok=0,k=0;
 
 cout<<"Introduceti elemntele matricii 4x4:";
  for(i=0;i<4;i++)
   for(j=0;j<4;j++){
-      cin>>m[i][j];
+    cin>>m[i][j];
 
-    if(m[i][j]<0)
-        ok++;
-
+    if(m[i][j]<0)ok++;
     if ((i < j && i + j < 3) || (i < j && i + j > 3) || (i > j && i + j > 3) || (i > j && i + j < 3))
         v[a++] = m[i][j];
 
     if((i+1)%2!=0 && m[i][j]>9){      
-     x=m[i][j];
+      x=m[i][j];
 
-    while(x>0)
-      {pal=pal*10+x%10;
-       x=x/10;}
+      while(x>0)
+       {pal=pal*10+x%10;
+        x=x/10;}
 
-    if(pal==m[i][j])
+      if(pal==m[i][j])
        vp[k++]=pal;
-    pal=0;} }
+       pal=0;} }
 
   cout<<endl;
   if(ok!=0){
@@ -42,7 +39,7 @@ cout<<"Introduceti elemntele matricii 4x4:";
   if(k>0){
        cout<<"Numerele palindrom de pe linile impare: ";
      for(i=0;i<k;i++)
-      cout<<vp[i]<<" ";} 
+      cout<<vp[i]<<" ";} else cout<<"Nu exista numere palindrom pe linile impare\n";
       
 
 cout<<endl;
