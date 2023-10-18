@@ -21,7 +21,7 @@ int main()
       {
           if(v[i]%2==0)
             cout<<v[i]<<" ";
-            else si= si+v[1];
+            else si= si+v[i];
       }
     cout<<endl;
     cout<<"suma nr impare este: "<<si<<endl;
