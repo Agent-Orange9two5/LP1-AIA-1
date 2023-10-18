@@ -9,7 +9,7 @@ int main()
    for(i=0;i<n;i++)
     for(j=0;j<n;j++) cin>>a[i][j];
     cout<<endl;
-
+    max=min=a[0][0];
     for(i=0;i<n;i++){
            int s=0;
         for(j=0;j<n;j++){
