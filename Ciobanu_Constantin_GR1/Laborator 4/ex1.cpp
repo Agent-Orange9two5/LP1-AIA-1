@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 
-    int v[10], sumPar = 0, sumImpar = 0, i, j;
+    int v[10], sumEven = 0, sumOdd = 0;
 
     cout << "Dati valorile vectorului" << endl;
 
@@ -13,19 +13,19 @@ int main() {
         cin >> v[x];
     }
 
-    for (i = 0; i < SIZE; i++) {
+    for (int i = 0; i < SIZE; i++) {
         if (i % 2 == 0) {
-            sumPar += v[i];
+            sumEven += v[i];
         }   else {
-            sumImpar += v[i];
+            sumOdd += v[i];
         }
     }
 
-    cout << "suma para : " << sumPar << endl;
-    cout << "suma impara : " << sumImpar << endl;
+    cout << "suma para : " << sumEven << endl;
+    cout << "suma impara : " << sumOdd << endl;
 
-    for (j = SIZE; j >= 0; j--) {
-        cout << v[j] << endl;
+    for (int j = SIZE - 1; j >= 0; j--) {
+        cout << j << " : " << v[j] << endl;
     }
 
     return 0;
