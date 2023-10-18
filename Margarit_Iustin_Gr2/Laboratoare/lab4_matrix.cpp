@@ -14,7 +14,7 @@ int main()
          dp[k++]=m[i][j];
        if(i+j==5)
          ds[p++]=m[i-1][j];
-       if(m[i][j]>99 && m[i[j]<1000)
+       if(m[i][j]>99 && m[i][j]<1000)
           s+=m[i][j];
          }
 
