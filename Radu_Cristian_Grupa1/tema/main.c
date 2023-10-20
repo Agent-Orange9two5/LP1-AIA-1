@@ -56,15 +56,15 @@ int main()
     for (i = 0; i < n; i++)
         printf("%d ", N[i]);
     printf("\n");
-    printf("Elemente din zona de E: ");
+    printf("Elementele din zona de E: ");
     for (i = 0; i < e; i++)
         printf("%d ", E[i]);
     printf("\n");
-    printf("Elemente din zona de S: ");
+    printf("Elementele din zona de S: ");
     for (i = 0; i < sd; i++)
         printf("%d ", S[i]);
     printf("\n");
-    printf("Elemente din zona de V: ");
+    printf("Elementele din zona de V: ");
     for (i = 0; i < v; i++)
         printf("%d ", V[i]);
     return 0;
