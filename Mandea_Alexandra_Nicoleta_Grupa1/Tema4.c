@@ -1,5 +1,17 @@
 #include <stdio.h>
 
+/*
+
+Se citeste o matrice patratica. Se afiseaza:
+-elementele de pe diagonala principala
+-elementele se pe diagonala secundara inversate
+-elementele deasupra diagonalei principale
+-elemetele palindrome de pe diagonala principala
+-in patru vectori se stocheaza cele patru zone ale matricei: Nord, Sud, Est, Vest
+si se afiseaza
+
+*/
+
 int main()
 {
     int a[10][10], n, i, j, k=0, x=0, z=0, t=0,v1[10],v2[10],v3[10],v4[10],ca,ogl;
