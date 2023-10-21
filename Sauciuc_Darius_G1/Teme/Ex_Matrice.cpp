@@ -46,7 +46,7 @@ int main()
             }
         }
     }
-    cout << "Suma elementele de deasupra diagonalei secundare este: " << s << endl;
+    cout << "Suma elementelor de deasupra diagonalei secundare este: " << s << endl;
 
     //elemente palindroame de pe diag pr
     int cp; //copia elementului curent
