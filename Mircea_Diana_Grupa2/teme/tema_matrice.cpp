@@ -24,7 +24,6 @@ int main()
     {
         if(i+j<n-1)
             cout<<a[i][j]<<" ";
-
     }
     }
     cout<<endl;
@@ -58,26 +57,26 @@ int main()
     for(i=0; i<n; i++){
         for(j=0;j<n;j++)
     {
-        if(i<j)
+        if(i<j && i!=j && i+j!=n-1 && i+j<n-1)
             v1[h++]=a[i][j];
-        if(i>j)
-            v2[l++]=a[i][j];
-        if(i+j<n-1)
+        if(i<j && i!=j && i+j!=n-1 && i+j>n-1)
+             v2[l++]=a[i][j];
+        if(i>j && i!=j && i+j!=n-1 && i+j>n-1)
             v3[g++]=a[i][j];
-        if(i+j>n-1)
+        if(i>j && i!=j && i+j!=n-1 && i+j<n-1)
             v4[d++]=a[i][j];
     }
     }
-    cout<<"vector deasupra diagonalei principale: ";
+    cout<<"vector deasupra diagonale: ";
     for(i=0;i<h;i++)
         cout<<v1[i]<<" ";
-    cout<<endl<<" vector sub diag princi: ";
+    cout<<endl<<"vector dreapta diagonale: ";
     for(i=0;i<l;i++)
         cout<<v2[i]<<" ";
-    cout<<endl<<"vector deasupra diag sec: ";
+    cout<<endl<<"vector sub diagonale: ";
     for(i=0;i<g;i++)
         cout<<v3[i]<<" ";
-    cout<<endl<<"vector sub diag sec: ";
+    cout<<endl<<"vector stanga diagonale: ";
     for(i=0;i<d;i++)
         cout<<v4[i]<<" ";
     return 0;
