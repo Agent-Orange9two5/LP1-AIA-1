@@ -1,7 +1,5 @@
 #include <iostream>
-
 using namespace std;
-
 int main()
 {
     int a[10][10],i,j,s=0,n,np,nr,v1[100],h=0,v2[100],l=0,v3[100],g=0,v4[100],d=0;
