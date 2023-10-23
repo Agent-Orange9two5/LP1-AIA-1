@@ -1,1 +1,115 @@
+#include <iostream>
+using namespace std;
+int palindrom(int n)
+{
+    int c,ogl=0,cn;
+    cn=n;
+    if(cn>9)
+    {
+        do
+        {
+            c=cn%10;
+            ogl=ogl*10+c;
+            cn=cn/10;
+        }while(cn!=0);
+    }
+    if(ogl==n && n!=0)
+        return 1;
+    else
+        return 0;
+}
+int main()
+{
+    int a[100][100],b[10],c[10],d[10],e[10],i,j,n,sum=0,m=0,n2=0,r=0,t=0;
+    cout<<"Marimea matricii este: ";
+    cin>>n;
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            cin>>a[i][j];
+    cout<<"Elementele de pe diagonala principala sunt: ";
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            if(i==j)
+                cout<<a[i][j]<<" ";
+        }
+    }
+    cout<<endl;
+    cout<<"Elementele de pe diagonala secundara in ordine inversa sunt: ";
+    for(i=n-1;i>=0;i--)
+    {
+        for(j=n-1;j>=0;j--)
+        {
+            if(i+j==n-1)
+                cout<<a[i][j]<<" ";
+        }
+    }
+    cout<<endl;
+    cout<<"Numerele palindrom de pe diagonala principala sunt: ";
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            if(palindrom(a[i][j])==1 && i==j)
+                {
+                    cout<<a[i][j]<<" ";
+                }
+            if(i+j<n-1)
+                sum=sum+a[i][j];
+        }
+    }
+    cout<<endl;
+    cout<<"Suma elementelor de deasupra diagonalei secundare este: ";
+    cout<<sum;
+    cout<<endl;
+    cout<<"Sirul ce contine numerele din triunghiul 1 este: ";
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            if(i<j && i+j<n-1)
+                b[m++]=a[i][j];
+        }
+    }
+    for(i=0;i<m;i++)
+        cout<<b[i]<<" ";
+    cout<<endl;
+    cout<<"Sirul ce contine numerele din triunghiul 2 este: ";
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            if(i<j && i+j>n-1)
+                c[n2++]=a[i][j];
+        }
+    }
+    for(i=0;i<n2;i++)
+        cout<<c[i]<<" ";
+    cout<<endl;
+    cout<<"Sirul ce contine numerele din triunghiul 3 este: ";
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            if(i>j && i+j>n-1)
+                d[r++]=a[i][j];
+        }
+    }
+    for(i=0;i<r;i++)
+        cout<<d[i]<<" ";
+    cout<<endl;
+    cout<<"Sirul ce contine numerele din triunghiul 4 este: ";
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            if(i>j && i+j<n-1)
+                e[t++]=a[i][j];
+        }
+    }
+    for(i=0;i<t;i++)
+        cout<<e[i]<" ";
+    return 0;
+}
 
