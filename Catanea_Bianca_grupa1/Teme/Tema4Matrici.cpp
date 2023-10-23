@@ -71,7 +71,7 @@ int main()
             if(i>j && i+j<n-1)
                 v4[d++]=a[i][j];
 
-        }
+        } 
 
     cout<< "Elementele matricei din zona Nord : ";
     for(i=0;i<x;i++)
