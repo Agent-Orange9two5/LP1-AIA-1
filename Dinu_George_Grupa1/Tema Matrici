@@ -1,0 +1,83 @@
+ #include <iostream>
+using namespace std;
+int main() {
+int a[4][4],i,j,n,s=0,ogl=0,cn,b[10],c[10],d[10],e[10],x=0,y=0,z=0,k=0;
+cout<<"Introduceti dimensiunea matricei:";
+cin>>n;
+cout<<"Introduceti valorile matricei:";
+for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+        cin>>a[i][j];
+cout<<"Elementele de pe diagonala principala sunt:";
+for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+        if(i==j)
+            cout<<a[i][j]<<" ";
+cout<<endl;
+cout<<"Elementele de pe diagonala secundara in ordine inversa sunt:";
+    for(i=n-1;i>=0;i--)
+        for(j=0;j<n;j++)
+            if(i+j==n-1)
+                cout<<a[i][j]<<" ";
+    cout<<endl;
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            if (i+j<n-1)
+                s=s+a[i][j];
+    cout<<"Suma elementelor aflate deasupra diagonalei secundare sunt:"<<s<<endl;
+    cout<<"Elementele palindrome de pe diagonala principala sunt:";
+    for(i=0;i<n;i++) {
+        for (j = 0; j < n; j++) {
+            if (i == j) {
+                cn = a[i][j];
+                while (cn != 0) {
+                    ogl = ogl * 10 + cn %10;
+                    cn = cn / 10;
+                }
+                if (ogl == a[i][j])
+                    cout << ogl << " ";
+                ogl = 0;
+            }
+        }
+    }
+    cout<<endl;
+    for(i=0;i<n;i++) {
+        for (j = 0; j < n; j++)
+            if (i < j && i + j < n - 1) {
+                b[x] = a[i][j];
+                x++;
+            }
+        if (i < j && i + j > n - 1) {
+            c[y] = a[i][j];
+            y++;
+        }
+        if (i > j && i + j < n - 1) {
+            d[z] = a[i][j];
+            z++;
+        }
+        if (i > j && i + j > n - 1) {
+            e[k] = a[i][j];
+            k++;
+        }
+    }
+    cout<<"Elementele aflate deasupra ambelor diagonale:";
+    for (i = 0; i < x; i++)
+        cout << b[i] << " ";
+    cout << endl;
+
+    cout << "Elemente aflate deasupra diagonalei principale și sub cea secundară:";
+    for (i = 0; i < y; i++)
+        cout << c[i] << " ";
+    cout << endl;
+
+    cout << "Elemente aflate sub diagonala principală și deasupra celei secundare:";
+    for (i = 0; i < z; i++)
+        cout << d[i] << " ";
+    cout << endl;
+
+    cout << "Elemente aflate sub ambele diagonale:";
+    for (i = 0; i < k; i++)
+        cout << e[i] << " ";
+
+    return 0;
+}
