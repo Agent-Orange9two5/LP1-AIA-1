@@ -1,0 +1,88 @@
+#include <iostream>
+
+using namespace std;
+
+int vSus[10], vDr[10], vJos[10], vSt[10];
+
+int main()
+{
+    int a[10][10], n, sd=0, cp, pal=0, w=0, x=0, y=0, z=0;
+    cout<<"Precizati nr de linii si coloane ale matricei patratice: ";
+    cin>>n;
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            cin>>a[i][j];
+    cout<<endl<<"Elementele de pe diagonala principala: ";
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+        {
+            if(i==j)
+                cout<<a[i][j]<<" ";
+            if(i+j<n-1)
+                sd=sd+a[i][j];
+        }
+    cout<<endl<<"Elementele de pe diagonala secundara in ordine inversa: ";
+    for(int i=n-1;i>=0;i--)
+        for(int j=n-1;j>=0;j--)
+            if(i+j==n-1)
+                cout<<a[i][j]<<" ";
+    cout<<endl<<"Suma elementelor aflate deasupra diagonalei secundare: "<<sd;
+    cout<<endl<<"Elementele palindrome de pe diagonala principala: ";
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            if(i==j)
+            {
+               cp=a[i][j];
+               while(cp)
+               {
+                    pal=pal*10+cp%10;
+                    cp/=10;
+               }
+               if(pal==a[i][j])
+                    cout<<pal<<" ";
+               pal=0;
+            }
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+        {
+            if(i<j)
+            {
+                if(i+j<n-1)
+                {
+                    vSus[w]=a[i][j];
+                    w++;
+                }
+                if(i+j>n-1)
+                {
+                    vDr[x]=a[i][j];
+                    x++;
+                }
+            }
+            if(i>j)
+            {
+                if(i+j<n-1)
+                {
+                    vSt[y]=a[i][j];
+                    y++;
+                }
+                if(i+j>n-1)
+                {
+                    vJos[z]=a[i][j];
+                    z++;
+                }
+            }
+        }
+    cout<<endl<<"Elementele aflate in triunghiul de sus: ";
+    for(int i=0;i<w;i++)
+        cout<<vSus[i]<<" ";
+    cout<<endl<<"Elementele aflate in triunghiul din dreapta: ";
+    for(int i=0;i<x;i++)
+        cout<<vDr[i]<<" ";
+    cout<<endl<<"Elementele aflate in triunghiul din stanga: ";
+    for(int i=0;i<y;i++)
+        cout<<vSt[i]<<" ";
+    cout<<endl<<"Elementele aflate in triunghiul de jos: ";
+    for(int i=0;i<z;i++)
+        cout<<vJos[i]<<" ";
+    return 0;
+}
