@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int vSus[10], vDr[10], vJos[10], vSt[10];
+
+int main()
+{
+    int a[10][10], n, sd=0, cp, pal=0, w=0, x=0, y=0, z=0;
+    printf("Precizati nr de linii si coloane ale matricei patratice: ");
+    scanf("%d", &n);
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            scanf("%d", &a[i][j]);
+    printf("\nElementele de pe diagonala principala: ");
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+        {
+            if(i==j)
+                printf("%d ", a[i][j]);
+            if(i+j<n-1)
+                sd=sd+a[i][j];
+        }
+    printf("\nElementele de pe diagonala secundara in ordine inversa: ");
+    for(int i=n-1;i>=0;i--)
+        for(int j=n-1;j>=0;j--)
+            if(i+j==n-1)
+                printf("%d ", a[i][j]);
+    printf("\nSuma elementelor aflate deasupra diagonalei secundare: %d", sd);
+    printf("\nElementele palindrome de pe diagonala principala: ");
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            if(i==j)
+            {
+               cp=a[i][j];
+               while(cp)
+               {
+                    pal=pal*10+cp%10;
+                    cp/=10;
+               }
+               if(pal==a[i][j])
+                    printf("%d ", pal);
+               pal=0;
+            }
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+        {
+            if(i<j)
+            {
+                if(i+j<n-1)
+                {
+                    vSus[w]=a[i][j];
+                    w++;
+                }
+                if(i+j>n-1)
+                {
+                    vDr[x]=a[i][j];
+                    x++;
+                }
+            }
+            if(i>j)
+            {
+                if(i+j<n-1)
+                {
+                    vSt[y]=a[i][j];
+                    y++;
+                }
+                if(i+j>n-1)
+                {
+                    vJos[z]=a[i][j];
+                    z++;
+                }
+            }
+        }
+    printf("\nElementele aflate in triunghiul de sus: ");
+    for(int i=0;i<w;i++)
+        printf("%d ", vSus[i]);
+    printf("\nElementele aflate in triunghiul din dreapta: ");
+    for(int i=0;i<x;i++)
+        printf("%d ", vDr[i]);
+    printf("\nElementele aflate in triunghiul din stanga: ");
+    for(int i=0;i<y;i++)
+        printf("%d ", vSt[i]);
+    printf("\nElementele aflate in triunghiul de jos: ");
+    for(int i=0;i<z;i++)
+        printf("%d ", vJos[i]);
+    return 0;
+    }
