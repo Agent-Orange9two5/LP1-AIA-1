@@ -54,7 +54,7 @@ int main()
         for(j=0;j<4;j++)
             if(i%2==0 && palindrom(v[i][j])==true)
                 cout<<v[i][j]<<" ";
-//Am zis sa fac cu formule ca rezolvarea sa fie mai generalizata chiar daca pe 4x4 puteam sa o fac cu volori direte la fiecare triunghi
+//Am zis sa fac cu formule ca rezolvarea sa fie mai generalizata chiar daca pe 4x4 puteam sa o fac cu volori directe la fiecare triunghi
     //Triunghiul din stanga
     cout<<endl<<"Elemente din triunghiul stanga:";
     for(i=0;i<4;i++)
