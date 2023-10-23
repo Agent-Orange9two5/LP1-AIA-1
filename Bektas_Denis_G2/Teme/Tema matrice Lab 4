@@ -28,7 +28,7 @@ int main()
     for (int i=0; i<n; i++){
         for (int j=0; j<n; j++){
             if (a[i][j] < 0){
-                cout <<"Numarul negativ: "<<a[i][j]<<" "<<" se afla pe pozitia ("<< i <<", "<< j <<")"<<endl;
+                cout <<"Numarul negativ: "<<a[i][j]<<" "<<" se afla pe pozitia ("<< i+1 <<", "<< j+1 <<")"<<endl;
             }
         }
     }
