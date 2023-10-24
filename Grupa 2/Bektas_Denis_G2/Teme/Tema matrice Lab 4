@@ -25,10 +25,11 @@ int main()
     }
     cout<<endl;
 
+    cout << "Numarul negativ:"<<endl;
     for (int i=0; i<n; i++){
         for (int j=0; j<n; j++){
             if (a[i][j] < 0){
-                cout <<"Numarul negativ: "<<a[i][j]<<" "<<" se afla pe pozitia ("<< i+1 <<", "<< j+1 <<")"<<endl;
+                cout<<a[i][j]<<" "<<" se afla pe pozitia ("<< i+1 <<", "<< j+1 <<")"<<endl;
             }
         }
     }
@@ -63,10 +64,42 @@ cout<<endl;
         invers = invers * 10 + original % 10;
         original /= 10;}
         if (nr = invers){
-            cout<<"Numarul "<<a[i][j]<<" este palindrom "<<endl;
+            cout<<"Numarul "<<a[i][j]<<" este palindrom "<<endl;}
+
         }
       }
-    }
+
+     cout << "Vectorul din cadranul nord este: ";
+     for (int i=0; i<n; i++){
+        for (int j=0; j<n; j++){
+                if (i<j && i+j<n-1){
+                   cout<<a[i][j]<<" ";}
+        }
+     }
+     cout<<endl;
+     cout << "Vectorul din cadranul sud este: ";
+     for (int i=0; i<n; i++){
+        for (int j=0; j<n; j++){
+                if (i>j && i+j>n-1){
+                   cout<<a[i][j]<<" ";}
+        }
+     }
+     cout<<endl;
+     cout << "Vectorul din cadranul est este: ";
+     for (int i=0; i<n; i++){
+        for (int j=0; j<n; j++){
+                if (i<j && i+j>n-1){
+                   cout<<a[i][j]<<" ";}
+        }
+     }
+     cout<<endl;
+     cout << "Vectorul din cadranul vest este: ";
+     for (int i=0; i<n; i++){
+        for (int j=0; j<n; j++){
+                if (i>j && i+j<n-1){
+                   cout<<a[i][j]<<" ";}
+        }
+     }
 cout<<endl;
 return 0;
 }
