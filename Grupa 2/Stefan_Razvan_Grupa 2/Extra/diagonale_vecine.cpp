@@ -1,8 +1,9 @@
 /*
-00 01 02 03
-10 11 12 13
-20 21 22 23
-30 31 32 33
+00 01 02 03 04
+10 11 12 13 14
+20 21 22 23 24
+30 31 32 33 34
+40 41 42 43 44
 */
 
 /* i==j => diag principala */
@@ -31,10 +32,17 @@ int main(){
 
 
             //conform schitei de mai sus, accesam elementele din diagonalele vecine cu diagonala principala si calculam suma acestor elemente
-         for(i=0;i<n;i++)
-        for(j=0;j<n;j++)
-            if(i-j==1 || j-1==1)
+         for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            if(i-j==1 && i>j)
             s+=a[i][j];
+        }}
+
+        for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            if(j-i==1 && i<j)
+            s+=a[i][j];
+        }}
 
                 //afisam suma
             cout<<s;
