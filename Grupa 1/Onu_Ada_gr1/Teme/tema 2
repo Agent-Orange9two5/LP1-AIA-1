@@ -1,0 +1,25 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    double a,b,c;
+    cout<<"Nota 1:";
+    cin>>a;
+    cout<<"Nota 2:";
+    cin>>b;
+    cout<<"Nota 3:";
+    cin>>c;
+
+    double media = (a + b + c) / 3;
+
+    if (media >= 6){
+        cout<<"Studentul are nota de trecere: "<<media;
+
+    }
+    if (media < 6){
+        cout<<"Studentul nu are nota de trecere: "<<media;
+
+    }
+
+}
