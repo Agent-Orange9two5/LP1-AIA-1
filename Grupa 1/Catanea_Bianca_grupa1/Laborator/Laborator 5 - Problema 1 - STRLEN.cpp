@@ -6,7 +6,7 @@ int main()
 {
    /* 1.	Sa se scrie un program care introduce de la tastatura o fraza si va afisa numarul de cuvinte care contin litera ‘a’ sau ‘A’. */
      char a[101];
-     int i,j,ok=0,temp;
+     int i,j,ok=0;
      cout << "Introduceti sirul de caractere:";
      cin.get(a, 100); //citim sirul si lungimea sa
      for(i=0;i<strlen(a);i++)
