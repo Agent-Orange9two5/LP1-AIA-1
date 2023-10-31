@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int a,b,c,d;
+    int min,max;
+    cout<<"a=";
+    cin>>a;
+    cout<<"b=";
+    cin>>b;
+    cout<<"c=";
+    cin>>c;
+    cout<<"d=";
+    cin>>d;
+    min = a;
+    if(min>b){
+        min = b;
+    }
+    if(min>c){
+        min = c;
+    }
+    if(min>d){
+        min = d;
+    }
+    max = a;
+    if (max<b){
+        max = b;
+    }
+    if (max<c){
+        max = c;
+    }
+    if (max<d){
+        max = d;
+    }
+    cout<<"min = "<<min<<endl;
+    cout<<"max = "<<max<<endl;
+    int s,dif;
+    s = min + max;
+    dif = max - min;
+    cout<<"suma = "<<s<<endl;
+    cout<<"diferenta = "<<dif<<endl;
+
+    int s1;
+    if(a > 0){
+    int p;
+    p = a%10;
+    a = a/10;
+    s1 = p + a;
+}
+    int s2;
+    if(b > 0){
+    int p;
+    p = b%10;
+    b = b/10;
+    s2 = p + b;
+}
+    int s3;
+    if(c > 0){
+    int p;
+    p = c%10;
+    c = c/10;
+    s3 = p + c;
+}
+    int s4;
+    if(d > 0){
+    int p;
+    p = d%10;
+    d = d/10;
+    s4 = p + d;
+}
+    int S;
+    S= s1+s2+s3+s4;
+    cout<<"Suma cifrelor este = "<<S;
+
+}
