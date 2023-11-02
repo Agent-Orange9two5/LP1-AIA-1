@@ -13,12 +13,10 @@ int main()
     char s3[10];
     int x;
 
-    cout << "Primul sir este: ";
-    cin.getline(s1, 19);
+    cout << "Primul sir este: " << sl;
     cout << endl;
 
-    cout << "Al doilea sir este: ";
-    cin.getline(s2, 19);
+    cout << "Al doilea sir este: " << s2;
     cout << endl;
 
     cout << "Sirul citit este: ";
