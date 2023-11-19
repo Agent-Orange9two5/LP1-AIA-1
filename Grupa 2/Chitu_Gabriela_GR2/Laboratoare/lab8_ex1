@@ -59,6 +59,6 @@ In iniile 28-30 se declara in int o noua dimensiune (adica newsize) , dupa care 
 Linia 33: este alocata in int o noua dimensiune a array-ului cu ajutorul functiei realloc;
 Liniile 34-39 contin o functie if prin care, daca alocarea facuta in int-ul de la linia 33 este egala cu 0, se afiseaza textul "Memory reallocation failed using realloc!" , dupa care se elibereaza spatiul care a fost declarat cu functiile malloc si calloc , iar apoi se returneaza valoarea 1
 Linia 41: se afiseaza textul  "Memory reallocated using realloc."
-Liniile 43-44 : se elibereaza spatiul care a fost declarat pentru array-urilor care au fost declarate cu ajutorul functiilor realloc , respectiv calloc
+Liniile 43-44 : se elibereaza spatiul care a fost alocat pentru array-urilor care au fost declarate cu ajutorul functiilor realloc , respectiv calloc
 Linia 46: returneaza valoarea 0;
 */
