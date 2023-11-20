@@ -1,1 +1,66 @@
+// Sa se explice succint scopul programului de mai jos si sa se corecteze programul (hint: liniile 4 9 21 26 30 47 contin erori de sintaxa/logica)
+
+#include <iostream>
+#include <cstdlib>//lipseste biblioteca
+
+int main() {
+    int size;
+    std::cout << "Enter the initial size of the array: ";
+    std::cin >> size;//lipseste >
+
+
+    float *arrMalloc = (float *)malloc(size * sizeof(float));
+    if (arrMalloc == nullptr) {
+        std::cout << "Memory allocation failed using malloc!" << std::endl;//lipsesc inca : la std:cout
+        return 1;
+    }
+
+    std::cout << "Memory allocated using malloc." << std::endl;
+
+    std::cout << "Enter " << size << " float numbers:" << std::endl;
+    for (int i = 0; i < size; ++i) {//i<size si nu i<=size ptc incepe de la 0
+        std::cin >> arrMalloc[i];
+    }
+
+    int newSize;
+    std::cout << "Enter the new size for reallocation: ";//lipsesc inca : la std:cout
+        return 1;
+    std::cin >> newSize;
+
+
+    float *arrRealloc = (float *)realloc(arrMalloc, newSize * sizeof(float));//lipsa * pt pointer
+    if (arrRealloc == nullptr) {
+        std::cout << "Memory reallocation failed using realloc!" << std::endl;
+        free(arrMalloc);
+        return 1;
+    }
+
+    std::cout << "Memory reallocated using realloc." << std::endl;
+
+
+    std::cout << "Enter " << newSize - size << " more float numbers:" << std::endl;
+    for (int i = size; i < newSize; ++i) {
+        std::cin >> arrRealloc[i];
+    }
+
+
+    std::cout << "Updated array:" << std::endl;
+    for (int i = 0; i < newSize; ++i) {//i pleaca de la 0 pentru afiseara si a primului termen
+        std::cout << arrRealloc[i] << " ";
+    }
+    std::cout << std::endl;
+
+
+    free(arrRealloc);
+
+    return 0;
+}
+/*1: Se introduce dimensiunea inițială a matricei de numere reale.
+2:Se aloca memorie cu malloc.
+3:Se introduc numerele reale.
+4:Se cere noua dimensiune pentru realocare.
+5:Se realoca spatiul matricei conform noii dimensiuni.
+6:Se introduc incca "newSize-Size" nr reale.
+7:Se afiseaza forma finala a matricei.
+8:Se elibereaza memoria.*/
 
