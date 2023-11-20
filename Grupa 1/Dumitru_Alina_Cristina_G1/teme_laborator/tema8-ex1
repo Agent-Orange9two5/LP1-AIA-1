@@ -3,9 +3,6 @@
    solicita o noua dimensiune pentru a realoca memoria primului array, modifica dimensiunea acestuia, afiseaza din nou mesajele respective
    si elibereaza memoria alocata ambelor array-uri*/
 
-
-
-
 #include <iostream>
 #include <cstdlib>
 
@@ -39,7 +36,7 @@ int main() {
 
 
     int *arrRealloc = static_cast<int *>(realloc(arrMalloc, newSize * sizeof(int)));
-    if (arrRealloc = nullptr) {
+    if (arrRealloc == nullptr) {     //am pus dublu egal
         std::cout << "Memory reallocation failed using realloc!" << std::endl;
         free(arrMalloc);
         free(arrCalloc);
@@ -53,3 +50,6 @@ int main() {
 
     return 0;
 }
+
+
+
