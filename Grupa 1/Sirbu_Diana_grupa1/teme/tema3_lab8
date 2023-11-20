@@ -1,1 +1,93 @@
+//Sa se explice succint scopul programului de  mai jos si sa se corecteze erorile de sintaxa si logica.
+
+#include <iostream>//biblioteca obligatorie pt cin,cout
+#include <cstdlib>
+#include <cstring>
+
+int main() {
+    int size;
+    std::cout << "Enter the initial size of the array: ";
+    std::cin >> size;
+    std::cin.ignore();
+
+
+    char **arrMalloc = (char **)malloc(size * sizeof(char *));
+    if (arrMalloc == nullptr) {
+        std::cout << "Memory allocation failed using malloc!" << std::endl;
+        return 1;
+    }
+
+    std::cout << "Memory allocated using malloc." << std::endl;
+
+
+    std::cout << "Enter " << size << " strings:" << std::endl;
+    for (int i = 0; i < size; ++i) {//i<size si nu i<=size ptc incepe de la 0
+        const int bufferSize = 100;
+        arrMalloc[i] = (char *)malloc(bufferSize * sizeof(char));
+        if (arrMalloc[i] == nullptr) {
+            std::cout << "Memory allocation failed for string " << i << " using malloc!" << std::endl;
+
+            for (int j = 0; j < i; ++j) {
+                free(arrMalloc[j]);
+            }
+            free(arrMalloc);//lipsa ;
+            return 1;
+        }
+        std::cin.getline(arrMalloc[i], bufferSize);
+    }
+
+    int newSize;
+    std::cout << "Enter the new size for reallocation: ";
+    std::cin >> newSize;
+    std::cin.ignore();
+
+
+    char **arrRealloc = (char **)realloc(arrMalloc, newSize * sizeof(char *));
+    if (arrRealloc == nullptr) {
+        std::cout << "Memory reallocation failed using realloc!" << std::endl;
+
+        for (int i = 0; i < size; ++i) {//i pleaca de la 0
+            free(arrMalloc[i]);
+        }
+        free(arrMalloc);
+        return 1;
+    }
+
+    std::cout << "Memory reallocated using realloc." << std::endl;
+
+    std::cout << "Enter " << newSize - size << " more strings:" << std::endl;
+    for (int i = size; i < newSize; ++i) {
+        const int bufferSize = 100;
+        arrRealloc[i] = (char *)malloc(bufferSize * sizeof(char));
+        if (arrRealloc[i] == nullptr) {//adaugat i
+            std::cout << "Memory allocation failed for string " << i << " using malloc!" << std::endl;
+
+            for (int j = 0; j < i; ++j) {// ; dupa j<i
+                free(arrRealloc[j]);
+            }
+            free(arrRealloc);
+            return 1;
+        }
+        std::cin.getline(arrRealloc[i], bufferSize);//forma corecta este cin.getline
+    }
+
+
+    std::cout << "Updated array of strings:" << std::endl;
+    for (int i = 0; i < newSize; ++i) {
+        std::cout << arrRealloc[i] << std::endl;
+    }
+
+    for (int i = 0; i < newSize; ++i) {//i<newSize si nu i<=newSize ptc incepe de la 0
+        free(arrRealloc[i]);
+    }
+    free(arrRealloc);
+
+    return 0;
+}
+/*1:Se introduce dimensiunea inițială a matricei de șiruri de caractere.
+2: Alocă memorie pentru matricea de pointeri la șirurile de caractere folosind malloc.
+3:Solicită să se introducă size șiruri de caractere
+4:Realoca memoria folosind realloc
+5:Solicită încă newSize - size șiruri de caractere
+6:Afiseaza matricea de siruri de caractere*/
 
