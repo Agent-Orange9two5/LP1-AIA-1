@@ -1,4 +1,4 @@
- n// Sa se explice succint scopul programului si sa se corecteze programul (hint: liniile :8 20 36 46 contin erori de sintaxa/logica) 
+ // Sa se explice succint scopul programului si sa se corecteze programul (hint: liniile :8 20 36 46 contin erori de sintaxa/logica) 
 
 #include <iostream>
 #include <cstdlib> 
