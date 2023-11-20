@@ -78,12 +78,12 @@ int main() {
 
     std::cout << "Memory allocated using calloc." << std::endl;
 
-
+    // Se introduce noua dimensiune pentru realocare.
     int newSize;
     std::cout << "Enter the new size for reallocation: ";
     std::cin >> newSize;
 
-    //Realoca memorie folosind realloc
+    //Se realoca memorie folosind realloc
     int *arrRealloc = static_cast<int *>(realloc(arrMalloc, newSize * sizeof(int)));
     if (arrRealloc == nullptr) {
         std::cout << "Memory reallocation failed using realloc!" << std::endl;
