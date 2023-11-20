@@ -1,9 +1,9 @@
 
-    // Programul de mai jos ar trebui sa ceara utilizatorului sa introduca o dimensiune initiala pentru un sir si apoi sa aloce memorie pentru acel sir.
-    // Apoi, putem introduce sirul de caractere, acesta fiind stocat in memoria alocata anterior.
-    // Putem alege o noua dimensiune,adaugand sau eliminand siruri, iar programul modifica memoria pentru a fi potrivita noului sir.
-    // Daca este cazul, putem introduce sirurile suplimentare pentru noile spatii create, iar acestea vor fi adaugate in memoria realocata.
-    // programul va afisa toate sirurile, iar in final, memoria alocata va fi eliberata.
+    /* Programul de mai jos ar trebui sa ceara utilizatorului sa introduca o dimensiune initiala pentru un sir si apoi sa aloce memorie pentru acel sir.
+     Apoi, putem introduce sirul de caractere, acesta fiind stocat in memoria alocata anterior.
+     Putem alege o noua dimensiune,adaugand sau eliminand siruri, iar programul modifica memoria pentru a fi potrivita noului sir.
+     Daca este cazul, putem introduce sirurile suplimentare pentru noile spatii create, iar acestea vor fi adaugate in memoria realocata.
+     programul va afisa toate sirurile, iar in final, memoria alocata va fi eliberata. */
 
 
 #include <iostream>   //biblioteca pentru operatii de intrare/iesire
