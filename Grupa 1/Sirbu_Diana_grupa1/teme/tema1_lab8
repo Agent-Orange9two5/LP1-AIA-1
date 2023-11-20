@@ -1,1 +1,59 @@
+// Sa se explice succint scopul programului si sa se corecteze programul(hint: liniile :8 20 36 46 contin erori de sintaxa/logica)
+
+#include <iostream>
+#include <cstdlib>
+
+int main() {
+    int size;
+    std::cout << "Enter the size of the array: ";//mai trebuie adaugate :
+    std::cin >> size;
+
+    int *arrMalloc = static_cast<int *>(malloc(size * sizeof(int)));
+    if (arrMalloc == nullptr) {
+        std::cout << "Memory allocation failed using malloc!" << std::endl;
+        return 1;
+    }
+
+    std::cout << "Memory allocated using malloc." << std::endl;
+
+
+    int *arrCalloc = static_cast<int *>(calloc(size, sizeof(int)));//am adaugat * -> semnul de pointer
+    if (arrCalloc == nullptr) {
+        std::cout << "Memory allocation failed using calloc!" << std::endl;
+        free(arrMalloc);
+        return 1;
+    }
+
+    std::cout << "Memory allocated using calloc." << std::endl;
+
+
+    int newSize;
+    std::cout << "Enter the new size for reallocation: ";
+    std::cin >> newSize;
+
+
+    int *arrRealloc = static_cast<int *>(realloc(arrMalloc, newSize * sizeof(int)));
+    if (arrRealloc = nullptr) {
+        std::cout << "Memory reallocation failed using realloc!" << std::endl;
+        free(arrMalloc);
+        free(arrCalloc);
+        return 1;
+    }
+
+    std::cout << "Memory reallocated using realloc." << std::endl;
+
+    free(arrRealloc);
+    free(arrCalloc);//lipsa ;
+
+    return 0;
+}
+/*Scopul programului:
+- Solicită utilizatorului să introducă dimensiunea unei matrice.
+- Alocă memorie pentru matrice cu malloc.
+- Alocă memorie pentru o alta matrice cu calloc.
+- Solicită utilizatorului să introducă noua dimensiune pentru realocare.
+- Realocă memoria pentru prima matrice cu realloc.
+- Eliberează memoria alocată pentru cele două matrice.*/
+
+//Explicatiile se vor afla in cadrul unui bloc comment ( /* */ ) in codul corectat.
 
