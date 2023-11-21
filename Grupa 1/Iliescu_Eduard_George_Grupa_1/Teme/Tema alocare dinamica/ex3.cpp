@@ -65,7 +65,7 @@ int main()
     {
         const int bufferSize = 100;
         arrRealloc[i] = (char *)malloc(bufferSize * sizeof(char));
-        if(arrRealloc[] == nullptr)
+        if(arrRealloc[i] == nullptr)
         {
             std::cout << "Memory allocation failed for string " << i << " using malloc!" << std::endl;
             for (int j = 0; j < i; ++j)
