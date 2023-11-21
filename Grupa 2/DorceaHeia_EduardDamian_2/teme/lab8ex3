@@ -1,0 +1,86 @@
+//Sa se explice succint scopul programului de  mai jos si sa se corecteze erorile de sintaxa si logica.
+  /* acest program face acelasi lucru ca exercitiul 2 numai ca acum putem introduce si siruri de caractere nu numai numere */
+#include <iostream> /* trebuia introdusa si libraria iostream pt a putea utiliza cin,cout etc */
+#include <cstdlib>
+#include <cstring>
+
+int main() {
+    int size;
+    std::cout << "Enter the initial size of the array: ";
+    std::cin >> size;
+    std::cin.ignore();
+
+
+    char **arrMalloc = (char **)malloc(size * sizeof(char *));
+    if (arrMalloc == nullptr) {
+        std::cout << "Memory allocation failed using malloc!" << std::endl;
+        return 1;
+    }
+
+    std::cout << "Memory allocated using malloc." << std::endl;
+
+
+    std::cout << "Enter " << size << " strings:" << std::endl;
+    for (int i = 0; i < size; ++i) { /* aici trebuai pus < nu <= */
+        const int bufferSize = 100;
+        arrMalloc[i] = (char *)malloc(bufferSize * sizeof(char));
+        if (arrMalloc[i] == nullptr) {
+            std::cout << "Memory allocation failed for string " << i << " using malloc!" << std::endl;
+
+            for (int j = 0; j < i; ++j) {
+                free(arrMalloc[j]);
+            }
+            free(arrMalloc); /* aici ati uitat sa puneti ; */
+            return 1;
+        }
+        std::cin.getline(arrMalloc[i], bufferSize);
+    }
+
+    int newSize;
+    std::cout << "Enter the new size for reallocation: ";
+    std::cin >> newSize;
+    std::cin.ignore();
+
+
+    char **arrRealloc = (char **)realloc(arrMalloc, newSize * sizeof(char *));
+    if (arrRealloc == nullptr) {
+        std::cout << "Memory reallocation failed using realloc!" << std::endl;
+
+        for (int i = 0; i < size; ++i) { /* aici i trebuia sa fie egal cu 0 */
+            free(arrMalloc[i]);
+        }
+        free(arrMalloc);
+        return 1;
+    }
+
+    std::cout << "Memory reallocated using realloc." << std::endl;
+
+    std::cout << "Enter " << newSize - size << " more strings:" << std::endl;
+    for (int i = size; i < newSize; ++i) {
+        const int bufferSize = 100;
+        arrRealloc[i] = (char *)malloc(bufferSize * sizeof(char));
+        if (arrRealloc[i] == nullptr) { /* aici ati uitat un i */
+            std::cout << "Memory allocation failed for string " << i << " using malloc!" << std::endl;
+
+            for (int j = 0; j < i; ++j) {  /* aici ati pus , in loc de ; */
+                free(arrRealloc[j]);
+            }
+            free(arrRealloc);
+            return 1;
+        }
+        std::cin.getline(arrRealloc[i], bufferSize); /* aici trebuia sa puneti cin.getline nu doar cingetline */
+    }
+
+
+    std::cout << "Updated array of strings:" << std::endl;
+    for (int i = 0; i < newSize; ++i) {
+        std::cout << arrRealloc[i] << std::endl;
+    }
+
+    for (int i = 0; i <= newSize; ++i) {
+        free(arrRealloc[i]);
+    }
+    free(arrRealloc);
+
+    return 0;
+}
