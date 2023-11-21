@@ -21,7 +21,7 @@ int main() {
 
 
     std::cout << "Enter " << size << " strings:" << std::endl;
-    for (int i = 0; i <= size; ++i) {
+    for (int i = 0; i < size; ++i) { //Eroare linia 24: variabila i trebuie sa fie < size, nu <= size
         const int bufferSize = 100;
         arrMalloc[i] = (char *)malloc(bufferSize * sizeof(char));
         if (arrMalloc[i] == nullptr) {
@@ -30,7 +30,7 @@ int main() {
             for (int j = 0; j < i; ++j) {
                 free(arrMalloc[j]);
             }
-            free(arrMalloc) 
+            free(arrMalloc); //Eroare linia 33: este nevoie de ; la finalul sintaxei
             return 1;
         }
         std::cin.getline(arrMalloc[i], bufferSize);
@@ -46,7 +46,7 @@ int main() {
     if (arrRealloc == nullptr) {
         std::cout << "Memory reallocation failed using realloc!" << std::endl;
 
-        for (int i = 1; i < size; ++i) {
+        for (int i = 0; i < size; ++i) { //Eroare linia 49: variabila i trebuie sa porneasca de la valoarea 0
             free(arrMalloc[i]);
         }
         free(arrMalloc); 
@@ -59,7 +59,7 @@ int main() {
     for (int i = size; i < newSize; ++i) {
         const int bufferSize = 100; 
         arrRealloc[i] = (char *)malloc(bufferSize * sizeof(char));
-        if (arrRealloc[] == nullptr) {
+        if (arrRealloc[i] == nullptr) { //Eroare linia 62: am inlocuit arrRealloc[] cu arrRealloc[i]
             std::cout << "Memory allocation failed for string " << i << " using malloc!" << std::endl;
 
             for (int j = 0; j < i, ++j) {
@@ -77,7 +77,7 @@ int main() {
         std::cout << arrRealloc[i] << std::endl;
     }
 
-    for (int i = 0; i <= newSize; ++i) {
+    for (int i = 0; i <= newSize; ++i) { //Eroare linia 80: variabila i trebuie sa fie < newSize, nu <= newSize
         free(arrRealloc[i]);
     }
     free(arrRealloc);
@@ -85,3 +85,6 @@ int main() {
     return 0;
 }
 
+/*Explicatie program: Programul aloca memorie unei matrice formata din siruri de caractere, 
+ne cere sa introducem siruri de caractere pentru a umple memoria, dupa care matricei ii este alocata mai multa memorie si trebuie sa introducem
+din nou siruri de caractere pentru a umple restul de memorie care a fost introdusa, iar la final spatiul de memorie al acesteia este eliberat*/
