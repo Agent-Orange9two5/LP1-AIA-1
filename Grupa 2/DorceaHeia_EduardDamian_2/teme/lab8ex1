@@ -1,0 +1,52 @@
+// Sa se explice succint scopul programului si sa se corecteze programul (hint: liniile :8 20 36 46 contin erori de sintaxa/logica)
+
+#include <iostream>
+#include <cstdlib>
+
+int main() {
+    int size;
+    std::cout << "Enter the size of the array: "; /* aici trebuiau puse :: nu : */
+    std::cin >> size;
+
+    int *arrMalloc = static_cast<int *>(malloc(size * sizeof(int)));
+    if (arrMalloc == nullptr) {
+        std::cout << "Memory allocation failed using malloc!" << std::endl;
+        return 1;
+    }
+
+    std::cout << "Memory allocated using malloc." << std::endl;
+
+
+    int *arrCalloc = static_cast<int *>(calloc(size, sizeof(int)));   /* aici nu ati pus steluta pt pointer */
+    if (arrCalloc == nullptr) {
+        std::cout << "Memory allocation failed using calloc!" << std::endl;
+        free(arrMalloc);
+        return 1;
+    }
+
+    std::cout << "Memory allocated using calloc." << std::endl;
+
+
+    int newSize;
+    std::cout << "Enter the new size for reallocation: ";
+    std::cin >> newSize;
+
+
+    int *arrRealloc = static_cast<int *>(realloc(arrMalloc, newSize * sizeof(int)));
+    if (arrRealloc = nullptr) {
+        std::cout << "Memory reallocation failed using realloc!" << std::endl;
+        free(arrMalloc);
+        free(arrCalloc);
+        return 1;
+    }
+
+    std::cout << "Memory reallocated using realloc." << std::endl;
+
+    free(arrRealloc);
+    free(arrCalloc); /* ati uitat sa puneti ; */
+
+    return 0;
+}
+/* se creaza un vector in care folosim malloc sa ii facem un anumit spatiu in memorie iar dupa aceea modificam marimea vectorului folosindu-ne de functia
+   realloc. La final se foloseste functia free ca sa eliberam spatiul ocupat din memorie */
+//Explicatiile se vor afla in cadrul unui bloc comment ( /* */ ) in codul corectat.
