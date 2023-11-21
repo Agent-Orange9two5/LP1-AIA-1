@@ -14,8 +14,7 @@ int main()
     float *arrMalloc = (float *)malloc(size * sizeof(float));
     if (arrMalloc == nullptr)
     {
-    std:
-        cout << "Memory allocation failed using malloc!" << std::endl;
+    std::cout << "Memory allocation failed using malloc!" << std::endl;
         return 1;
     }
 
@@ -28,8 +27,7 @@ int main()
     }
 
     int newSize;
-std:
-    cout << "Enter the new size for reallocation: ";
+    std::cout << "Enter the new size for reallocation: ";
     std::cin >> newSize;
 
     float *arrRealloc = (float *)realloc(arrMalloc, newSize * sizeof(float));

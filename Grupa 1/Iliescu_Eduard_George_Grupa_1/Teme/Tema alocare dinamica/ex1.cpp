@@ -1,6 +1,6 @@
 // Sa se explice succint scopul programului si sa se corecteze programul (hint: liniile :8 20 36 46 contin erori de sintaxa/logica)
 
-//Programul se ocupa de alocarea dinamica a memoriei pentru doua array-uri cu nr intregi cu ajutorul functiilor malloc, calloc, realloc.
+// Programul se ocupa de alocarea dinamica a memoriei pentru doua array-uri cu nr intregi cu ajutorul functiilor malloc, calloc, realloc.
 
 #include <iostream>
 #include <cstdlib>

@@ -65,18 +65,17 @@ int main()
     {
         const int bufferSize = 100;
         arrRealloc[i] = (char *)malloc(bufferSize * sizeof(char));
-        if (arrRealloc[] == nullptr)
+        if(arrRealloc[] == nullptr)
         {
             std::cout << "Memory allocation failed for string " << i << " using malloc!" << std::endl;
-
-            for (int j = 0; j < i, ++j)
+            for (int j = 0; j < i; ++j)
             {
                 free(arrRealloc[j]);
             }
             free(arrRealloc);
             return 1;
         }
-        std::cingetline(arrRealloc[i], bufferSize);
+        std::cin.getline(arrRealloc[i], bufferSize);
     }
 
     std::cout << "Updated array of strings:" << std::endl;
