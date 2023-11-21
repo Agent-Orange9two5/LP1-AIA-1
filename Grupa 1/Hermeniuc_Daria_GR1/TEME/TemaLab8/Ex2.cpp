@@ -44,7 +44,7 @@ int main() {
 
 
     std::cout << "Updated array:" << std::endl;
-    for (int i = 0; i < newSize; ++i) { //Eroare linia 47: am modificat valoarea de la care porneste i(am chimbat 1 in 0) si
+    for (int i = 0; i < newSize; ++i) { //Eroare linia 47: am modificat valoarea de la care porneste i(am schimbat 1 in 0) 
         std::cout << arrRealloc[i] << " ";
     }
     std::cout << std::endl;
@@ -55,3 +55,6 @@ int main() {
     return 0;
 }
 
+/*Explicatie program: Programul aloca memorie unui vector, ne cere sa ii dam valori acestuia de numere reale, 
+dupa care ii realoca mai multa memorie si ne cere sa introducem atatea numere cat este nevoie pentru a umple memoria,
+apoi afiseaza noul vector(dupa realocare), iar la final elibereaza memoria*/
