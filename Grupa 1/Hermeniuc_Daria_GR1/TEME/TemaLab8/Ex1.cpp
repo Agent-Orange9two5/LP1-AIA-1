@@ -50,4 +50,4 @@ int main() {
 
 //Explicatiile se vor afla in cadrul unui bloc comment ( /* */ ) in codul corectat.
 
-//Explicatie program: Programul ne arata cum se folosesc functiile malloc, calloc, realloc si free.
+//Explicatie program: Programul ne arata cum se folosesc functiile malloc, calloc, realloc si free.(alocarea, realocarea si eliberarea unui spatiu de memorie)
