@@ -1,0 +1,60 @@
+// Sa se explice succint scopul programului de mai jos si sa se corecteze programul (hint: liniile 4 9 21 26 30 47 contin erori de sintaxa/logica)
+/* prima data i se da unui vector o anumita marime aleasa de noi iar dupa aceea alegem noi cateva numere pe care sa le punem in vector. Dupa accea
+   folosindu-ne de functia realloc si cu ajutorul lui newSize vom alege o noua marime pt vectorul nostru. daca marimea noua este mai mare decat marimea intiala
+   atunci va trebui sa mai introducem noi un anumit numar de numere de la tastatura iar la final se va afisa noul vector iar cu ajutorul functiei free elibaram spatiul
+   ocupat in memorie. daca marimea noului vector este mai mica cu n fata de vectorul original atunci ultimele n numere din vectorul original vor disparea iar vecoturul
+   nou va fi mai mic cu n valori */
+#include <iostream>
+#include <stdlib.h> /* aici nu a fost pus libraria stdlib.h . fara libraria asta nu putem folosi functii gen malloc */
+
+int main() {
+    int size;
+    std::cout << "Enter the initial size of the array: ";
+    std::cin >> size; /* aici ati pus decat un singur > in loc de doua >> */
+
+
+    float *arrMalloc = (float *)malloc(size * sizeof(float));
+    if (arrMalloc == nullptr) {
+        std::cout << "Memory allocation failed using malloc!" << std::endl; /* aici trebuiau puse :: nu doar un singur : */
+        return 1;
+    }
+
+    std::cout << "Memory allocated using malloc." << std::endl;
+
+    std::cout << "Enter " << size << " float numbers:" << std::endl;
+    for (int i = 0; i < size; ++i) { /* aici trebuia pus decat < nu <= deoarece i incape de la 0. daca i incepea de la 1 atunci puteam sa punem <= */
+        std::cin >> arrMalloc[i];
+    }
+
+    int newSize;
+    std::cout << "Enter the new size for reallocation: "; /* aici trebuiau puse :: mu un singur : */
+    std::cin >> newSize;
+
+
+    float *arrRealloc = (float *)realloc(arrMalloc, newSize * sizeof(float)); /* aici realloc trebuia initializatr ca pointer si trebuia pusa * */
+    if (arrRealloc == nullptr) {
+        std::cout << "Memory reallocation failed using realloc!" << std::endl;
+        free(arrMalloc);
+        return 1;
+    }
+
+    std::cout << "Memory reallocated using realloc." << std::endl;
+
+
+    std::cout << "Enter " << newSize - size << " more float numbers:" << std::endl;
+    for (int i = size; i < newSize; ++i) {
+        std::cin >> arrRealloc[i];
+    }
+
+
+    std::cout << "Updated array:" << std::endl;
+    for (int i = 0; i < newSize; ++i) {        /* i trebuia sa inceapa de la 0 nu de la 1 */
+        std::cout << arrRealloc[i] << " ";
+    }
+    std::cout << std::endl;
+
+
+    free(arrRealloc);
+
+    return 0;
+}
