@@ -27,7 +27,7 @@ int main() {
     std::cin >> newSize;
 
 
-    float arrRealloc = (float *)realloc(arrMalloc, newSize * sizeof(float));
+    float *arrRealloc = (float *)realloc(arrMalloc, newSize * sizeof(float)); //Eroare linia 30: variabila arrRealloc avea nevoie de pointer
     if (arrRealloc == nullptr) {
         std::cout << "Memory reallocation failed using realloc!" << std::endl;
         free(arrMalloc);
