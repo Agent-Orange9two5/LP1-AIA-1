@@ -87,5 +87,32 @@ towerOfHanoi(n-1,auxiliary,source,destination);}
 int main(){
 int num_disks=3;
 towerOfHanoi(num_disks,'A','B','C');
+return 0;} 
+
+
+
+
+
+
+
+
+
+
+#include<iostream>
+using namespace std;
+int n;
+void fibonacci (int n) {
+int f1=1,f2=1,f3;
+cout<<f1<<" "<<f2<<" ";
+while(f2<n-f1) {
+    f3=f1+f2;
+    cout<<f3<<" ";
+    f1=f2;
+    f2=f3; }
+
+}
+int main() {
+cin>>n;
+fibonacci(n);
 return 0;}
 
