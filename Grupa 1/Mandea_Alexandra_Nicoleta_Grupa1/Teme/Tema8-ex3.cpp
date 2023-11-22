@@ -1,6 +1,6 @@
 //Sa se explice succint scopul programului de  mai jos si sa se corecteze erorile de sintaxa si logica. 
 
-
+#include <iostream>
 #include <cstdlib> 
 #include <cstring> 
 
