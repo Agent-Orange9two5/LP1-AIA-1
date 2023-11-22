@@ -51,7 +51,7 @@ int main() {
 
 
     std::cout << "Updated array:" << std::endl;
-    for (int i = 1; i < newSize; ++i) {
+    for (int i = 0; i < newSize; ++i) {
         std::cout << arrRealloc[i] << " ";
     }
     std::cout << std::endl;
