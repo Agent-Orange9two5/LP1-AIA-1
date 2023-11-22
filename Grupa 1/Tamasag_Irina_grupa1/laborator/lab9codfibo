@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+void fibo(int n)
+{
+    int a=1,b=1;
+    cout<<a<<" "<<b<<" ";
+    while(b<n-a)
+    {
+        int c=a+b;
+        cout<<c<<" ";
+        a=b;
+        b=c;
+    }
+}
+int main()
+{
+    int n=22;
+    fibo(n);
+    return 0;
+}
