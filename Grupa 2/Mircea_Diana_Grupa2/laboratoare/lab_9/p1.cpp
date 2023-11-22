@@ -29,7 +29,7 @@ int main()
     //Afisarea rezultatului pentru metoda iterativa
     cout<<"N! cu metoda iterativa este egal cu: "<<fact_iterativ(n)<<endl;
     //Afisarea rezultatului pentru metoda recursiva
-    cout<<"N! cu metoda recursiva este egak cu: "<<fact_recursiv(n);
+    cout<<"N! cu metoda recursiva este egal cu: "<<fact_recursiv(n);
     return 0;
 }
 
