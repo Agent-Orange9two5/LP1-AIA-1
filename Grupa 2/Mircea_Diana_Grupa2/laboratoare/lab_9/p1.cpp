@@ -5,7 +5,7 @@ using namespace std;
 int fact_iterativ(int n)
 {
     int fact=1;
-    for(i=1; i<=n; i++)
+    for(int i=1; i<=n; i++)
     {
         fact*=i;
     }
