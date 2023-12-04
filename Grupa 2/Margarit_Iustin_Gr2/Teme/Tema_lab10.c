@@ -19,7 +19,7 @@ for (i = 0; i < n; i++) {
 
 FILE *file = fopen("f_elev.txt", "w");
 
-for(i=0;i<2;i++)
+for(i=0;i<n;i++)
  fprintf(file, "Numele: %s  Varsta: %d  Media: %f\n", e[i].nume, e[i].varsta, e[i].media);
     
 fclose(file);
