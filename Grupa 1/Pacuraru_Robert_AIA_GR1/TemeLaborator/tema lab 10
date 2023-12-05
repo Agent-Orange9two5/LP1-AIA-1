@@ -14,7 +14,7 @@ int main ()
   fp=fopen("fisier.txt","w");     //deschidere fisier in modul scriere
 
   fprintf(fp,"Popescu Ionel, 19, 8.75\n");
-  fprintf(fp,"Marinescu Petronela, 22, 7.10\n");     //adaugare info despre studenti
+  fprintf(fp,"Marinescu Petronela, 22, 7.10\n");     //adaugare informatii despre studenti
 
   fclose(fp);     //inchidere fisier
 
