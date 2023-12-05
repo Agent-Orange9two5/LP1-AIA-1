@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+struct student
+{
+    char nume[10];
+    int varsta;
+    float media;
+} s[30];
+
+int main()
+{
+    int n, i;
+    FILE *fp;
+    fp = fopen("DATA.txt", "w");
+    if (fp == NULL)
+    {
+        printf("Nu s-a putut deschide fisierul.\n");
+        return -1;
+    }
+    else
+    {
+        printf("Introduceti numarul de studenti: ");
+        scanf("%d", &n);
+
+        while (n > 30)
+        {
+            printf("Dati alt numar de elevi mai mic sau egal cu 30: ");
+            scanf("%d", &n);
+        }
+
+        for (i = 0; i < n; i++)
+        {
+            printf("Introduceti datele studentului %d: ", i + 1);
+            scanf("%s %d %d", s[i].nume, &s[i].varsta, &s[i].media);
+            fprintf(fp, "%s%d%.2f\n", s[i].nume, s[i].varsta, s[i].media);
+        }
+
+        fclose(fp);
+
+        fp = fopen("DATA.txt", "r");
+        if (fp == NULL)
+        {
+            printf("Nu s-a putut deschide fisierul.\n");
+            return -1;
+        }
+
+        else
+        {
+            char c;
+            long poz;
+            while ((c = fgetc(fp)) != EOF)// citeste pentru c un element din fp care este diferit de EOF
+                printf("Caracter: %c, Pozitie curenta: %ld\n", c, (poz = ftell(fp))); // ftell ii atribuie lui "poz" pozitia cursorului din fisier
+        }
+
+        fclose(fp);
+    }
+    return 0;
+}
