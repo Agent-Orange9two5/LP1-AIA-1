@@ -44,3 +44,4 @@ int main()
     }
     return 0;
 }
+/*functia fgetc() este utilizata pentru a obtine fiecare caracter din fisier pe rand, iar functia ftell() este utilizata pentru a indica pozitia pe care se afla caracterul in fisier*/ 
