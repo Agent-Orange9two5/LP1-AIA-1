@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+struct Student{
+  char nume[50];
+  int varsta;
+  float medie;
+};
+
+
+int main ()
+{
+  FILE *fp;
+
+  fp=fopen("fisier.txt","w");     //deschidere fisier in modul scriere
+
+  fprintf(fp,"Popescu Ionel, 19, 8.75\n");
+  fprintf(fp,"Marinescu Petronela, 22, 7.10\n");     //adaugare info despre studenti
+
+  fclose(fp);     //inchidere fisier
+
+  fp=fopen("fisier.txt","r");     //deschidere fisier in modul citire
+
+  int ch;     //variabila pt parcurgerea caracterelor, de tip int deoarece utilizeaza codurile ASCII
+  long poz=0;     //variabila pt memorarea pozitiei curente
+  while((ch=fgetc(fp))!=NULL)
+  {
+      printf("Caracter: %c Pozitie: %ld\n",ch,poz);     //afisare caracter cu caracter si pozitia curenta
+      poz=ftell(fp);     //actualizarea pozitiei curente
+
+  }
+  fclose(fp);     //inchidere fisier
+
+  return 0;
+}
