@@ -1,1 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct Student {
+    char nume[50];
+    int varsta;
+    float medie;
+};
+
+int main() {
+
+    FILE *fisier = fopen("studenti.txt", "w");
+
+    if (fisier == NULL) {
+        printf("Eroare la deschiderea fisierului.");
+        return 1;
+    }
+
+    struct Student student1 = {"Andrei Ionescu", 20, 8.5};
+    struct Student student2 = {"David Popescu", 22, 9.0};
+
+    fprintf(fisier, "%s %d %.2f\n", student1.nume, student1.varsta, student1.medie);
+    fprintf(fisier, "%s %d %.2f\n", student2.nume, student2.varsta, student2.medie);
+
+    fclose(fisier);
+
+
+    fisier = fopen("studenti.txt", "r");
+
+    if (fisier == NULL) {
+        printf("Eroare la deschiderea fisierului.");
+        return 1;
+    }
+
+    int caracter;
+    long pozitie = 0;
+    while ((caracter = fgetc(fisier)) != EOF) {
+        //printf("Caracter: %c, Pozitie curenta: %ld\n", caracter, ftell(fisier));
+//!!!
+// Nu inteleg cum face afisarea, caracterul 23 este "treci pe rand nou",  e invizibil, dar arata apoi doar "pozitia 24" fara caracter
+//!!!
+        printf("Caracter: %c, Pozitie curenta: %ld\n", caracter, pozitie++);
+    }
+
+    fclose(fisier);
+
+    // Funcția fgetc este folosită pentru a citi caracter cu caracter din fișier.
+    // Funcția ftell returnează poziția curentă a cursorului în fișier.
+
+    return 0;
+}
 
