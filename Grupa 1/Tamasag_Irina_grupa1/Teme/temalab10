@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct Student
+{
+    char nume[50];
+    int varsta;
+    float medie;
+};
+int main()
+{
+    FILE *fisier = fopen("studenti.txt", "w");
+    fprintf(fisier, "Mircea Ana 20 8.5\n");
+    fprintf(fisier, "Caldare Mihai 19 9.0\n");
+    fclose(fisier);
+    fisier = fopen("studenti.txt", "r");
+    if (fisier == NULL)
+    {
+        printf("Eroare la deschiderea fisierului!");
+        return 1;
+    }
+    int caracter;
+    long pozitie;
+
+    while ((caracter = fgetc(fisier)) != EOF)
+    {
+        printf("%c", caracter);
+        pozitie = ftell(fisier);
+        printf(" pozitie: %ld\n", pozitie);
+    }
+
+    fclose(fisier);
+    return 0;
+}
+/*Funcția fgetc returnează caracterul curent citit din fișier, iar funcția ftell furnizează poziția cursorului în cadrul fișierului. Aceste informații sunt afișate pentru fiecare caracter citit.*/
+
+
+
+
+
+
+
