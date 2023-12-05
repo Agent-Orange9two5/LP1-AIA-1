@@ -22,7 +22,7 @@ int main ()
 
   int ch;     //variabila pt parcurgerea caracterelor, de tip int deoarece utilizeaza codurile ASCII
   long poz=0;     //variabila pt memorarea pozitiei curente
-  while((ch=fgetc(fp))!=NULL)
+  while((ch=fgetc(fp))!=EOF)
   {
       printf("Caracter: %c Pozitie: %ld\n",ch,poz);     //afisare caracter cu caracter si pozitia curenta
       poz=ftell(fp);     //actualizarea pozitiei curente
