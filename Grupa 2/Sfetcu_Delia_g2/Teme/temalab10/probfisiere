@@ -31,10 +31,10 @@ int main(){
     int long poz = 0;   //declararea variabilei pentru retinerea pozitiei caracterelor
     //creerea unui while pentru verificarea si actualizarea pozitiilor caracterelor 
     
-    while((c = fgetc(pf)) != EOF)
+    while((c = fgetc(pf)) != EOF)    //fgetc este folosit pentru a returna pozitia unui singur caracter at a time in codul ASCII 
     {
         printf("Caracter %c, pozitie: %ld\n", c, poz);
-        poz = ftell(pf);
+        poz = ftell(pf);    //functia ftell este folosita pentru a determina pozitia pointer fileului din fisier respectand indexarea  
     }
     fclose(pf);   //inchiderea fisierului
 
