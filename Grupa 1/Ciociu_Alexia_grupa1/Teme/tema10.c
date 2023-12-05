@@ -23,7 +23,6 @@ for(i=1;i<=n;i++)
     scanf("%f",&a[i].media);
     fprintf(fisier,"%s \n %d \n %f \n",a[i].nume,a[i].varsta,a[i].media);}
     fclose(fisier);
-}
 FILE* fisier1;
 fisier1=fopen("studenti.txt","r");
         char c;
@@ -33,7 +32,7 @@ fisier1=fopen("studenti.txt","r");
         poz = ftell(fisier1);               //ftell retine pozitia cursorului din fisier
         printf("Pozitia cursorului: %d\n", poz);
         }
-    }
+
     fclose(fisier1);
 
 
