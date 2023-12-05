@@ -33,13 +33,20 @@ int main()
         }
         fclose(file);
         file = fopen("DATA.txt", "r");
-        while (!feof(file))
+        if(file==NULL)
         {
-            char c = fgetc(file);
-            printf("%c", c);
-            printf(" ");
-            printf("%ld", ftell(file));
-            printf(" ");
+            printf("Eroare la deschiderea DATA.txt pentru citire\n");
+        }
+        else
+        {
+            while (!feof(file))
+            {
+                char c = fgetc(file);
+                printf("%c", c);
+                printf(" ");
+                printf("%ld", ftell(file));
+                printf(" ");
+            }
         }
     }
     return 0;
