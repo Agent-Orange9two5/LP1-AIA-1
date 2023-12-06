@@ -1,40 +1,54 @@
 #include <iostream>
-#include <string.h>
 #include <cstdlib>
+
 using namespace std;
 
 struct Carte {
-char titlu[50];
-char autor[30];
-int an;
-int id;
+    char titlu[30];
+    char autor[30];
+    int an;
+    int id;
 };
-int main()
-{
 
-  int numcarti = 50;
-  Carte *carteArray = (Carte *)malloc(numcarti * sizeof(Carte));
+int main() {
+    int numcarti;
+    cout << "Introduceti numarul de carti: ";
+    cin >> numcarti;
 
-    if (carteArray == nullptr) {
-        cout << "Failed to allocate memory\n";
+    int n=10;
+    Carte *carte = (Carte *)malloc(n* sizeof(Carte));
+
+    if (carte == nullptr) {
+        cout << "Eroare la alocarea memoriei\n";
         return 1;
     }
-  FILE *fp;
-  if ((fp = fopen("biblioteca.txt", "w")) == NULL)
-    cout << ("Eroare la deschidere bibiloteca.txt pentru scriere\n");
-  else
-    struct biblioteca*Carte[100];
-    cout <<"Introduceti numarul de carti:"<<numcarti;
-  for (int i=1; i<numcarti; i++) {
-    cout << "Introduceti tiltul cartii";
-   cin >> Carte[i].titlu;
-    cout << "Introduceti numele autorului";
-   cin >> Carte[i].autor;
-    cout << "Introduceti anul publicarii";
-   cin >> Carte[i].an;
-  }
-   if ((fp = fopen("biblioteca.txt", "r")) == NULL)
-    printf("Eroare la deschidere biblioteca.txt pentru citire\n");
-  else;
 
+
+    FILE *fp;
+    if ((fp = fopen("biblioteca.txt", "w")) == NULL) {
+        cout << "Eroare la deschidere biblioteca.txt pentru scriere\n";
+        free(carte);
+        return 1;
+    }
+    for (int i = 0; i < numcarti; i++) {
+        cout << "Introduceti titlul cartii "<<i+1<<": ";
+        cin >> carte[i].titlu;
+
+        cout << "Introduceti numele autorului: ";
+        cin >> carte[i].autor;
+
+        cout << "Introduceti anul publicarii: ";
+        cin >> carte[i].an;
+
+        cout << "Scrieti un id pentru cartea introdusa: ";
+        cin >> carte[i].id;
+        cout <<endl;
+        fprintf(fp, "ID: %d, Titlu: %s, Autor: %s, An: %d\n",
+                carte[i].id, carte[i].titlu, carte[i].autor, carte[i].an);
+    }
+
+    fclose(fp);
+    free(carte);
+
+    return 0;
 }
