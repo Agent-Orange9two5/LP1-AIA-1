@@ -1,0 +1,77 @@
+#include <iostream>
+#include <cstring>
+#include <fstream>
+
+using namespace std;
+
+struct Carte
+{
+    char* titlu;
+    char* autor;
+    int anPublicare;
+    int id;
+};
+
+struct Biblioteca
+{
+    Carte* carti;
+    int nrCarti;
+};
+
+void adaugare(Biblioteca &biblioteca, char* titlu, char *autor, int anPublicare)
+{
+    biblioteca.carti=new Carte[biblioteca.nrCarti+1];
+    biblioteca.carti[biblioteca.nrCarti].titlu=new char[strlen(titlu)+1];
+    strcpy(biblioteca.carti[biblioteca.nrCarti].titlu, titlu);
+    biblioteca.carti[biblioteca.nrCarti].autor=new char[strlen(autor)+1];
+    strcpy(biblioteca.carti[biblioteca.nrCarti].autor, autor);
+    biblioteca.carti[biblioteca.nrCarti].anPublicare=anPublicare;
+    biblioteca.carti[biblioteca.nrCarti].id=biblioteca.nrCarti+1;
+    biblioteca.nrCarti++;
+}
+
+void afisare(Carte &carte)
+{
+    cout<<"ID: "<<carte.id<<endl;
+    cout<<"Titlu: "<<carte.titlu<<endl;
+    cout<<"Autor: "<<carte.autor<<endl;
+    cout<<"An publicare: "<<carte.anPublicare<<endl;
+}
+
+void cautare(Carte* biblioteca, int nrCarti, char* criteriu, int tip)
+{
+    cout<<"Carti gasite: "<<endl;
+    for(int i=0;i<nrCarti;i++)
+    {
+        bool ok=false;
+        switch(tip)
+        {
+            case 1:
+                ok=strstr(biblioteca[i].titlu, criteriu);
+                break;
+            case 2:
+                ok=strstr(biblioteca[i].autor, criteriu);
+                break;
+            case 3:
+                bool cifre=true;
+                int an=0;
+                for(int j=0;j<strlen(criteriu);i++)
+                {
+                    if(!isdigit(criteriu[j]))
+                        cifre=false, break;
+                    an=an*10+(criteriu[j]-'0');
+                }
+                if(cifre)
+                {
+                    ok=(biblioteca[i].anPublicare==an);
+                }
+                break;
+        }
+    }
+    
+}
+
+int main()
+{
+    
+}
