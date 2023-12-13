@@ -1,0 +1,25 @@
+//Sa se creeze o structyra de date la alegere care sa contina:minim un sir de caractere,un vector si doua alte la alegere.Sa se efectueze relatiile CRUD:CREATE,READ,UPDATE,DELETE;
+using namespace std;
+struct elev {
+    char nume[21];
+    int nota1;
+    int nota2;
+};
+int main()
+{int n,i;
+ifstream f("elev.txt");
+cout<<"Introduceti numarul de elevi";
+
+cin>>n;
+struct elev a[n];
+for(i=0;i<n;i++)
+{ cout<<endl<<"Introduceti numele";
+    cin>>a[i].nume;
+    cout<<endl<<"Introduceti nota1";
+    cin>>a[i].nota1;
+    cout<<endl<<"Introduceti nota2";
+    cin>>a[i].nota2;
+}
+   return 0;
+
+}
