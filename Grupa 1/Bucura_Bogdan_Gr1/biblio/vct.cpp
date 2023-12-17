@@ -32,7 +32,7 @@ cout<<"Titlu:";cin.get(v[i].tit,35);
 cin.get();
 cout<<"An aparitie:";cin.get(v[i].an,4);cin.get();
 
-v[i].iden=100000+rand()%100001;;
+v[i].iden=100000+rand()%100001+rand()%1001;
 cout<<"Identificator:"<<v[i].iden;
 i++;cout<<endl;
 return 0;
@@ -74,7 +74,7 @@ return 0;
  }}}
 
 void scrierefis(){
-  ofstream f("biblioteca.txt");
+  ofstream f("Carti oarecare.txt");
 
 for(int j=0;j<i;j++){
     f<<"---------- CARTEA: "<<j+1<<" ----------"<<endl;
@@ -99,6 +99,31 @@ for(int k=0;k<z;k++){
 } g.close();
 }
 
+
+ void cautare()
+ {char d[35];
+cout<<endl<<"Autor sau Titlu sau An:";
+cin.get();cin.get(d,35);cin.get();
+    for(int j=0;j<i;j++)
+ {
+ if(strcmp(d,v[j].aut)==0||strcmp(d,v[j].tit)==0||strcmp(d,v[j].an)==0)
+    {
+  cout<<"Autor:"<<v[j].aut<<endl;
+    cout<<"Titlu:"<<v[j].tit<<endl;
+    cout<<"An aparitie:"<<v[j].an<<endl;
+    cout<<"Identificator:"<<v[j].iden<<endl;
+ }}
+for(int j=0;j<z;j++)
+ {
+ if(strcmp(d,a[j].aut)==0||strcmp(d,a[j].tit)==0||strcmp(d,a[j].an)==0)
+    {
+  cout<<"Autor:"<<a[j].aut<<endl;
+    cout<<"Titlu:"<<a[j].tit<<endl;
+    cout<<"An aparitie:"<<a[j].an<<endl;
+    cout<<"Identificator:"<<a[j].iden<<endl;
+ }}
+ }
+
 int main()
 {srand((unsigned) time (0));
 int u, x=1,y;
@@ -106,6 +131,7 @@ cout<<"Actiune 1: Adauga o carte"<<endl;
 cout<<"Actiune 2: Sterge o carte folosind identificatorul"<<endl;
 cout<<"Actiune 3: Scrierea bazei de date intr un fisier txt"<<endl;
 cout<<"Actiune 4: Scrierea bazei de date (poezie) intr un fisier txt"<<endl;
+cout<<"Actiune 5: Cautare carte dupa autor/titlu/an"<<endl;
 cout<<"Actiune 0: INCHIDERE PROGRAM"<<endl;
 
 while(x)
@@ -140,6 +166,10 @@ if(y==1)
 
     case 4:
         {scrierefis_p();break;}
+        
+    case 5:
+    {cautare();}
+
    }
 }
 }
