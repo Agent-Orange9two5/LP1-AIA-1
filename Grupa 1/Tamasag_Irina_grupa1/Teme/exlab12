@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int CMMDC (int a, int b)
+{
+    if(b!=0)
+        return CMMDC(b,a%b);
+    else
+        return a;
+}
+int main()
+{
+    int n1,n2;
+    cout<<"Introduceti primul numar: ";
+    cin>>n1;
+    cout<<"Introduceti al doilea numar: ";
+    cin>>n2;
+    cout<<"Cel mai mic divivor comun al numerelor este: "<<CMMDC(n1,n2);
+    return 0;
+}
