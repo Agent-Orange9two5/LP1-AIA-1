@@ -1,0 +1,31 @@
+#include <iostream>
+#include<fstream>
+using namespace std;
+ofstream fout("Agenda.txt");
+struct contact{
+char nume[100], adreml[50];
+long nrtel;
+};
+int main()
+{
+    int n;
+    cout<<"Introduceti nr de persoane: ";
+    cin>>n;
+    contact p[n];
+    for(int i=1;i<=n;i++)
+    {
+        cout<<"Persoana "<<i<<" are datele:";
+        cin.ignore();
+        cout<<endl<<"Numele este: ";
+        cin.getline(p[i].nume,100);
+        cout<<endl<<"Numarul de tel este: ";
+        cin>>p[i].nrtel;
+        cout<<endl<<"Adresa de email este:";
+        cin.ignore();
+        cin.getline(p[i].adreml,50);
+        fout<<"Persoana "<<i<<" este:";
+        fout<<endl<<"Numele: "<<p[i].nume<<endl<<"Numar tel: "<<p[i].nrtel<<endl<<"Adresa email: "<<p[i].adreml<<endl;
+
+    }
+    return 0;
+}
