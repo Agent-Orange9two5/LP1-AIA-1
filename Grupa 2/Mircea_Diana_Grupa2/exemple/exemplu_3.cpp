@@ -2,21 +2,23 @@
 b) Citirea a n contacte de la tastatură (n ≤ 20), stocarea acestora într-un vector și afișarea acestora pe ecran și într-un fișier numit "Agenda.txt".*/
 #include <iostream>
 #include <fstream>
+#include <cstring>
 using namespace std;
 struct contact
 {
     char nume[100],email[100];
-    int nrtel;
+    string nrtel;
 };
 int main()
 {
-    int n,i;
+    int n,i,;
     ofstream g("Agenda.txt");
+    cout<<"Introduceti numarul de contacte de adaugat ";
     cin>>n;
     contact contagenda[20];
     for(i=0;i<n;i++)
     {
-        cout<<"Introduceti nume agenda ";
+        cout<<<<". "<<"Introduceti nume agenda ";
         cin>>contagenda[i].nume;
         cout<<"Introduceti numar telefon ";
         cin>>contagenda[i].nrtel;
