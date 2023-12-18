@@ -1,0 +1,53 @@
+#include <iostream>
+
+int main() {
+
+    int *n1, *n2, *n3, *n4;
+
+    n1 = (int *)malloc(sizeof(int));
+    if (n1 == nullptr) {
+        std::cout << "Alocare de memorie esuata pt n1" ;
+        return -1;
+    }
+
+    n2 = (int *)malloc(sizeof(int));
+    if (n2 == nullptr) {
+        std::cout << "Alocare de memorie esuata pt n2" ;
+        free(n1);
+        return -1;
+    }
+
+    n3 = (int *)malloc(sizeof(int));
+    if (n3 == nullptr) {
+        std::cout << "Alocare de memorie esuata pt n3" ;
+        free(n1);
+        free(n2);
+        return -1;
+    }
+
+    n4 = (int *)malloc(sizeof(int));
+    if (n4 == nullptr) {
+        std::cout << "Alocare de memorie esuata pt n4" ;
+        free(n1);
+        free(n2);
+        free(n3);
+        return -1;
+    }
+
+    *n1 = 10;
+    *n2 = 20;
+    *n3 = 30;
+    *n4 = 40;
+
+    std::cout << "n1: " << *n1 << std::endl;
+    std::cout << "n2: " << *n2 << std::endl;
+    std::cout << "n3: " << *n3 << std::endl;
+    std::cout << "n4: " << *n4 << std::endl;
+
+    free(n1);
+    free(n2);
+    free(n3);
+    free(n4);
+
+    return 0;
+}
