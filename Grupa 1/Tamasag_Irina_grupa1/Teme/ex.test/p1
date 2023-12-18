@@ -1,7 +1,7 @@
 #include <iostream>
 #include<fstream>
 using namespace std;
-ofstream fout("tema.test.p1");
+ofstream fout("SumaPare.txt");
 int main()
 {
     int v[100],n,i, s=0;
