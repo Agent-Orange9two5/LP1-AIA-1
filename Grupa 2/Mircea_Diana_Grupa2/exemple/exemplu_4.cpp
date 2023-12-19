@@ -7,7 +7,30 @@ using namespace std;
 
 int main()
 {
-    int 
-    
+    int n,i,v[100],j;
+    cin>>n;
+    ofstream g("NumereSortate.txt");
+    for(i=0;i<n;i++)
+    {
+        v[i]=rand();
+    }
+     for(i=0;i<n-1;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            if(v[i]>v[j])
+            {
+                int aux=v[i];
+                v[i]=v[j];
+                v[j]=aux;
+            }
+        }
+    }
+
+    for(i=0;i<n;i++)
+    {
+        cout<<v[i]<<endl;
+        g<<v[i]<<endl;
+    }
     return 0;
 }
