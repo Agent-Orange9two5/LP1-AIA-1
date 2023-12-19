@@ -11,6 +11,11 @@ int main()
     int n;
     cout<<"Introduceti nr de persoane: ";
     cin>>n;
+    if (n < 0 || n>20)
+	{
+		cout << "Numar de contacte gresit";
+		return 0;
+	}
     contact p[n];
     for(int i=1;i<=n;i++)
     {
