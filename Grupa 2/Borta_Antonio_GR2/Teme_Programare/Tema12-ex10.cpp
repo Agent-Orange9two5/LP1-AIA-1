@@ -23,18 +23,18 @@ int main()
         free(a);
         return 1;
     }
-    for (int i = 1; i < n; i++)
+    for (i = 1; i < n; i++)
     {
         a[i] = a[0] + i * m;
     }
-    for(int i = 0; i < n; ++i)
-        for(int j = 0; j < n; j++)
+    for(i = 0; i < n; ++i)
+        for(j = 0; j < n; j++)
     {
         cin >> a[i][j];
         a[i][j] *= c;
     }
-    for(int i = 0; i < n; ++i)
-    {  for(int j = 0; j < n; j++)
+    for(i = 0; i < n; ++i)
+    {  for(j = 0; j < n; j++)
         {
             file << a[i][j] << " ";
         }
