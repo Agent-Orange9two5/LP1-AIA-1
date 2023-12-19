@@ -2,7 +2,7 @@
 b) Sortați aceste numere în ordine descrescătoare și afișați-le într-un fișier numit "NumereSortate.txt".*/
 #include <iostream>
 #include <fstream>
-
+#include <cstdlib>
 using namespace std;
 
 int main()
