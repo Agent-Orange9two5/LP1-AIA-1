@@ -1,6 +1,6 @@
 #include <iostream>
 #include<fstream>
-
+ofstram o("SumaNumere.txt")
 using namespace std;
 
 int main()
@@ -20,6 +20,6 @@ int main()
         cin>>v[i];
         s+=v[i];
     }
-    cout<<s;
+    o<<"Suma elementelor din metrice este: "<<s;
     return 0;
 }
