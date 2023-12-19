@@ -29,7 +29,6 @@ int main()
 
     for(i=0;i<n;i++)
     {
-        cout<<v[i]<<endl;
         g<<v[i]<<endl;
     }
     return 0;
