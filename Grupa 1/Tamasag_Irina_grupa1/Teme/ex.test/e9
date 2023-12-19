@@ -1,0 +1,25 @@
+#include <iostream>
+#include<fstream>
+
+using namespace std;
+
+int main()
+{
+    int n, i,s=0;
+    cout<<"Introduceti numarul de elemante din vector:";
+    cin>>n;
+    int* v= new int[n];
+    if(v==NULL)
+    {
+        cout<<"Alocare dinamica esuata:";
+        return -1;
+    }
+    cout<<"Introduceti vectorul:";
+    for(i=0;i<n;i++)
+    {
+        cin>>v[i];
+        s+=v[i];
+    }
+    cout<<s;
+    return 0;
+}
