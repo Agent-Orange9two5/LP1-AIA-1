@@ -1,0 +1,36 @@
+#include <iostream>
+#include<fstream>
+
+using namespace std;
+ofstream o("test.txt");
+int main()
+{
+    int m, n, i, j, cons;
+    cout<<"Numarul de linii este:";
+    cin>>n;
+    cout<<"Numarul de coloane este:";
+    cin>>m;
+    int** mat=new int*[n];
+    for(i=0;i<n;i++)
+        {
+            mat[i]= new int[m];
+        }
+        cout<<"Care este constanta? :";
+        cin>>cons;
+        cout<<"Matricea este:";
+        for(i=0;i<n;i++)
+        for(j=0;j<m;j++)
+        {
+            cin>>mat[i][j];
+            mat[i][j]*=cons;
+        }
+        for(i=0;i<n;i++){
+        for(j=0;j<m;j++)
+        {
+            o<<mat[i][j]<<" ";
+
+        }
+        o<<endl;}
+
+    return 0;
+}
