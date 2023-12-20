@@ -18,7 +18,8 @@ int main()
         }
         g<<endl;
     }
-        for(i=n;i>=1;i--)
+    n=1+n*2;
+        for(i=n;i>1;i--)
     {
         j=1;
         while(j<=i)
@@ -37,4 +38,3 @@ int main()
 
     return 0;
 }
-//Stefan Virnav
