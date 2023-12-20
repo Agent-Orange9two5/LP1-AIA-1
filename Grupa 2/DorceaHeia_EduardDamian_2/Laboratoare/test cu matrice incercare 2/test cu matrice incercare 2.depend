@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1703063716 source:c:\users\student\desktop\dorcea eduard1\test cu matrice incercare 2\main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<stdlib.h>
+

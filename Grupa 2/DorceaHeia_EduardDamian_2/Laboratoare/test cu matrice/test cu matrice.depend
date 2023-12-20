@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1703062589 source:c:\users\student\desktop\dorcea eduard1\test cu matrice\main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<stdlib.h>
+
