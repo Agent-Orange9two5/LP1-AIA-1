@@ -18,7 +18,7 @@ int main()
         }
         g<<endl;
     }
-    n=1+n*2;
+    n=n*2;
         for(i=n;i>1;i--)
     {
         j=1;
