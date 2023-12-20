@@ -1,0 +1,102 @@
+#include <iostream>
+
+using namespace std;
+
+int
+main ()
+{
+  int A[10][10], n, s;
+  cin >> n;
+  for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+      cin >> A[i][j];
+  cout << "elementele de pe diagolana principala sunt: ";
+  for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+      if (i == j)
+	cout << A[i][j] << " ";
+  cout << endl <<
+    "elementele de pe diagonala secundara in ordine inversa sunt: ";
+  for (int i = n-1; i >= 0; i--)
+    for (int j = n-1; j >= 0; j--)
+      if (i + j == n - 1)
+	cout << A[i][j]<< " ";
+  cout << endl << "Suma elementelor de deasupra diagonalei secundare ";
+  for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+      if (i + j < n - 1)
+	s = s + A[i][j];
+  cout << s;
+  cout << "elementele palindroame de pe diagonala principala sunt ";
+  int cp =0, inv = 0, nrpal=0;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+        {
+            cp=A[i][j];
+         if (i == j)
+	    {
+            if(A[i][j]==0)
+                nrpal++;
+            else
+	            while (cp)
+	            {
+	                inv=inv*10+cp%10;
+	                cp/=10;
+	            }
+	            if (inv==A[i][j])
+	            nrpal++;
+	            
+	    }
+
+	    }
+	    cout<<nrpal;
+	    int Vsus[10],Vdr[10],Vjos[10],Vst[10],a=0,b=0,c=0,d=0;
+	    for (int i = 0; i < n; i++)
+            for(int j = 0; j < n; j++)
+            {
+                if(i+j>n-1&&i<j)
+                {
+                    Vdr[b]=A[i][j];
+                    b++;
+                } 
+                if (i+j>n-1&&i>j)
+                {
+                    Vjos[c]=A[i][j];
+                    c++;
+                }
+                if (i+j<n-1&&i<j)
+                {
+                    Vsus[a]=A[i][j];
+                    a++;
+                }
+                if (i+j<n-1&&i>j)
+                {
+                        Vst[d]=A[i][j];
+                        d++;
+                }
+                
+            }
+            cout<<endl;
+            for (int i=0;i<a; i++)
+                cout<<Vsus[i]<<" ";
+            cout<<endl;
+            for (int i=0;i<b; i++)
+                cout<<Vdr[i]<<" ";
+            cout<<endl;
+            for (int i=0;i<c; i++)
+                 cout<<Vjos[i]<<" ";
+            cout<<endl;
+            for (int i=0;i<d; i++)
+                cout<<Vst[i]<<" ";
+                
+                
+
+
+
+
+            
+
+
+
+	    return 0;
+	}
