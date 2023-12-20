@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1700037684 source:c:\users\student\desktop\dorcea eduard1\problema vectori malloc\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
