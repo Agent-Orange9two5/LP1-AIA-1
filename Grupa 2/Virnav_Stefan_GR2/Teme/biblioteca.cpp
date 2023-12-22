@@ -12,3 +12,65 @@ Identificatorul unic al cărții va fi generat în mod dinamic.
 
 - Salvarea și stergerea bibliotecii în/din fișier: Programul ar trebui să permită salvarea bibliotecii într-un fișier text și stergerea acesteia din fișier.
 */
+#include <iostream>
+
+using namespace std;
+
+
+
+const int marime_maxima=100;
+struct carte
+{
+ char autor[50];
+ char titlu[50];
+ int an;
+ int id;
+};
+int stocare=0,counter=0;
+carte biblioteca[marime_maxima];
+void adaugare(int n)
+{
+   int i;
+   for(i=0;i<n;i++)
+   {
+       if(stocare<marime_maxima)
+            {
+                //adaugare carte
+                cout<<"Introduceti numele autorului: ";
+                cin>>biblioteca[stocare].autor;
+                cout<<"Introduceti numele cartii: ";
+                cin>>biblioteca[stocare].titlu;
+                //Aici am incercat sa adug un type checker in cazul in care utilizatorul introduce altceva inafara de un numar intreg"
+                while(cout<<"Introduceti anul aparatie: " && !(cin>>biblioteca[stocare].an))
+                {
+                    cin.clear();
+                    cin.ignore(1000,'\n');
+                    cout<<"Input incorect,va rog reintroduceti\n";
+                }
+                //generare id unic
+                biblioteca[stocare].id=counter;
+                counter++;
+                if(n>1)
+                cout<<"Cartea nr"<<i+1<<" a fost adaugata cu succes!"<<endl<<endl;
+                else
+                cout<<"Cartea a fost adaugate cu succes!";
+            }
+        else
+        {
+            cout<<"Max size reached.Delete old books before trying again"<<endl;
+            break;
+        }
+
+   }
+}
+void cautare();
+void stergere();
+void salvare();
+
+
+
+int main()
+{
+    adaugare(5);
+    return 0;
+}
