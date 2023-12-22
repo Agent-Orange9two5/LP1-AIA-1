@@ -16,7 +16,7 @@ Identificatorul unic al cărții va fi generat în mod dinamic.
 #include <windows.h>
 using namespace std;
 
-
+//Stiu ca programul ar fi mai eficient  cu un array pentru run time (pentru stergerea de carti)fata de un list dar am realizat asta prea tarziu.
 
 const int marime_maxima=100;
 struct carte
@@ -26,7 +26,7 @@ struct carte
  int an;
  int id;
 };
-int stocare=0,counter=0;
+int stocare=0,counter=0;//counter=Nr carti totale generate vreodata si stocare=Nr carti actuale in sistem
 carte biblioteca[marime_maxima];
 void adaugare(int n)
 {
@@ -52,6 +52,7 @@ void adaugare(int n)
                 //generare id unic
                 biblioteca[stocare].id=counter;
                 counter++;
+                stocare++;
                 if(n>1)
                 cout<<"\t|Cartea NR"<<i+1<<" a fost adaugata cu succes!|"<<endl<<endl;
                 else
@@ -77,6 +78,11 @@ void cautare()
         cin.clear();
         cin.ignore(1000,'\n');
         cout<<"Eroare.Va rog introduceti o varianta valida"<<endl;
+        switch(condition)
+        {
+        case 1:
+            for(i=0;i<)
+        }
     }
 }
 void stergere();
