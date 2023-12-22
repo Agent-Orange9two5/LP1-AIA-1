@@ -63,7 +63,18 @@ void adaugare(int n)
 
    }
 }
-void cautare();
+void cautare()
+{
+    cout<<"Selectati dupa ce doriti sa cautati:"<<endl
+    <<"1)Dupa nume"<<endl<<"2)Dupa autor"<<endl<<"3)Dupa anul aparitie"<<endl;
+    int condition;
+    while(!cin>>condition || condition>0 || condition <4)
+    {
+        cin.clear();
+        cin.ignore(1000,'\n');
+        cout<<"Eroare.Va rog introduceti o varianta valida"<<endl;
+    }
+}
 void stergere();
 void salvare();
 
@@ -71,6 +82,10 @@ void salvare();
 
 int main()
 {
-    adaugare(5);
+    bool condition=true;
+    while(condition)
+    {
+        cout<<
+    }
     return 0;
 }
