@@ -41,7 +41,7 @@ void adaugare(int n)
                 cout<<"Introduceti numele cartii: ";
                 cin>>biblioteca[stocare].titlu;
                 //Aici am incercat sa adug un type checker in cazul in care utilizatorul introduce altceva inafara de un numar intreg"
-                while(cout<<"Introduceti anul aparatie: " && !(cin>>biblioteca[stocare].an))
+                while(cout<<"Introduceti anul aparatie: " && (!(cin>>biblioteca[stocare].an) || biblioteca[stocare].an>2024))
                 {
                     cin.clear();
                     cin.ignore(1000,'\n');
