@@ -41,21 +41,23 @@ void adaugare(int n)
                 cout<<"\t|Introduceti numele cartii|"<<endl<<"\t   Raspuns:";
                 cin>>biblioteca[stocare].titlu;
                 //Aici am incercat sa adug un type checker in cazul in care utilizatorul introduce altceva inafara de un numar intreg"
-                while(cout<<"\t|Introduceti anul aparatiei|" && (!(cin>>biblioteca[stocare].an) || biblioteca[stocare].an>2024))
+                while(cout<<"\t|Introduceti anul aparatiei|"<<endl<<"\t   Raspuns:" && (!(cin>>biblioteca[stocare].an) || biblioteca[stocare].an>2024))
                 {
                     cin.clear();
                     cin.ignore(1000,'\n');
                     cout<<"\n\n\t\|INPUT INCORECT.REINTRODUCETI|\n";
-                    Sleep(1500);
+                    Sleep(1500);//Am adaugat sleep pentru a da timp utilizatoruli sa citeasca eroarea inainte de clear
                     system("cls");
                 }
                 //generare id unic
                 biblioteca[stocare].id=counter;
                 counter++;
                 if(n>1)
-                cout<<"Cartea nr"<<i+1<<" a fost adaugata cu succes!"<<endl<<endl;
+                cout<<"\t|Cartea NR"<<i+1<<" a fost adaugata cu succes!|"<<endl<<endl;
                 else
-                cout<<"Cartea a fost adaugate cu succes!";
+                cout<<"\t|!Cartea a fost adaugate cu succes!|";
+                Sleep(1500);
+                system("cls");
             }
         else
         {
