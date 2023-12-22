@@ -13,7 +13,7 @@ Identificatorul unic al cărții va fi generat în mod dinamic.
 - Salvarea și stergerea bibliotecii în/din fișier: Programul ar trebui să permită salvarea bibliotecii într-un fișier text și stergerea acesteia din fișier.
 */
 #include <iostream>
-
+#include <windows.h>
 using namespace std;
 
 
@@ -36,16 +36,18 @@ void adaugare(int n)
        if(stocare<marime_maxima)
             {
                 //adaugare carte
-                cout<<"Introduceti numele autorului: ";
+                cout<<"\t|Introduceti numele autorului|"<<endl<<"\t   Raspuns:";
                 cin>>biblioteca[stocare].autor;
-                cout<<"Introduceti numele cartii: ";
+                cout<<"\t|Introduceti numele cartii|"<<endl<<"\t   Raspuns:";
                 cin>>biblioteca[stocare].titlu;
                 //Aici am incercat sa adug un type checker in cazul in care utilizatorul introduce altceva inafara de un numar intreg"
-                while(cout<<"Introduceti anul aparatie: " && (!(cin>>biblioteca[stocare].an) || biblioteca[stocare].an>2024))
+                while(cout<<"\t|Introduceti anul aparatiei|" && (!(cin>>biblioteca[stocare].an) || biblioteca[stocare].an>2024))
                 {
                     cin.clear();
                     cin.ignore(1000,'\n');
-                    cout<<"Input incorect,va rog reintroduceti\n";
+                    cout<<"\n\n\t\|INPUT INCORECT.REINTRODUCETI|\n";
+                    Sleep(1500);
+                    system("cls");
                 }
                 //generare id unic
                 biblioteca[stocare].id=counter;
@@ -90,12 +92,15 @@ int main()
         cout<< "\t|"<<"Selectati ce doriti sa faceti:\t|"<<endl<<"\t|-------------------------------|"<<endl
         <<"\t|\t[1]Adaugare carti\t|"<<endl<<"\t|\t[2]Cautare carti \t|"<<endl
         <<"\t|\t[3]Stergere carti\t|"<<endl<<"\t|\t[4]Salvare fisier\t|"<<endl
-        <<"\t|\t\t\t\t|"<<endl<<"\t=================================\n";
+        <<"\t|\t\t\t\t|"<<endl<<"\t=================================\n"<<endl<<"\t\t   Raspuns:";
         cin>>response;
         switch(response)
         {
         case 1:
-            cout<<"Cate carti doriti sa adaugati?"<<endl;
+            Sleep(250);
+            system("cls");
+            cout<<"\t|Cate carti doriti sa adaugati?|"<<endl;
+            cout<<"\t\t   Raspuns:";
             int n;
             cin>>n;
             adaugare(n);
