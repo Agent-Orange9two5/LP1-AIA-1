@@ -83,9 +83,23 @@ void salvare();
 int main()
 {
     bool condition=true;
+    int response;
     while(condition)
     {
-        cout<<
+        cout<< "\t=================================\n";
+        cout<< "\t|"<<"Selectati ce doriti sa faceti:\t|"<<endl<<"\t|-------------------------------|"<<endl
+        <<"\t|\t[1]Adaugare carti\t|"<<endl<<"\t|\t[2]Cautare carti \t|"<<endl
+        <<"\t|\t[3]Stergere carti\t|"<<endl<<"\t|\t[4]Salvare fisier\t|"<<endl
+        <<"\t|\t\t\t\t|"<<endl<<"\t=================================\n";
+        cin>>response;
+        switch(response)
+        {
+        case 1:
+            cout<<"Cate carti doriti sa adaugati?"<<endl;
+            int n;
+            cin>>n;
+            adaugare(n);
+        }
     }
     return 0;
 }
