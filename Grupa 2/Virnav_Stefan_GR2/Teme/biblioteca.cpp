@@ -15,10 +15,11 @@ Identificatorul unic al cărții va fi generat în mod dinamic.
 #include <iostream>
 #include <cstring>
 #include <windows.h>
+#include <fstream>
 using namespace std;
 
 //Stiu ca programul ar fi mai eficient  cu un array pentru run time (pentru stergerea de carti)fata de un list dar am realizat asta prea tarziu.
-
+ofstream f("Biblioteca.txt");
 const int marime_maxima=100;
 struct carte
 {
@@ -130,7 +131,24 @@ void stergere()
         cout<<"\t|Cartea nu exista in biblioteca|"<<endl;
 
 }
-void salvare();
+void salvare()
+{
+ for(int i=0;i<stocare;i++)
+    f<<biblioteca[i].autor<<" "<<biblioteca[i].titlu<<" "<<biblioteca[i].an<<" "<<biblioteca[i].id;
+ cout<<"Biblioteca a fost salvate cu succes"<<endl;
+ Sleep(1500);
+ system("cls");
+
+}
+void stergere_f()
+{
+    ofstream file("biblioteca.txt", ios::trunc);
+    if(file.is_open())
+        file.close();
+    cout<<"Biblioteca a fost stearsa cu succes"<<endl;
+    Sleep(1500);
+    system("cls");
+}
 void inventar()
 {
     for(int i=0;i<stocare;i++)
@@ -149,7 +167,7 @@ int main()
         cout<< "\t=================================\n";
         cout<< "\t|"<<"Selectati ce doriti sa faceti:\t|"<<endl<<"\t|-------------------------------|"<<endl
         <<"\t|\t[1]Adaugare carti\t|"<<endl<<"\t|\t[2]Cautare carti \t|"<<endl
-        <<"\t|\t[3]Stergere carti\t|"<<endl<<"\t|\t[4]Salvare fisier\t|"<<endl<<"\t|\t[5]inventar\t\t|"<<endl
+        <<"\t|\t[3]Stergere carti\t|"<<endl<<"\t|\t[4]Salvare fisier\t|"<<endl<<"\t|\t[5]Stergere fisier\t|"<<endl<<"\t|\t[6]Inventar\t\t|"<<endl
         <<"\t|\t\t\t\t|"<<endl<<"\t=================================\n"<<endl<<"\t\t   Raspuns:";
         cin>>response;
         switch(response)
@@ -195,9 +213,15 @@ int main()
             }
         case 4:
         {
-
+            salvare();
+            break;
         }
         case 5:
+        {
+            stergere_f();
+            break;
+        }
+        case 6:
         {
                 Sleep(250);
                 system("cls");
@@ -214,5 +238,6 @@ int main()
         }
 
     }
+    f.close();
     return 0;
 }
