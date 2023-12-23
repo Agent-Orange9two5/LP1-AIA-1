@@ -16,7 +16,6 @@ Identificatorul unic al cărții va fi generat în mod dinamic.
 #include <cstring>
 #include <windows.h>
 #include <fstream>
-#include <cstdlib>
 using namespace std;
 
 //Stiu ca programul ar fi mai eficient  cu un array pentru run time (pentru stergerea de carti)fata de un list dar am realizat asta prea tarziu.
