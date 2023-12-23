@@ -94,7 +94,7 @@ void cautare()
                     cout<<"Autor:"<<biblioteca[i].autor<<" || Titlu: "<<biblioteca[i].titlu<<" || An: "<< biblioteca[i].an<<" || Id: "<<biblioteca[i].id<<endl;
             break;
         case 2:
-            cout<<"\tIntroduceti numele cartii pe care doriti sa o cautati|"<<endl<<"\t   Raspuns:";
+            cout<<"\t|Introduceti numele cartii pe care doriti sa o cautati|"<<endl<<"\t   Raspuns:";
             cin.ignore();
             cin.getline(rasp,50);
             for(int i=0;i<stocare;i++)
@@ -102,7 +102,7 @@ void cautare()
                     cout<<"Autor:"<<biblioteca[i].autor<<" || Titlu: "<<biblioteca[i].titlu<<" || An: "<< biblioteca[i].an<<" || Id: "<<biblioteca[i].id<<endl;
             break;
         case 3:
-            cout<<"Introduceti anul in care a aparut cartea:";
+            cout<<"\t|Introduceti anul in care a aparut cartea:|"<<endl<<"\t   Raspuns:";
             cin>>rasp_2;
             for(int i=0;i<stocare;i++)
                 if(biblioteca[i].an==rasp_2)
@@ -112,8 +112,31 @@ void cautare()
 
 
 }
-void stergere();
+void stergere()
+{
+    int rasp;
+    bool loc=false;
+  cout<<"\t|Introduceti id-ul cartii pe care doriti sa o stergeti|"<<endl<<"\tRaspuns:";
+  cin>>rasp;
+  for(int i=0;i<stocare;i++)
+    if(biblioteca[i].id==rasp)
+    {
+    loc=true;
+      for(int j=i;j<stocare-1;j++)
+        biblioteca[j]=biblioteca[j+1];
+      stocare--;
+    }
+    if(!loc)
+        cout<<"\t|Cartea nu exista in biblioteca|"<<endl;
+
+}
 void salvare();
+void inventar()
+{
+    for(int i=0;i<stocare;i++)
+        cout<<"Autor:"<<biblioteca[i].autor<<" || Titlu: "<<biblioteca[i].titlu<<" || An: "<< biblioteca[i].an<<" || Id: "<<biblioteca[i].id<<endl;
+
+}
 
 
 
@@ -126,30 +149,66 @@ int main()
         cout<< "\t=================================\n";
         cout<< "\t|"<<"Selectati ce doriti sa faceti:\t|"<<endl<<"\t|-------------------------------|"<<endl
         <<"\t|\t[1]Adaugare carti\t|"<<endl<<"\t|\t[2]Cautare carti \t|"<<endl
-        <<"\t|\t[3]Stergere carti\t|"<<endl<<"\t|\t[4]Salvare fisier\t|"<<endl
+        <<"\t|\t[3]Stergere carti\t|"<<endl<<"\t|\t[4]Salvare fisier\t|"<<endl<<"\t|\t[5]inventar\t\t|"<<endl
         <<"\t|\t\t\t\t|"<<endl<<"\t=================================\n"<<endl<<"\t\t   Raspuns:";
         cin>>response;
         switch(response)
         {
         case 1:
-        {
-            Sleep(250);
-            system("cls");
-            int n;
-            cout<<"\t|Cate carti doriti sa adaugati?|"<<endl<<"\t\t   Raspuns:";
-            cin>>n;
-            adaugare(n);
-            break;
-        }
+            {
+                Sleep(250);
+                system("cls");
+                int n;
+                cout<<"\t|Cate carti doriti sa adaugati?|"<<endl<<"\t\t   Raspuns:";
+                cin>>n;
+                adaugare(n);
+                break;
+            }
 
 
         case 2:
+            {
+                Sleep(250);
+                system("cls");
+                if(stocare)//Pt cazul cand nu avem inca nimic in lista
+                cautare();
+                else    {
+                        cout<<"\t|EROARE,IN LIBRARIE NU EXISTA CARTI|"<<endl;
+                        Sleep(1500);
+                        system("cls");
+                        }
+
+                break;
+            }
+        case 3:
+            {
+                Sleep(250);
+                system("cls");
+                if(stocare)//Pt cazul cand nu avem inca nimic in lista
+                stergere();
+                else    {
+                        cout<<"\t|EROARE,IN LIBRARIE NU EXISTA CARTI|"<<endl;
+                        Sleep(1500);
+                        system("cls");
+                        }
+                break;
+            }
+        case 4:
         {
-            Sleep(250);
-            system("cls");
-            if(stocare)//Pt cazul cand nu avem inca nimic in lista
-            cautare();
-            break;
+
+        }
+        case 5:
+        {
+                Sleep(250);
+                system("cls");
+                if(stocare)//Pt cazul cand nu avem inca nimic in lista
+                inventar();
+                else    {
+                        cout<<"\t|EROARE,IN LIBRARIE NU EXISTA CARTI|"<<endl;
+                        Sleep(1500);
+                        system("cls");
+                        }
+                break;
         }
 
         }
