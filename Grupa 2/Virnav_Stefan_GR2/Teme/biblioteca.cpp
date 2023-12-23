@@ -13,6 +13,7 @@ Identificatorul unic al cărții va fi generat în mod dinamic.
 - Salvarea și stergerea bibliotecii în/din fișier: Programul ar trebui să permită salvarea bibliotecii într-un fișier text și stergerea acesteia din fișier.
 */
 #include <iostream>
+#include <cstring>
 #include <windows.h>
 using namespace std;
 
@@ -70,20 +71,38 @@ void adaugare(int n)
 }
 void cautare()
 {
-    cout<<"Selectati dupa ce doriti sa cautati:"<<endl
-    <<"1)Dupa nume"<<endl<<"2)Dupa autor"<<endl<<"3)Dupa anul aparitie"<<endl;
-    int condition;
-    while(!cin>>condition || condition>0 || condition <4)
+    int conditie,i;
+    char rasp[50];
+    while(cout<<"Selectati dupa ce doriti sa cautati:"<<endl<<"1)Dupa autor"<<endl<<"2)Dupa nume"
+            <<endl<<"3)Dupa anul aparitie"<<endl && (!(cin>>conditie) || conditie>3 ||  conditie < 1))
     {
         cin.clear();
         cin.ignore(1000,'\n');
         cout<<"Eroare.Va rog introduceti o varianta valida"<<endl;
-        switch(condition)
+        Sleep(750);
+        system("cls");
+    }
+        switch(conditie)
         {
         case 1:
-            for(i=0;i<)
+            cout<<"\t|Introduceti numele autorului pe care doriti sa il cautati|"<<endl<<"\t   Raspuns:";
+            cin.ignore();
+            cin.getline(rasp,50);
+            for(i=0;i<stocare;i++)
+                if(strcmp(biblioteca[i].autor,rasp)==0)
+                    cout<<biblioteca[i].autor<<" || "<<biblioteca[i].titlu<<" || "<< biblioteca[i].an<<" || "<<biblioteca[i].id<<endl;
+            break;
+        case 2:
+            cout<<"\tIntroduceti numele cartii pe care doriti sa o cautati|"<<endl<<"\t   Raspuns:";
+            cin.ignore();
+            cin.getline(rasp,50);
+            for(int i=0;i<stocare;i++)
+                if(strcmp(biblioteca[i].titlu,rasp)==0)
+                    cout<<biblioteca[i].autor<<" || "<<biblioteca[i].titlu<<" || "<< biblioteca[i].an<<" || "<<biblioteca[i].id<<endl;
+            break;
         }
-    }
+
+
 }
 void stergere();
 void salvare();
@@ -92,7 +111,7 @@ void salvare();
 
 int main()
 {
-    bool condition=true;
+    int condition=1;
     int response;
     while(condition)
     {
@@ -105,14 +124,28 @@ int main()
         switch(response)
         {
         case 1:
+        {
             Sleep(250);
             system("cls");
-            cout<<"\t|Cate carti doriti sa adaugati?|"<<endl;
-            cout<<"\t\t   Raspuns:";
             int n;
+            cout<<"\t|Cate carti doriti sa adaugati?|"<<endl<<"\t\t   Raspuns:";
             cin>>n;
             adaugare(n);
+            break;
         }
+
+
+        case 2:
+        {
+            Sleep(250);
+            system("cls");
+            if(stocare)//Pt cazul cand nu avem inca nimic in lista
+            cautare();
+            break;
+        }
+
+        }
+
     }
     return 0;
 }
