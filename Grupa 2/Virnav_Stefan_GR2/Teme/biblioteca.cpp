@@ -38,9 +38,10 @@ void adaugare(int n)
             {
                 //adaugare carte
                 cout<<"\t|Introduceti numele autorului|"<<endl<<"\t   Raspuns:";
-                cin>>biblioteca[stocare].autor;
+                cin.ignore();
+                cin.getline(biblioteca[stocare].autor,50);
                 cout<<"\t|Introduceti numele cartii|"<<endl<<"\t   Raspuns:";
-                cin>>biblioteca[stocare].titlu;
+                cin.getline(biblioteca[stocare].titlu,50);
                 //Aici am incercat sa adug un type checker in cazul in care utilizatorul introduce altceva inafara de un numar intreg"
                 while(cout<<"\t|Introduceti anul aparatiei|"<<endl<<"\t   Raspuns:" && (!(cin>>biblioteca[stocare].an) || biblioteca[stocare].an>2024))
                 {
@@ -71,7 +72,7 @@ void adaugare(int n)
 }
 void cautare()
 {
-    int conditie,i;
+    int conditie,i,rasp_2;
     char rasp[50];
     while(cout<<"Selectati dupa ce doriti sa cautati:"<<endl<<"1)Dupa autor"<<endl<<"2)Dupa nume"
             <<endl<<"3)Dupa anul aparitie"<<endl && (!(cin>>conditie) || conditie>3 ||  conditie < 1))
@@ -90,7 +91,7 @@ void cautare()
             cin.getline(rasp,50);
             for(i=0;i<stocare;i++)
                 if(strcmp(biblioteca[i].autor,rasp)==0)
-                    cout<<biblioteca[i].autor<<" || "<<biblioteca[i].titlu<<" || "<< biblioteca[i].an<<" || "<<biblioteca[i].id<<endl;
+                    cout<<"Autor:"<<biblioteca[i].autor<<" || Titlu: "<<biblioteca[i].titlu<<" || An: "<< biblioteca[i].an<<" || Id: "<<biblioteca[i].id<<endl;
             break;
         case 2:
             cout<<"\tIntroduceti numele cartii pe care doriti sa o cautati|"<<endl<<"\t   Raspuns:";
@@ -98,7 +99,14 @@ void cautare()
             cin.getline(rasp,50);
             for(int i=0;i<stocare;i++)
                 if(strcmp(biblioteca[i].titlu,rasp)==0)
-                    cout<<biblioteca[i].autor<<" || "<<biblioteca[i].titlu<<" || "<< biblioteca[i].an<<" || "<<biblioteca[i].id<<endl;
+                    cout<<"Autor:"<<biblioteca[i].autor<<" || Titlu: "<<biblioteca[i].titlu<<" || An: "<< biblioteca[i].an<<" || Id: "<<biblioteca[i].id<<endl;
+            break;
+        case 3:
+            cout<<"Introduceti anul in care a aparut cartea:";
+            cin>>rasp_2;
+            for(int i=0;i<stocare;i++)
+                if(biblioteca[i].an==rasp_2)
+            cout<<"Autor:"<<biblioteca[i].autor<<" || Titlu: "<<biblioteca[i].titlu<<" || An: "<< biblioteca[i].an<<" || Id: "<<biblioteca[i].id<<endl;
             break;
         }
 
