@@ -16,6 +16,7 @@ Identificatorul unic al cărții va fi generat în mod dinamic.
 #include <cstring>
 #include <windows.h>
 #include <fstream>
+#include <cstdlib>
 using namespace std;
 
 //Stiu ca programul ar fi mai eficient  cu un array pentru run time (pentru stergerea de carti)fata de un list dar am realizat asta prea tarziu.
@@ -75,8 +76,9 @@ void cautare()
 {
     int conditie,i,rasp_2;
     char rasp[50];
-    while(cout<<"Selectati dupa ce doriti sa cautati:"<<endl<<"1)Dupa autor"<<endl<<"2)Dupa nume"
-            <<endl<<"3)Dupa anul aparitie"<<endl && (!(cin>>conditie) || conditie>3 ||  conditie < 1))
+    while(cout<<"\t=====================================\n"<<"\t|Selectati dupa ce doriti sa cautati|"<<endl<<"\t|\t[1]Dupa autor\t\t    |"
+          <<endl<<"\t|\t[2]Dupa nume\t\t    |"<<endl<<"\t|\t[3]Dupa anul aparitie\t    |"<<endl<<"\t|\t[4]Inapoi\t\t    |"<<endl
+          <<"\t=====================================\n"<<endl<<"\t\tRaspuns:" && (!(cin>>conditie) || conditie>4 ||  conditie < 1))
     {
         cin.clear();
         cin.ignore(1000,'\n');
@@ -109,6 +111,9 @@ void cautare()
                 if(biblioteca[i].an==rasp_2)
             cout<<"Autor:"<<biblioteca[i].autor<<" || Titlu: "<<biblioteca[i].titlu<<" || An: "<< biblioteca[i].an<<" || Id: "<<biblioteca[i].id<<endl;
             break;
+        case 4:
+            system("cls");
+            break;
         }
 
 
@@ -135,7 +140,7 @@ void salvare()
 {
  for(int i=0;i<stocare;i++)
     f<<biblioteca[i].autor<<" "<<biblioteca[i].titlu<<" "<<biblioteca[i].an<<" "<<biblioteca[i].id;
- cout<<"Biblioteca a fost salvate cu succes"<<endl;
+ cout<<"\tBiblioteca a fost salvate cu succes"<<endl;
  Sleep(1500);
  system("cls");
 
@@ -145,7 +150,7 @@ void stergere_f()
     ofstream file("biblioteca.txt", ios::trunc);
     if(file.is_open())
         file.close();
-    cout<<"Biblioteca a fost stearsa cu succes"<<endl;
+    cout<<"\tBiblioteca a fost stearsa cu succes"<<endl;
     Sleep(1500);
     system("cls");
 }
@@ -166,8 +171,8 @@ int main()
     {
         cout<< "\t=================================\n";
         cout<< "\t|"<<"Selectati ce doriti sa faceti:\t|"<<endl<<"\t|-------------------------------|"<<endl
-        <<"\t|\t[1]Adaugare carti\t|"<<endl<<"\t|\t[2]Cautare carti \t|"<<endl
-        <<"\t|\t[3]Stergere carti\t|"<<endl<<"\t|\t[4]Salvare fisier\t|"<<endl<<"\t|\t[5]Stergere fisier\t|"<<endl<<"\t|\t[6]Inventar\t\t|"<<endl
+        <<"\t|\t[1]Adaugare carti\t|"<<endl<<"\t|\t[2]Cautare carti \t|"<<endl<<"\t|\t[3]Stergere carti\t|"<<endl
+        <<"\t|\t[4]Salvare fisier\t|"<<endl<<"\t|\t[5]Stergere fisier\t|"<<endl<<"\t|\t[6]Inventar\t\t|"<<endl<<"\t|\t[7]Iesire\t\t|"<<endl
         <<"\t|\t\t\t\t|"<<endl<<"\t=================================\n"<<endl<<"\t\t   Raspuns:";
         cin>>response;
         switch(response)
@@ -188,7 +193,7 @@ int main()
             {
                 Sleep(250);
                 system("cls");
-                if(stocare)//Pt cazul cand nu avem inca nimic in lista
+                if(!stocare)//Pt cazul cand nu avem inca nimic in lista
                 cautare();
                 else    {
                         cout<<"\t|EROARE,IN LIBRARIE NU EXISTA CARTI|"<<endl;
@@ -234,6 +239,13 @@ int main()
                         }
                 break;
         }
+        case 7:
+            system("cls");
+            cout<<"\t|PROGRAMUL SE INCHIDE.MULTUMIM PENTRU UTILIZARE|"<<endl;
+            Sleep(2000);
+            system("cls");
+            condition=0;//exist the loop
+
 
         }
 
