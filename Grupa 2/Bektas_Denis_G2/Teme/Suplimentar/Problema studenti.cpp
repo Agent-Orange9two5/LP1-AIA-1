@@ -4,13 +4,14 @@ Sa se scrie intr un fisier in ordine alfabetica toti elevii cu medie mai mare de
 #include <fstream>
 #include <iomanip>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
-struct elev {
+struct Elev {
 string nume;
 string prenume;
-int CNP;
+long long int CNP;
 
 struct {
     int n1;
@@ -20,7 +21,7 @@ struct {
  }note;
 };
 
-    bool sortaredupanume(elev a, elev b){
+    bool sortaredupanume(const Elev &a, const Elev &b){
         return a.nume < b.nume;
         }
 
@@ -31,8 +32,9 @@ int main()
 
    cout <<"Cati elevi doriti sa introduceti in fisier? : ";
    cin >> n;
+   vector <Elev> elevi;
   for (i=0; i<n; i++){
-        elev elev;
+        Elev elev;
 
      cout << "Numele elevului "<<i+1<<": ";
      cin >> elev.nume;
@@ -43,24 +45,41 @@ int main()
               cout << "Cele 3 note ale elevului "<<i+1<<": ";
                 cin >> elev.note.n1 >> elev.note.n2 >> elev.note.n3;
       elev.note.medie = (elev.note.n1 + elev.note.n2 + elev.note.n3) / 3.00;
-                cout << "Media elevului "<<i+1<<": "<<setprecision(3) <<elev.note.medie;
+                cout << "Media elevului "<<i+1<<": "<<setprecision(3) <<elev.note.medie<<endl;
            cout<<endl;
+           elevi.push_back(elev);
+       }
 
+  sort(elevi.begin(), elevi.end(), sortaredupanume);
+  bool found = false;
 
+  for (const auto &elev:elevi){
   if (elev.note.medie > 6){
-  fout <<"Elevul "<<i+1<<"\n"<<"Nume: "<< elev.nume <<"\n"<<"Prenume: "<< elev.prenume <<"\n"<<"CNP: "<< elev.CNP << "\n" <<"Media notelor: "<< elev.note.medie <<endl;
+  fout <<"Elevul: "<<"\n"<<"Nume: "<< elev.nume <<"\n"<<"Prenume: "<< elev.prenume <<"\n"<<"CNP: "<< elev.CNP << "\n" <<"Media notelor: "<< elev.note.medie <<endl;
   fout << endl;
+  found = true;
     }
-    else;
   }
-
-
   if (!fout.is_open()){
     cout <<"Eroare la scrierea elevilor in fisier!";}
     else{
-        cout <<"Elevii au fost scrisi in fisier cu succes! Verificati fisierul \"elevi.txt\". ";}
-fout.close();
+        cout <<"Fisierul a fost deschis cu succes!\n";}
+  fout.close();
+  if (!found) {
+        cout << "Nu exista elevi cu media mai mare decat 6." << endl;
+    } else {
+        cout << "Elevii cu media > 6 au fost scrisi in fisier !" << endl;
+        ifstream readfile("elevi.txt");
+        string line;
 
-  return 0;
-}
-/* Nu am finalizat sortarea alfabetica*/
+        if (readfile.is_open()) {
+            while (getline(readfile, line)) {
+
+            }
+            readfile.close();
+        }
+    }
+
+
+    return 0;
+    }
