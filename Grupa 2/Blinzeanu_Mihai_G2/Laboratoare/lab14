@@ -1,0 +1,52 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int n;
+struct oras{
+    char nume[50];
+    int nrloc;
+    int sup;
+    char indice;
+};
+oras p[50];
+void citireorase(){
+    cout<<"Cate orase adaugati? "<<endl;
+    cin>>n;
+    for(int i=0;i<n;i++){
+    cout<<"Care este numele localitatii? "<<endl;
+    cin>>p[i].nume; (char*)malloc(sizeof(char));
+    cout<<"Care este numarul de locuitori> "<<endl;
+    cin>>p[i].nrloc; (int*)malloc(sizeof(int));
+    cout<<"Care este suprafata orasului? "<<endl;
+    cin>>p[i].sup; (int*)malloc(sizeof(int));
+    cout<<"Care este indicele de apreciere economica globala? "<<endl;
+    cin>>p[i].indice; (char*)malloc(sizeof(char));
+
+    }
+}
+void sortare(){
+    oras num;
+    int i;
+    ofstream f("Orase.txt");
+    for(i=0;i<n;i++){
+        if(p[i+1].nrloc>p[i].nrloc){
+            p[i+1]=num;
+            p[i]=p[i+1];
+            p[i]=num;
+        }
+            for(i=0;i<n;i++){
+                f<<p[i].nume<<endl;
+                f<<p[i].nrloc<<endl;
+                f<<p[i].sup<<endl;
+                f<<p[i].indice<<endl;
+            }
+    }
+}
+
+
+int main()
+{
+    citireorase();
+    sortare();
+    return 0;
+}
