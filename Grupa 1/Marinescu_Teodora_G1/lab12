@@ -1,1 +1,79 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+ifstream in ("data.txt");
+ofstream out ("data2.txt");
+
+struct oras{
+char num[100], ind;
+int nl, s;
+}v[100];
+
+int main()
+{
+    int n, nlm=0;
+    char f[10];
+   // cout<<"nr localitati : ";
+    in>>n;
+
+    for(int i=1;i<=n;i++)
+    {
+    //    cout<<"localitate "<<i<<" : ";
+    //    cout<<"nume : ";
+        in.getline (f,10);
+        in.getline (v[i].num,100);
+    //    cout<<"nr locuit : ";
+        in>>v[i].nl;
+        nlm+=v[i].nl;
+    //    cout<<"suprafata : ";
+        in>>v[i].s;
+    //    cout<<"indice : ";
+        in>>v[i].ind;
+    }cout<<"orase cititte;"<<endl;
+
+    nlm=nlm/n;
+    cout<<"nr med de loc calculat: "<<nlm<<endl;
+    out<<"nr meed de loc : "<<nlm<<endl;
+
+    oras s;
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=i+1;j<=n;j++)
+        if(v[i].nl<v[j].nl)
+        {
+            s=v[i];
+            v[i]=v[j];
+            v[j]=s;
+        }
+
+        out<<"oras "<<i<<" : "<<endl<<v[i].num<<endl<<v[i].nl<<endl<<v[i].s<<endl<<v[i].ind<<endl;
+    }cout<<"orase afisate;";
+    return 0;
+}
+
+/**
+int n;
+struct oras
+{
+    char *den;
+    int nrl, sup;
+    char c;
+}v[100];
+
+void citire
+{
+    cin>>n;
+    v=(oras*)calloc(n,sizeof(oras));
+    for(int i=0;i<n;i++)
+    {
+        cin.get();
+        v[i].den=(char*)calloc(50,sizeof(char));
+        cin.get(v[i].den, 50);
+        cin.get();
+        cin>>v[i].nrl;
+    }
+}
+*/
 
