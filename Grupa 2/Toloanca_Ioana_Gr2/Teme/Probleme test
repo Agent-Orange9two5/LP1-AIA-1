@@ -1,1 +1,146 @@
+//Problema 1
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main(){
+    ifstream f("SumaPare.txt");
+    int a[50], i, n, s = 0;
+    cin >> n;
+    for(i = 0; i < n; i++) {cin >> a[i];
+                            if(a[i] % 2 == 0)
+                            s += a[i]; }
+    f << s;
+    return 0;   }
+
+
+//Problema 2
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main(){
+    fstream f("SumaDiag.txt");
+    int a[101][101], i, j, n, m, dp = 0, ds = 0;
+    cout<<"Introduceti numarul de linii si de coloane:";
+    cin >> n >> m;
+    for(i = 0; i < n; i++)
+        for(j = 0; j < m; j++) {    cin >> a[i][j];
+                                    if(i == j)   //conditia sa fie pe diagonala principala
+                                    dp += a[i][j];
+                                    if(i + j == n - 1)   //conditia sa fie pe diagonala secundara
+                                    ds += a[i][j]; }
+    fp << dp << endl;
+    fp << ds;
+    return 0;   }
+
+
+//Problema 3
+#include <iostream>
+#include <fstream>
+using namespace std;
+    struct Contact{
+        long nrtel;
+        char nume[25];
+        char adresaemail[50];   }c;
+int main(){
+    int n, k = 1;
+    ifstream f("Agenda.txt");
+    cout << "Introduceti numarul de contacte: ";
+    cin >> n;
+    cout << "Introduceti datele contactelor: "<< endl;
+    for(int i = 1; i <= n; i++) { cout << k << ". ";
+                                  cin >> c.nume >> c.nrtel >> c.adresaemail;
+                                  cout << endl;
+                                  f << k << c.nume << " " << c.nrtel << " " << c.adresaemail << endl;
+                                  k++; }
+    return 0;   }
+
+
+
+//Problema 4
+#include <iostream>
+#include <fstream>
+#include <time.h>
+#include <stdlib.h>
+#define MAX_NUM 100  //pentru generarea aleatorie a numerelor
+using namespace std;
+ifstream f("NumereSortate.txt");
+int main()
+{   int n, a[100];
+    cout << "Introduceti numarul de elemente: ";
+    cin >> n;
+      //setam timpul de generare 0
+    srand(time(NULL)); 
+      //cream un vector cu valori aleatorii
+    for(int i = 0; i < n; i++){  a[i] = rand()%MAX_NUM;
+                                 cout << a[i] << " ";}
+    cout << endl;
+      //sortam vectorul descrescator
+    for(int i = 0; i < n - 1; i++)
+        for(int j = i + 1; j < n; j++) { if(a[i] < a[j])  {int aux = a[i];
+                                                           a[i] = a[j];
+                                                           a[j] = aux; }   }
+    for(int i = 0; i < n; i++)
+        f << a[i] << " ";
+    return 0;   }
+
+
+
+//Problema 5
+#include <iostream>
+#include <fstream>
+#include <cstring>
+using namespace std;
+ifstream f("SiruriSortate.txt");
+int main()
+{   int n;
+    char cuv[100][50];
+    cout << "Introduceti numarul de siruri: ";
+    cin >> n;
+    for(int i = 0; i < n; i ++) {   char cuv1[50];
+                                    cin >> cuv1;
+                                    strcpy(cuv[i], cuv1);  }
+    for(int i = 0; i < n - 1; i++)
+        for(int j = i + 1; j < n; j++)  {  if(strcmp(cuv[i], cuv[j]) > 0)  {   char aux[50];
+                                                                               strcpy(aux, cuv[i]);
+                                                                               strcpy(cuv[i], cuv[j]);
+                                                                               strcpy(cuv[j], aux);  }   }
+    for(int i = 0; i < n; i++)
+    f << cuv[i] << endl;
+    return 0;  }
+
+
+
+//Problema 6
+#include <iostream>
+#include <fstream>
+using namespace std;
+ifstream f("SumaDiag.txt");
+int main()
+{   int n, a[101][101], s = 0;
+    cout << "Introduceti numarul de linii si de coloane a matricei patratice: ";
+    cin >> n;
+    for(int i = 0; i < n; i++)
+        for(int j = 0; j < n; j++)  {   cin >> a[i][j];
+                                        if(i == j)   //conditia sa se afle pe diagonala principala
+                                        s += a[i][j]; } //adaugarea elementelor in suma
+    f << s;
+    return 0;  }
+
+
+//Problema 8
+#include <iostream>
+#include <fstream>
+using namespace std;
+ifstream f("ProdusDiagonalaSecundara.txt");
+int main()
+{   int n, a[100][100], p = 1;
+    cout << "Introduceti numarul de linii si de coloane: ";
+    cin >> n;
+    for(int i = 0; i < n; i++)
+        for(int j = 0; j < n; j++) {  cin >> a[i][j];
+                                      if(i + j == n - 1) //conditia sa se afle pe diagonala secundara
+                                      p *= a[i][j]; }//adaugarea elementelor la produs
+    f << p;
+    return 0;
+}
 
