@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-const int MAX_SIZE = 10; // Dimensiunea maximă a matricelor
+const int MAX_SIZE = 10;
 
 int main() {
     int n;
@@ -9,10 +9,8 @@ int main() {
     int suma = 0, produs_1 = 1, produs_2 = 1;
     cout << "Introduceti dimensiunea matricelor (maxim " << MAX_SIZE << "): ";
     cin >> n;
-    // Verifică dimensiunea matricelor și ajustează dacă este necesar
+    
     n = (n > MAX_SIZE) ? MAX_SIZE : (n <= 0) ? 2 : n;
-
-    // Citirea matricei A
     cout << "Introduceti elementele matricei A:" << endl;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -20,7 +18,6 @@ int main() {
             suma += A[i][j];
         }
     }
-    // Citirea matricei B
     cout << "Introduceti elementele matricei B:" << endl;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -28,7 +25,6 @@ int main() {
             suma += B[i][j];
         }
     }
-    // Calculul maximului dintre elementele corespunzătoare din A și B
     cout << "Maximele dintre elementele corespunzatoare din matrici:" << endl;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
