@@ -14,7 +14,6 @@ d) citirea din fisier si afisarea la ecran a fiecarui oras si a caracteristicilo
 Afisarea numarului mediu de locuitori pentru cele n localitati se va face in programul principal.
 Sa se creeze un proiect in care functiile mentionate mai sus sunt stocate intr-o biblioteca statica de
 tip .lib, iar programul principal foloseste aceasta biblioteca.
-
 */
 
 #include <iostream>
@@ -32,9 +31,8 @@ string numeOras;
 int nrLocuitori;
 int suprafata;
 char economie;
-};
+}*p;
 
-oras *p;
 
 void citire()
 {
@@ -60,18 +58,20 @@ void citire()
 ofstream g("Orase.txt");
 void fisier()
 {
-    int aux;
+    oras aux;
     for(i=0;i<n - 1;i++)
     {
         if(p[i].nrLocuitori > p[i+1].nrLocuitori)
         {
-            aux = p[i].nrLocuitori;
-            p[i].nrLocuitori = p[i+1].nrLocuitori;
-            p[i+1].nrLocuitori = aux;
+            //Am modificat aici ca sa se modifice toata linia. Am scos de la p[i] .nrLocuitori.
+            aux = p[i];
+            p[i] = p[i+1];
+            p[i+1] = aux;
+            //swap(p[i], p[i+1]); (Intr-o linie de cod ce e mai sus)
         }
     }
     for(i=0;i<n;i++)
-     g<<p[i].numeOras<<" - "<<p[i].nrLocuitori<< " - "<< p[i].suprafata<< " - "<< p[i].economie;
+     g<<p[i].numeOras<<" - "<<p[i].nrLocuitori<< " - "<< p[i].suprafata<< " - "<< p[i].economie<<endl;
 }
 void locuitori()
 {
@@ -81,9 +81,22 @@ void locuitori()
         s += p[i].nrLocuitori;
     }
     nrMediu = s/n;
-    g<<"Numarul mediu de locuitori este: "<<nrMediu;
+    g<<endl<<"Numarul mediu de locuitori este: "<<nrMediu;
 }
-
+//Am adaugat functia citire_fisier.
+void citire_fisier(){
+    char citire;
+    ifstream f("Orase.txt");
+    if (!f.is_open()){
+        cout<<"Eroare la deschiderea fisierului!"<<endl;
+    }
+    cout<<endl<<" Toate orasele introduse in fisier sunt (si numarul mediu de locuitori) :"<<endl;
+    while(f.get(citire)){
+        cout<< citire;
+    }
+    cout<<endl;
+    f.close();
+}
 int main()
 {
     citire();
@@ -91,7 +104,8 @@ int main()
     locuitori();
     delete[] p;
     g.close();
+    citire_fisier();
     return 0;
 }
 
-// Trebuie sa il repare regele Radu Ionita il pup. (doar la sortare avem problema).
+// Radu regele rezolva problema.
