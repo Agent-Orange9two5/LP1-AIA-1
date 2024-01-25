@@ -1,0 +1,75 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+struct Orase
+{
+    int nrloc, supr;
+    char denumire[50], indice[50];
+};
+
+Orase a[20];
+int main()
+{
+    ofstream file("Orase.txt");
+    int n, i;
+    cout << "Introduceti numarul de orase: ";
+    cin >> n;
+    cout << "Introduceti datele oraselor: " << endl;
+    for(i = 0; i < n; i++)
+    {
+        cout << endl;
+        cout << "Denumirea orasului " <<i+1<< ": ";
+        cin >> a[i].denumire;
+        cout << endl;
+        cout << "Nr de locuitori al orasului " <<i+1<< ": ";
+        cin >> a[i].nrloc;
+        cout << endl;
+        cout << "Suprafata orasului " <<i+1<< ": ";
+        cin >> a[i].supr;
+        cout << endl;
+        cout << "Indicele orasului " <<i+1<< ": ";
+        cin >> a[i].indice;
+        cout << endl;
+    }
+
+
+
+        Orase aux;
+        for(i = 0; i < n-1; i++)
+        {
+            if(a[i].nrloc > a[i+1].nrloc)
+            {
+                aux = a[i];
+                a[i] = a[i+1];
+                a[i+1] = aux;
+            }
+        }
+
+    int s = 0, ma;
+    for(i = 0; i < n; i++)
+    {
+        s += a[i].nrloc;
+    }
+    ma = s/n;
+
+
+    file << "Orasele sunt: " << endl;
+    for(i = 0; i < n; i++)
+    {
+    file << a[i].denumire << " ";
+    file << a[i].nrloc <<" ";
+    file << a[i].supr <<" ";
+    file << a[i].indice <<endl;
+    }
+
+
+
+
+    file << endl << "Numarul mediu de locuitori este: " << ma;
+
+    file.close();
+
+    return 0;
+}
