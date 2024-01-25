@@ -6,8 +6,8 @@ using namespace std;
 int main()
 {
     int i,j;
-    int linii = 3;
-    int coloane = 4;
+    int linii = 5;
+    int coloane = 6;
 
     int** matrice = new (nothrow) int*[linii];
     for(i=0;i<linii;i++)
