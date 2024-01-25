@@ -1,0 +1,122 @@
+#include <iostream>
+#include <stdio.h>
+#include <fstream>
+
+typedef struct {
+
+    char name[50];
+    int nr;
+    float surface;
+    char id;
+
+} Oras;
+
+void CreateCities(Oras *List, int n) {
+
+    for (int i = 0; i < n; i++) {
+
+        std::cout << "Dati denumirea Orasului" << std::endl;
+        std::cin >> List[i].name;
+        std::cout << "Dati populatia Orasului" << std::endl;
+        std::cin >> List[i].nr;
+        std::cout << "Dati suprafata Orasului" << std::endl;
+        std::cin >> List[i].surface;
+        std::cout << "Dati id-ul Orasului" << std::endl;
+        std::cin >> List[i].id;
+
+    }
+
+}
+
+void PrintCity (Oras O) {
+
+    std::cout << "Nume : " << O.name << std::endl;
+    std::cout << "Populatie : " << O.nr << std::endl;
+    std::cout << "Suprafata : " << O.surface << std::endl;
+    std::cout << "ID : " << O.id << std::endl;
+
+}
+
+void sortare(Oras *List, int n) {
+
+    for (int i = 0; i < n-1; i++) {
+        if (List[i].nr > List[i+1].nr) {
+            
+            std::swap(List[i], List[i+1]);
+
+        }
+    }
+
+}
+
+void fillFile(int n, Oras *List) {
+
+    std::ofstream orase;
+    orase.open("orase.txt");
+
+    for (int i = 0; i < n; i++) {
+
+        orase << List[i].id << " " << List[i].name << " " << List[i].nr << " " << List[i].surface << std::endl;
+
+    }
+
+    orase.close();
+}
+
+float PopMed(Oras *List, int n) {
+
+    int sum = 0;
+
+    for (int i = 0; i < n; i++) {
+
+        sum += List[i].nr; 
+
+    }
+
+    float med = sum/n+1;
+
+    return med;
+}
+
+void OpenFile(int n, Oras O) {
+
+    std::ifstream orase;
+    orase.open ("orase.txt");
+
+    while(orase >> O.id >> O.name >> O.nr >> O.surface) {
+
+        std::cout << "Nume : " << O.name << std::endl;
+        std::cout << "Populatie : " << O.nr << std::endl;
+        std::cout << "Suprafata : " << O.surface << std::endl;
+        std::cout << "ID : " << O.id << std::endl;
+
+    }
+
+}
+
+int main() {
+
+    int n;
+
+    std::cout << "Dati numarul de Orase" << std::endl;
+    std::cin >> n;
+
+
+    Oras * List = new Oras[n];
+
+    CreateCities(List, n);
+
+    sortare(List, n);
+
+    OpenFile(n, List[0]);
+    
+    sortare(List, n);
+
+    fillFile(n, List);
+    
+    float med = PopMed(List, n);
+
+    std::cout << "Media populatiei celor " << n << " orase este " << med << std::endl;
+
+    return 0;
+}
