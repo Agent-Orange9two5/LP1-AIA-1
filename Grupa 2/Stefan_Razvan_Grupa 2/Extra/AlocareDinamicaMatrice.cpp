@@ -24,5 +24,10 @@ int main()
             cout<<matrice[i][j]<<" ";
             cout<<endl;
         }
+        for(i=0 ; i<linii ; i++){
+            delete[] matrice[i];
+        }
+        
+        delete[] matrice;
         return 0;
 }
