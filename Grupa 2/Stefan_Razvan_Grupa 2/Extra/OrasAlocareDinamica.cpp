@@ -109,3 +109,4 @@ int main()
 }
 
 // Radu regele rezolva problema.
+// Radu putrezitul a rezolvat doar doua bug-uri mici. O problema legata de sortare si una legata de fisiere. <3 (totusi apreciez efortul lui oricat de mic)
