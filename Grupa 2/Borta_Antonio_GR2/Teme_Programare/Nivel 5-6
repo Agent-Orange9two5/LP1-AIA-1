@@ -1,0 +1,49 @@
+#include <iostream>
+#include <fstream>
+#include <cstring>
+
+using namespace std;
+
+int main()
+{
+    int a[10][10], b[10][10], n, i, j, elmaxa=0, elmaxb=0, pa=1, pb=1;
+    cout<<"Numarul de linii si coloane este: ";
+    cin>>n;
+    cout<<"Matricea 1 este: "<<endl;
+    for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+    cin>>a[i][j];
+    cout<<"Matricea 2 este: "<<endl;
+    for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+    cin>>b[i][j];
+    for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+    cout<<a[i][j]+b[i][j]<<" ";
+    cout<<endl;
+    for(i=0;i<n;i++){
+    for(j=0;j<n;j++){
+    if(i+j < n-1)
+    if(a[i][j] > elmaxa)
+        elmaxa = a[i][j];}}
+    cout<<elmaxa;
+    cout<<endl;
+    for(i=0;i<n;i++){
+    for(j=0;j<n;j++){
+    if(i+j < n-1)
+    if(b[i][j] > elmaxb)
+        elmaxb = b[i][j];}}
+    cout<<elmaxb;
+    cout<<endl;
+    for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+    if(i+j > n-1)
+        pa *= a[i][j];
+    for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+    if(i+j > n-1)
+        pb *= b[i][j];
+    cout<<pa<<"; "<<pb;
+
+    return 0;
+}
