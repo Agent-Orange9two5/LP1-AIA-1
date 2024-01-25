@@ -67,7 +67,7 @@ int main()
         cout << "Fisierul a fost deschis cu succes!"<<endl;
 
         for (int i=0; i<n; i++){
-         fout << "Orasul: "<<"\n";
+         fout << "Orasul "<<i+1<<"\n";
          fout << "Nume: "<< orase[i].nume <<"\n";
          fout << "Nr. locuitori: "<< orase[i].nr_loc<<"\n";
          fout <<"Suprafata: "<< orase[i].suprafata<< "\n";
@@ -80,8 +80,13 @@ int main()
             cout << "Eroare la deschiderea fisierului!"<<endl;
         }
 
+    string citireorase;
+    ifstream fin("orase.txt");
+    while (getline (fin, citireorase)){
+        cout << citireorase <<endl;
+    }
+
  delete[] orase;
  return 0;
 
 }
-
