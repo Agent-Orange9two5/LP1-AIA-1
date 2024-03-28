@@ -27,7 +27,7 @@ void regist()
                 f<<biblioteca[stocare].username<<" ";
                 cout<<"\t|Introduceti parola dorita|"<<endl<<"\t   Raspuns:";
                 cin.getline(biblioteca[stocare].password,50);
-                f<<biblioteca[stocare].password;
+                f<<biblioteca[stocare].password<<" ";
                 biblioteca[stocare].cash=0;
                 f<<biblioteca[stocare].cash;
                 //generare id unic
@@ -43,6 +43,17 @@ void regist()
             cout<<"Max size reached.Data base is full"<<endl;
         }
 
+}
+void login()
+{
+    string line;
+    if (v.is_open()) {
+        while (getline(v, line)) {
+            cout << line << "\n";
+        }
+    Sleep(1500);
+    system("cls");
+}
 }
 int main()
 {
@@ -63,6 +74,13 @@ int main()
                 Sleep(250);
                 system("cls");
                 regist();
+                break;
+            }
+        case 2:
+            {
+                Sleep(250);
+                system("cls");
+                login();
                 break;
             }
 
