@@ -30,6 +30,7 @@ void regist()
                 f<<biblioteca[stocare].password<<" ";
                 biblioteca[stocare].cash=0;
                 f<<biblioteca[stocare].cash;
+                f<<endl;
                 //generare id unic
                 biblioteca[stocare].id=counter;
                 counter++;
