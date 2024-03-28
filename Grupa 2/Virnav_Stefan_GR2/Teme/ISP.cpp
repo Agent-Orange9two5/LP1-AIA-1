@@ -7,24 +7,29 @@ using namespace std;
 ofstream f("users.txt");
 ifstream v("users.txt");
 const int marime_maxima=100;
-struct carte
+struct user
 {
  char username[50];
  char password[50];
+ int cash;
  int id;
 };
 int stocare=0,counter=0;//counter=Nr users maxim
-carte biblioteca[marime_maxima];
+user biblioteca[marime_maxima];
 void regist()
 {
        if(stocare<marime_maxima)
             {
-                //adaugare carte
+                //adaugare user
                 cout<<"\t|Introduceti username-ul|"<<endl<<"\t   Raspuns:";
                 cin.ignore();
                 cin.getline(biblioteca[stocare].username,50);
+                f<<biblioteca[stocare].username<<" ";
                 cout<<"\t|Introduceti parola dorita|"<<endl<<"\t   Raspuns:";
                 cin.getline(biblioteca[stocare].password,50);
+                f<<biblioteca[stocare].password;
+                biblioteca[stocare].cash=0;
+                f<<biblioteca[stocare].cash;
                 //generare id unic
                 biblioteca[stocare].id=counter;
                 counter++;
@@ -127,6 +132,4 @@ int main()
     f.close();
     return 0;
 }
-
-
 
