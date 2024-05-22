@@ -178,26 +178,7 @@ int main() {
                 break;
 
             }
-            case 3: 
-            {
-                Sleep(250);
-                system("cls");
-                if (login(f) == 1)
-                    cout << "\t|Logare reusita|";
-                else
-                    cout << "\t|Logare esuata|";
-                Sleep(1000);
-                system("cls");
-                break;
-            }
-            case 4:
-            {
-                Sleep(250);
-                system("cls");
-                list(f);
-                break;
-            }
-            case 7:
+            case 3:
             {
                 system("cls");
                 cout << "\t|PROGRAMUL SE INCHIDE. MULTUMIM PENTRU UTILIZARE|" << endl;
@@ -205,6 +186,14 @@ int main() {
                 system("cls");
                 condition = 0; // exit the loop
             }
+            case 69420:
+            {
+                Sleep(250);
+                system("cls");
+                list(f);
+                break;
+            }
+            
         }
     }
     f.close();
