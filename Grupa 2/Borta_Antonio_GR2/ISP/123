@@ -1,0 +1,369 @@
+#include <iostream>
+#include <sstream>
+#include <cstring>
+#include <windows.h>
+#include <fstream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <vector>
+#include <limits>
+using namespace std;
+
+struct user {
+    string username;
+    string password;
+    int cash=0;
+};
+user current_user;
+
+void regist(fstream& f) {
+    string holder;
+    f.clear();
+        // adaugare user
+        cout << "\t|Introduceti username-ul|" << endl << "\t   Raspuns:";
+        cin.ignore();
+        cin>>holder;
+        f << holder << " ";
+        cout << "\t|Introduceti parola dorita|" << endl << "\t   Raspuns:";
+        cin>>holder;
+        f <<holder<< " ";
+        f << "0" << " ";
+        f << endl;
+        cout << "\t|User has been added successfully|";
+        Sleep(1500);
+        system("cls");
+}
+
+void list(fstream& f) {
+    f.clear();
+    f.seekg(0, ios::beg); // Move the file pointer to the beginning of the file
+    string line;
+    if (f.is_open()) {
+        while (getline(f, line)) {
+            cout << line << "\n";
+        }
+        Sleep(1500);
+        system("cls");
+    }
+}
+
+int login(fstream& f) {
+    f.clear();
+    f.seekg(0, ios::beg); // Move the file pointer to the beginning of the file
+    int checked = 0;
+    cout << "\t|Introduceti username-ul|" << endl << "\t   Raspuns:";
+    string temp_user;
+    cin >> temp_user;
+    cout << "\t|Introduceti parola |" << endl << "\t   Raspuns:";
+    string temp_parola;
+    cin >> temp_parola;
+    string line;
+    string check_user;
+    string check_parola;
+    string holder;
+    if (f.is_open()) {
+        while (getline(f, line)) {
+            stringstream ss(line);
+            getline(ss, holder, ' ');
+            check_user = holder;
+            getline(ss, holder, ' ');
+            check_parola = holder;
+            if (temp_user == check_user && temp_parola == check_parola) {
+                checked = 1;
+                getline(ss, holder);
+                current_user.username = check_user;
+                current_user.password = check_parola;
+                current_user.cash = stoi(holder);
+                return checked;
+            }
+        }
+        Sleep(1500);
+        system("cls");
+    }
+    return checked;
+}
+
+
+
+
+
+
+vector<string> simboluri = {"Cireasa", "Lamaie", "Portocala", "Pruna", "Clopot", "Coroana", "Tiara"};
+
+// Functie pentru a genera o rotire aleatorie a rolelor
+vector<int> spinReels()
+{
+    vector<int> role(3);
+    for (int &rola : role)
+    {
+        rola = rand() % simboluri.size(); // Simularea unei role cu mai multe simboluri
+    }
+    return role;
+}
+
+// Functie pentru afisarea rolele
+void displayReels(const vector<int>& role)
+{
+    for (int rola : role)
+    {
+        cout << simboluri[rola] << " ";
+    }
+    cout << endl;
+}
+
+// Functie pentru a verifica daca jucatorul a castigat
+bool checkWin(const vector<int>& role)
+{
+    return (role[0] == role[1] && role[1] == role[2]);
+}
+
+// Functie pentru a citi un pariu valid de la utilizator
+int readBet(int balanta)
+{
+    int pariu;
+    while (true)
+    {
+        cout << "Introduceti pariul: ";
+        cin >> pariu;
+        if (cin.fail() || pariu <= 0 || pariu > balanta)
+        {
+            cin.clear(); // Curata flag-ul de eroare al cin
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora orice input gresit
+            cout << "Pariu invalid. Va rugam introduceti o valoare intreaga pozitiva care sa nu depaseasca balanta curenta." << endl;
+        }
+        else
+        {
+            break;
+        }
+    }
+    return pariu;
+}
+
+// Functie pentru a citi raspunsul de continuare a jocului
+char readContinueResponse()
+{
+    char alegere;
+    while (true)
+    {
+        cout << "Vrei sa mai incerci? (d/n): ";
+        cin >> alegere;
+        if (alegere == 'd' || alegere == 'D' || alegere == 'n' || alegere == 'N')
+        {
+            break;
+        }
+        else
+        {
+            cout << "Optiune invalida. Introduceti 'd' pentru Da sau 'n' pentru Nu." << endl;
+        }
+    }
+    return alegere;
+}
+
+void pacanea()
+{
+    srand(time(0)); // Initializare generator de numere aleatoare
+
+    bool continuaJocul = true;
+
+    while (continuaJocul && current_user.cash > 0)
+    {
+        cout << "Balanta curenta: $" << current_user.cash << endl;
+        int pariu = readBet(current_user.cash);
+
+        cout << "Se invart rolele..." << endl;
+        cout << "_____________________________"<< endl;
+        cout << "|  ___   ||  ___   ||  ___  |   ()"<< endl;
+        cout << "|     |  ||     |  ||     | |  /"<< endl;
+        cout << "|   __|  ||   __|  ||   __| | /"<< endl;
+        cout << "|   |    ||   |    ||   |   |/"<< endl;
+        cout << "|   .    ||   .    ||   .   |"<< endl;
+        cout << "******************************"<< endl;
+        cout << "******************************"<< endl;
+
+        vector<int> role = spinReels();
+        displayReels(role);
+
+        if (checkWin(role))
+        {
+            cout << "______________________________"<< endl;
+            cout << "|  ____  ||  ____  ||  ____  |"<< endl;
+            cout << "|     /  ||     /  ||     /  |"<< endl;
+            cout << "|    /   ||    /   ||    /   |"<< endl;
+            cout << "|   /    ||   /    ||   /    |-------()"<< endl;
+            cout << "|        ||        ||        |"<< endl;
+            cout << "******************************"<< endl;
+            cout << "******************************"<< endl;
+            cout << "Ai castigat $" << pariu * 7 << "!" << endl;
+            current_user.cash += pariu * 7;
+        }
+        else
+        {
+            cout << "______________________________"<< endl;
+            cout << "| x    x || x    x || x    x |"<< endl;
+            cout << "|  x  x  ||  x  x  ||  x  x  |"<< endl;
+            cout << "|   xx   ||   xx   ||   xx   |"<< endl;
+            cout << "|   xx   ||   xx   ||   xx   |-------()"<< endl;
+            cout << "|  x  x  ||  x  x  ||  x  x  |"<< endl;
+            cout << "| x    x || x    x || x    x |"<< endl;
+            cout << "******************************"<< endl;
+            cout << "******************************"<< endl;
+            cout << "Ai pierdut. Mai incearca!" << endl;
+            current_user.cash -= pariu;
+        }
+
+        if (current_user.cash <= 0)
+        {
+            cout << "Ai ramas fara bani. Joc terminat!" << endl;
+            break;
+        }
+
+        char alegere = readContinueResponse();
+        if (alegere == 'n' || alegere == 'N')
+        {
+            continuaJocul = false;
+        }
+    }
+
+    cout << "Balanta ta finala este $" << current_user.cash << endl;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int main() {
+    fstream f("users.txt", ios::in | ios::out | ios::app);
+    if (!f.is_open()) {
+        cerr << "Error opening file!" << endl;
+        return 1;
+    }
+
+    int condition = 1;
+    int response;
+    int unlogged= 1;
+    while (unlogged)
+    {
+        cout << "    __  __________________       __     ______           _           "<<endl;
+        cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ "<<endl;
+        cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '"<<endl;
+        cout << " / /_/ / / / / /___/ /_/ /  __/ /_   / /___/ /_/ (__  ) / / / / /_/ /" << endl;
+        cout <<"'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_'____/_/_/ /_/'____/ "<< endl;
+        cout << endl;
+        cout << "\t\t=================================\n";
+        cout << "\t\t|" << "Selectati ce doriti sa faceti:\t|" << endl << "\t\t|-------------------------------|" << endl
+            << "\t\t|\t[1]Register user\t|" << endl << "\t\t|\t[2]Login \t\t|"
+            << endl << "\t\t|\t[3]Iesire\t\t|" << endl
+            << "\t\t|\t\t\t\t|" << endl << "\t\t=================================\n" << endl << "\t\t\t   Raspuns:";
+        cin >> response;
+        switch (response)
+        {
+        case 1: {
+            Sleep(250);
+            system("cls");
+            regist(f);
+            break;
+        }
+        case 2: {
+            Sleep(250);
+            system("cls");
+            if (login(f) == 1)
+            {
+                cout << "\t|Logare reusita|";
+                unlogged = 0;
+            }
+            else
+                cout << "\t|Logare esuata|";
+            Sleep(1000);
+            system("cls");
+            break;
+        }
+        case 3:
+        {
+            system("cls");
+            cout << "\t|PROGRAMUL SE INCHIDE. MULTUMIM PENTRU UTILIZARE|" << endl;
+            Sleep(2000);
+            system("cls");
+            f.close();
+            return 0;
+        }
+        }
+    }
+    while (condition) {
+        cout << "    __  __________________       __     ______           _           " << endl;
+        cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ " << endl;
+        cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '" << endl;
+        cout << " / /_/ / / / / /___/ /_/ /  __/ /_   / /___/ /_/ (__  ) / / / / /_/ /" << endl;
+        cout << "'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_'____/_/_/ /_/'____/ " << endl;
+        cout << endl;
+        cout << "\t\t=================================\n";
+        cout << "\t\t|" << "Selectati ce doriti sa faceti:\t|" << endl << "\t\t|-------------------------------|" << endl
+            << "\t\t|\t[1]Register user\t|" << endl << "\t\t|\t[2]Stats\t\t|" <<endl<< "\t\t|\t[3]Iesire\t\t|" << endl
+            << "\t\t|\t\t\t\t|" << endl << "\t\t=================================\n" << endl << "\t\t\t   Raspuns:";
+        cin >> response;
+        switch (response)
+        {
+            case 1:
+            {
+                Sleep(250);
+                system("cls");
+                regist(f);
+                break;
+            }
+            case 2:
+            {
+                Sleep(250);
+                system("cls");
+                cout << "    __  __________________       __     ______           _           " << endl;
+                cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ " << endl;
+                cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '" << endl;
+                cout << " / /_/ / / / / /___/ /_/ /  __/ /_   / /___/ /_/ (__  ) / / / / /_/ /" << endl;
+                cout << "'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_'____/_/_/ /_/'____/ " << endl;
+                cout << endl;
+                cout << endl;
+                cout << "\t\t\tSTATS"<<endl;
+                cout << "\t\tUsername      " << current_user.username << endl;
+                cout << "\t\tPassword      " << current_user.password << endl;
+                cout << "\t\tCash          " << current_user.cash << endl;
+                Sleep(5000);
+                system("cls");
+                break;
+
+            }
+            case 3:
+            {
+                system("cls");
+                cout << "\t|PROGRAMUL SE INCHIDE. MULTUMIM PENTRU UTILIZARE|" << endl;
+                Sleep(2000);
+                system("cls");
+                condition = 0; // exit the loop
+            }
+            case 4:
+                {
+                Sleep(250);
+                system("cls");
+                void pacanea();
+                break;
+                }
+            case 69420:
+            {
+                Sleep(250);
+                system("cls");
+                list(f);
+                break;
+            }
+
+        }
+    }
+    f.close();
+    return 0;
+}
