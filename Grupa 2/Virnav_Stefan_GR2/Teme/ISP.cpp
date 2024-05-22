@@ -1,154 +1,184 @@
 #include <iostream>
+#include <sstream>
 #include <cstring>
 #include <windows.h>
 #include <fstream>
+#include <string>
 using namespace std;
 
-ofstream f("users.txt");
-ifstream v("users.txt");
-const int marime_maxima=100;
-struct user
-{
- char username[50];
- char password[50];
- int cash;
- int id;
+struct user {
+    string username;
+    string password;
+    int cash=0;
 };
-int stocare=0,counter=0;//counter=Nr users maxim
-user biblioteca[marime_maxima];
-void regist()
-{
-       if(stocare<marime_maxima)
-            {
-                //adaugare user
-                cout<<"\t|Introduceti username-ul|"<<endl<<"\t   Raspuns:";
-                cin.ignore();
-                cin.getline(biblioteca[stocare].username,50);
-                f<<biblioteca[stocare].username<<" ";
-                cout<<"\t|Introduceti parola dorita|"<<endl<<"\t   Raspuns:";
-                cin.getline(biblioteca[stocare].password,50);
-                f<<biblioteca[stocare].password<<" ";
-                biblioteca[stocare].cash=0;
-                f<<biblioteca[stocare].cash;
-                f<<endl;
-                //generare id unic
-                biblioteca[stocare].id=counter;
-                counter++;
-                stocare++;
-                cout<<"\t|User has been added succesfully|";
-                Sleep(1500);
-                system("cls");
-            }
-        else
-        {
-            cout<<"Max size reached.Data base is full"<<endl;
-        }
+user current_user;
 
+void regist(fstream& f) {
+    string holder;
+    f.clear();
+        // adaugare user
+        cout << "\t|Introduceti username-ul|" << endl << "\t   Raspuns:";
+        cin.ignore();
+        cin>>holder;
+        f << holder << " ";
+        cout << "\t|Introduceti parola dorita|" << endl << "\t   Raspuns:";
+        cin>>holder;
+        f <<holder<< " ";
+        f << "0" << " ";
+        f << endl;
+        cout << "\t|User has been added successfully|";
+        Sleep(1500);
+        system("cls");
 }
-void login()
-{
+
+void list(fstream& f) {
+    f.clear();
+    f.seekg(0, ios::beg); // Move the file pointer to the beginning of the file
     string line;
-    if (v.is_open()) {
-        while (getline(v, line)) {
+    if (f.is_open()) {
+        while (getline(f, line)) {
             cout << line << "\n";
         }
-    Sleep(1500);
-    system("cls");
+        Sleep(1500);
+        system("cls");
+    }
 }
+
+int login(fstream& f) {
+    f.clear();
+    f.seekg(0, ios::beg); // Move the file pointer to the beginning of the file
+    int checked = 0;
+    cout << "\t|Introduceti username-ul|" << endl << "\t   Raspuns:";
+    string temp_user;
+    cin >> temp_user;
+    cout << "\t|Introduceti parola |" << endl << "\t   Raspuns:";
+    string temp_parola;
+    cin >> temp_parola;
+    string line;
+    string check_user;
+    string check_parola;
+    string holder;
+    if (f.is_open()) {
+        while (getline(f, line)) {
+            stringstream ss(line);
+            getline(ss, holder, ' ');
+            check_user = holder;
+            getline(ss, holder, ' ');
+            check_parola = holder;
+            if (temp_user == check_user && temp_parola == check_parola) {
+                checked = 1;
+                getline(ss, holder);
+                current_user.cash = stoi(holder);
+                return checked;
+            }
+        }
+        Sleep(1500);
+        system("cls");
+    }
+    return checked;
 }
-int main()
-{
-    int condition=1;
+
+int main() {
+    fstream f("users.txt", ios::in | ios::out | ios::app);
+    if (!f.is_open()) {
+        cerr << "Error opening file!" << endl;
+        return 1;
+    }
+
+    int condition = 1;
     int response;
-    while(condition)
+    int unlogged= 1;
+    while (unlogged)
     {
-        cout<< "\t=================================\n";
-        cout<< "\t|"<<"Selectati ce doriti sa faceti:\t|"<<endl<<"\t|-------------------------------|"<<endl
-        <<"\t|\t[1]Register user\t|"<<endl<<"\t|\t[2]Cautare carti \t|"<<endl<<"\t|\t[3]Stergere carti\t|"<<endl
-        <<"\t|\t[4]Salvare fisier\t|"<<endl<<"\t|\t[5]Stergere fisier\t|"<<endl<<"\t|\t[6]Inventar\t\t|"<<endl<<"\t|\t[7]Iesire\t\t|"<<endl
-        <<"\t|\t\t\t\t|"<<endl<<"\t=================================\n"<<endl<<"\t\t   Raspuns:";
-        cin>>response;
-        switch(response)
+        cout << "    __  __________________       __     ______           _           "<<endl;
+        cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ "<<endl;
+        cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '"<<endl;
+        cout << " / /_/ / / / / /___/ /_/ /  __/ /_   / /___/ /_/ (__  ) / / / / /_/ /" << endl;
+        cout <<"'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_/____/_/_/ /_/'____/ "<< endl;
+        cout << endl;
+        cout << "\t\t=================================\n";
+        cout << "\t\t|" << "Selectati ce doriti sa faceti:\t|" << endl << "\t\t|-------------------------------|" << endl
+            << "\t\t|\t[1]Register user\t|" << endl << "\t\t|\t[2]Login \t\t|"
+            << endl << "\t\t|\t[3]Iesire\t\t|" << endl
+            << "\t\t|\t\t\t\t|" << endl << "\t\t=================================\n" << endl << "\t\t\t   Raspuns:";
+        cin >> response;
+        switch (response)
         {
-        case 1:
-            {
-                Sleep(250);
-                system("cls");
-                regist();
-                break;
-            }
-        case 2:
-            {
-                Sleep(250);
-                system("cls");
-                login();
-                break;
-            }
-
-        /*
-        case 2:
-            {
-                Sleep(250);
-                system("cls");
-                if(!stocare)//Pt cazul cand nu avem inca nimic in lista
-                cautare();
-                else    {
-                        cout<<"\t|EROARE,IN LIBRARIE NU EXISTA CARTI|"<<endl;
-                        Sleep(1500);
-                        system("cls");
-                        }
-
-                break;
-            }
-        case 3:
-            {
-                Sleep(250);
-                system("cls");
-                if(stocare)//Pt cazul cand nu avem inca nimic in lista
-                stergere();
-                else    {
-                        cout<<"\t|EROARE,IN LIBRARIE NU EXISTA CARTI|"<<endl;
-                        Sleep(1500);
-                        system("cls");
-                        }
-                break;
-            }
-        case 4:
-        {
-            salvare();
-            break;
-        }
-        case 5:
-        {
-            stergere_f();
-            break;
-        }
-        case 6:
-        {
-                Sleep(250);
-                system("cls");
-                if(stocare)//Pt cazul cand nu avem inca nimic in lista
-                inventar();
-                else    {
-                        cout<<"\t|EROARE,IN LIBRARIE NU EXISTA CARTI|"<<endl;
-                        Sleep(1500);
-                        system("cls");
-                        }
-                break;
-        }
-        case 7:
+        case 1: {
+            Sleep(250);
             system("cls");
-            cout<<"\t|PROGRAMUL SE INCHIDE.MULTUMIM PENTRU UTILIZARE|"<<endl;
+            regist(f);
+            break;
+        }
+        case 2: {
+            Sleep(250);
+            system("cls");
+            if (login(f) == 1)
+            {
+                cout << "\t|Logare reusita|";
+                unlogged = 0;
+            }
+            else
+                cout << "\t|Logare esuata|";
+            Sleep(1000);
+            system("cls");
+            break;
+        }
+        case 3:
+        {
+            system("cls");
+            cout << "\t|PROGRAMUL SE INCHIDE. MULTUMIM PENTRU UTILIZARE|" << endl;
             Sleep(2000);
             system("cls");
-            condition=0;//exist the loop
-
-
+            f.close();
+            return 0;
         }
-    */
+        }
     }
+    while (condition) {
+        cout << "\t=================================\n";
+        cout << "\t|" << "Selectati ce doriti sa faceti:\t|" << endl << "\t|-------------------------------|" << endl
+            << "\t|\t[1]Register user\t|"<<endl<< "\t|\t[3]Iesire\t\t|" << endl
+            << "\t|\t\t\t\t|" << endl << "\t=================================\n" << endl << "\t\t   Raspuns:";
+        cin >> response;
+        switch (response)
+        {
+            case 1: 
+            {
+                Sleep(250);
+                system("cls");
+                regist(f);
+                break;
+            }
+            case 2: 
+            {
+                Sleep(250);
+                system("cls");
+                list(f);
+                break;
+            }
+            case 3: 
+            {
+                Sleep(250);
+                system("cls");
+                if (login(f) == 1)
+                    cout << "\t|Logare reusita|";
+                else
+                    cout << "\t|Logare esuata|";
+                Sleep(1000);
+                system("cls");
+                break;
+            }
+            case 7:
+            {
+                system("cls");
+                cout << "\t|PROGRAMUL SE INCHIDE. MULTUMIM PENTRU UTILIZARE|" << endl;
+                Sleep(2000);
+                system("cls");
+                condition = 0; // exit the loop
+            }
+        }
     }
     f.close();
     return 0;
 }
-
