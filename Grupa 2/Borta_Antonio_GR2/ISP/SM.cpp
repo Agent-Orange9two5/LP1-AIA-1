@@ -113,8 +113,8 @@ int main()
             cout << "|        ||        ||        |"<< endl;
             cout << "******************************"<< endl;
             cout << "******************************"<< endl;
-            cout << "Ai castigat $" << pariu * 10 << "!" << endl;
-            balanta += pariu * 10;
+            cout << "Ai castigat $" << pariu * 7 << "!" << endl;
+            balanta += pariu * 7;
         }
         else
         {
