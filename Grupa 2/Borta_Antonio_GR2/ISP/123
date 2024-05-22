@@ -20,19 +20,19 @@ user current_user;
 void regist(fstream& f) {
     string holder;
     f.clear();
-        // adaugare user
-        cout << "\t|Introduceti username-ul|" << endl << "\t   Raspuns:";
-        cin.ignore();
-        cin>>holder;
-        f << holder << " ";
-        cout << "\t|Introduceti parola dorita|" << endl << "\t   Raspuns:";
-        cin>>holder;
-        f <<holder<< " ";
-        f << "1000" << " "; // Initializare cu 1000 in cash
-        f << endl;
-        cout << "\t|User has been added successfully|";
-        Sleep(1500);
-        system("cls");
+    // adaugare user
+    cout << "\t|Introduceti username-ul|" << endl << "\t   Raspuns:";
+    cin.ignore();
+    cin >> holder;
+    f << holder << " ";
+    cout << "\t|Introduceti parola dorita|" << endl << "\t   Raspuns:";
+    cin >> holder;
+    f << holder << " ";
+    f << "1000" << " "; // Initializare cu 1000 in cash
+    f << endl;
+    cout << "\t|User has been added successfully|";
+    Sleep(1500);
+    system("cls");
 }
 
 void list(fstream& f) {
@@ -84,13 +84,13 @@ int login(fstream& f) {
     return checked;
 }
 
-vector<string> simboluri = {"Cireasa", "Lamaie", "Portocala", "Pruna", "Clopot", "Coroana", "Tiara"};
+vector<string> simboluri = { "Cireasa", "Lamaie", "Portocala", "Pruna", "Clopot", "Coroana", "Tiara" };
 
 // Functie pentru a genera o rotire aleatorie a rolelor
 vector<int> spinReels()
 {
     vector<int> role(3);
-    for (int &rola : role)
+    for (int& rola : role)
     {
         rola = rand() % simboluri.size(); // Simularea unei role cu mai multe simboluri
     }
@@ -124,7 +124,6 @@ int readBet(int balanta)
         if (cin.fail() || pariu <= 0 || pariu > balanta)
         {
             cin.clear(); // Curata flag-ul de eroare al cin
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora orice input gresit
             cout << "Pariu invalid. Va rugam introduceti o valoare intreaga pozitiva care sa nu depaseasca balanta curenta." << endl;
         }
         else
@@ -167,42 +166,42 @@ void pacanea()
         int pariu = readBet(current_user.cash);
 
         cout << "Se invart rolele..." << endl;
-        cout << "_____________________________"<< endl;
-        cout << "|  ___   ||  ___   ||  ___  |   ()"<< endl;
-        cout << "|     |  ||     |  ||     | |  /"<< endl;
-        cout << "|   __|  ||   __|  ||   __| | /"<< endl;
-        cout << "|   |    ||   |    ||   |   |/"<< endl;
-        cout << "|   .    ||   .    ||   .   |"<< endl;
-        cout << "******************************"<< endl;
-        cout << "******************************"<< endl;
+        cout << "_____________________________" << endl;
+        cout << "|  ___   ||  ___   ||  ___  |   ()" << endl;
+        cout << "|     |  ||     |  ||     | |  /" << endl;
+        cout << "|   __|  ||   __|  ||   __| | /" << endl;
+        cout << "|   |    ||   |    ||   |   |/" << endl;
+        cout << "|   .    ||   .    ||   .   |" << endl;
+        cout << "******************************" << endl;
+        cout << "******************************" << endl;
 
         vector<int> role = spinReels();
         displayReels(role);
 
         if (checkWin(role))
         {
-            cout << "______________________________"<< endl;
-            cout << "|  ____  ||  ____  ||  ____  |"<< endl;
-            cout << "|     /  ||     /  ||     /  |"<< endl;
-            cout << "|    /   ||    /   ||    /   |"<< endl;
-            cout << "|   /    ||   /    ||   /    |-------()"<< endl;
-            cout << "|        ||        ||        |"<< endl;
-            cout << "******************************"<< endl;
-            cout << "******************************"<< endl;
+            cout << "______________________________" << endl;
+            cout << "|  ____  ||  ____  ||  ____  |" << endl;
+            cout << "|     /  ||     /  ||     /  |" << endl;
+            cout << "|    /   ||    /   ||    /   |" << endl;
+            cout << "|   /    ||   /    ||   /    |-------()" << endl;
+            cout << "|        ||        ||        |" << endl;
+            cout << "******************************" << endl;
+            cout << "******************************" << endl;
             cout << "Ai castigat $" << pariu * 7 << "!" << endl;
             current_user.cash += pariu * 7;
         }
         else
         {
-            cout << "______________________________"<< endl;
-            cout << "| x    x || x    x || x    x |"<< endl;
-            cout << "|  x  x  ||  x  x  ||  x  x  |"<< endl;
-            cout << "|   xx   ||   xx   ||   xx   |"<< endl;
-            cout << "|   xx   ||   xx   ||   xx   |-------()"<< endl;
-            cout << "|  x  x  ||  x  x  ||  x  x  |"<< endl;
-            cout << "| x    x || x    x || x    x |"<< endl;
-            cout << "******************************"<< endl;
-            cout << "******************************"<< endl;
+            cout << "______________________________" << endl;
+            cout << "| x    x || x    x || x    x |" << endl;
+            cout << "|  x  x  ||  x  x  ||  x  x  |" << endl;
+            cout << "|   xx   ||   xx   ||   xx   |" << endl;
+            cout << "|   xx   ||   xx   ||   xx   |-------()" << endl;
+            cout << "|  x  x  ||  x  x  ||  x  x  |" << endl;
+            cout << "| x    x || x    x || x    x |" << endl;
+            cout << "******************************" << endl;
+            cout << "******************************" << endl;
             cout << "Ai pierdut. Mai incearca!" << endl;
             current_user.cash -= pariu;
         }
@@ -221,6 +220,8 @@ void pacanea()
     }
 
     cout << "Balanta ta finala este $" << current_user.cash << endl;
+    Sleep(250);
+    system("cls");
 }
 
 int main() {
@@ -232,14 +233,14 @@ int main() {
 
     int condition = 1;
     int response;
-    int unlogged= 1;
+    int unlogged = 1;
     while (unlogged)
     {
-        cout << "    __  __________________       __     ______           _           "<<endl;
-        cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ "<<endl;
-        cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '"<<endl;
+        cout << "    __  __________________       __     ______           _           " << endl;
+        cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ " << endl;
+        cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '" << endl;
         cout << " / /_/ / / / / /___/ /_/ /  __/ /_   / /___/ /_/ (__  ) / / / / /_/ /" << endl;
-        cout <<"'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_'____/_/_/ /_/'____/ "<< endl;
+        cout << "'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_'____/_/_/ /_/'____/ " << endl;
         cout << endl;
         cout << "\t\t=================================\n";
         cout << "\t\t|" << "Selectati ce doriti sa faceti:\t|" << endl << "\t\t|-------------------------------|" << endl
@@ -282,69 +283,69 @@ int main() {
     }
     while (condition) {
         cout << "    __  __________________       __     ______           _           " << endl;
-        cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ " <<endl;
+        cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ " << endl;
         cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '" << endl;
         cout << " / /_/ / / / / /___/ /_/ /  __/ /_   / /___/ /_/ (__  ) / / / / /_/ /" << endl;
         cout << "'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_'____/_/_/ /_/'____/ " << endl;
         cout << endl;
         cout << "\t\t=================================\n";
         cout << "\t\t|" << "Selectati ce doriti sa faceti:\t|" << endl << "\t\t|-------------------------------|" << endl
-            << "\t\t|\t[1]Register user\t|" << endl << "\t\t|\t[2]Stats\t\t|" <<endl<< "\t\t|\t[3]Iesire\t\t|" << endl
+            << "\t\t|\t[1]Register user\t|" << endl << "\t\t|\t[2]Stats\t\t|" << endl << "\t\t|\t[3]Iesire\t\t|" << endl
             << "\t\t|\t[4]Pacanea\t\t|" << endl // Adaugare optiune pentru jocul de pacanele
             << "\t\t|\t\t\t\t|" << endl << "\t\t=================================\n" << endl << "\t\t\t   Raspuns:";
         cin >> response;
         switch (response)
         {
-            case 1:
-            {
-                Sleep(250);
-                system("cls");
-                regist(f);
-                break;
-            }
-            case 2:
-            {
-                Sleep(250);
-                system("cls");
-                cout << "    __  __________________       __     ______           _           " << endl;
-                cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ " << endl;
-                cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '" << endl;
-                cout << " / /_/ / / / / /___/ /_/ /  __/ /_   / /___/ /_/ (__  ) / / / / /_/ /" << endl;
-                cout << "'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_'____/_/_/ /_/'____/ " << endl;
-                cout << endl;
-                cout << endl;
-                cout << "\t\t\tSTATS"<<endl;
-                cout << "\t\tUsername      " << current_user.username << endl;
-                cout << "\t\tPassword      " << current_user.password << endl;
-                cout << "\t\tCash          " << current_user.cash << endl;
-                Sleep(5000);
-                system("cls");
-                break;
+        case 1:
+        {
+            Sleep(250);
+            system("cls");
+            regist(f);
+            break;
+        }
+        case 2:
+        {
+            Sleep(250);
+            system("cls");
+            cout << "    __  __________________       __     ______           _           " << endl;
+            cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ " << endl;
+            cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '" << endl;
+            cout << " / /_/ / / / / /___/ /_/ /  __/ /_   / /___/ /_/ (__  ) / / / / /_/ /" << endl;
+            cout << "'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_'____/_/_/ /_/'____/ " << endl;
+            cout << endl;
+            cout << endl;
+            cout << "\t\t\tSTATS" << endl;
+            cout << "\t\tUsername      " << current_user.username << endl;
+            cout << "\t\tPassword      " << current_user.password << endl;
+            cout << "\t\tCash          " << current_user.cash << endl;
+            Sleep(5000);
+            system("cls");
+            break;
 
-            }
-            case 3:
-            {
-                system("cls");
-                cout << "\t|PROGRAMUL SE INCHIDE. MULTUMIM PENTRU UTILIZARE|" << endl;
-                Sleep(2000);
-                system("cls");
-                condition = 0; // exit the loop
-                break;
-            }
-            case 4:
-                {
-                Sleep(250);
-                system("cls");
-                pacanea(); // Apelam functia de pacanea
-                break;
-                }
-            case 69420:
-            {
-                Sleep(250);
-                system("cls");
-                list(f);
-                break;
-            }
+        }
+        case 3:
+        {
+            system("cls");
+            cout << "\t|PROGRAMUL SE INCHIDE. MULTUMIM PENTRU UTILIZARE|" << endl;
+            Sleep(2000);
+            system("cls");
+            condition = 0; // exit the loop
+            break;
+        }
+        case 4:
+        {
+            Sleep(250);
+            system("cls");
+            pacanea(); // Apelam functia de pacanea
+            break;
+        }
+        case 69420:
+        {
+            Sleep(250);
+            system("cls");
+            list(f);
+            break;
+        }
 
         }
     }
