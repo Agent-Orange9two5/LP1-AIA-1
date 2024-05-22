@@ -68,6 +68,8 @@ int login(fstream& f) {
             if (temp_user == check_user && temp_parola == check_parola) {
                 checked = 1;
                 getline(ss, holder);
+                current_user.username = check_user;
+                current_user.password = check_parola;
                 current_user.cash = stoi(holder);
                 return checked;
             }
@@ -94,7 +96,7 @@ int main() {
         cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ "<<endl;
         cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '"<<endl;
         cout << " / /_/ / / / / /___/ /_/ /  __/ /_   / /___/ /_/ (__  ) / / / / /_/ /" << endl;
-        cout <<"'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_/____/_/_/ /_/'____/ "<< endl;
+        cout <<"'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_'____/_/_/ /_/'____/ "<< endl;
         cout << endl;
         cout << "\t\t=================================\n";
         cout << "\t\t|" << "Selectati ce doriti sa faceti:\t|" << endl << "\t\t|-------------------------------|" << endl
@@ -136,10 +138,16 @@ int main() {
         }
     }
     while (condition) {
-        cout << "\t=================================\n";
-        cout << "\t|" << "Selectati ce doriti sa faceti:\t|" << endl << "\t|-------------------------------|" << endl
-            << "\t|\t[1]Register user\t|"<<endl<< "\t|\t[3]Iesire\t\t|" << endl
-            << "\t|\t\t\t\t|" << endl << "\t=================================\n" << endl << "\t\t   Raspuns:";
+        cout << "    __  __________________       __     ______           _           " << endl;
+        cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ " << endl;
+        cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '" << endl;
+        cout << " / /_/ / / / / /___/ /_/ /  __/ /_   / /___/ /_/ (__  ) / / / / /_/ /" << endl;
+        cout << "'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_'____/_/_/ /_/'____/ " << endl;
+        cout << endl;
+        cout << "\t\t=================================\n";
+        cout << "\t\t|" << "Selectati ce doriti sa faceti:\t|" << endl << "\t\t|-------------------------------|" << endl
+            << "\t\t|\t[1]Register user\t|" << endl << "\t\t|\t[2]Stats\t\t|" <<endl<< "\t\t|\t[3]Iesire\t\t|" << endl
+            << "\t\t|\t\t\t\t|" << endl << "\t\t=================================\n" << endl << "\t\t\t   Raspuns:";
         cin >> response;
         switch (response)
         {
@@ -150,12 +158,25 @@ int main() {
                 regist(f);
                 break;
             }
-            case 2: 
+            case 2:
             {
                 Sleep(250);
                 system("cls");
-                list(f);
+                cout << "    __  __________________       __     ______           _           " << endl;
+                cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ " << endl;
+                cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '" << endl;
+                cout << " / /_/ / / / / /___/ /_/ /  __/ /_   / /___/ /_/ (__  ) / / / / /_/ /" << endl;
+                cout << "'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_'____/_/_/ /_/'____/ " << endl;
+                cout << endl;
+                cout << endl;
+                cout << "\t\t\tSTATS"<<endl;
+                cout << "\t\tUsername      " << current_user.username << endl;
+                cout << "\t\tPassword      " << current_user.password << endl;
+                cout << "\t\tCash          " << current_user.cash << endl;
+                Sleep(5000);
+                system("cls");
                 break;
+
             }
             case 3: 
             {
@@ -167,6 +188,13 @@ int main() {
                     cout << "\t|Logare esuata|";
                 Sleep(1000);
                 system("cls");
+                break;
+            }
+            case 4:
+            {
+                Sleep(250);
+                system("cls");
+                list(f);
                 break;
             }
             case 7:
