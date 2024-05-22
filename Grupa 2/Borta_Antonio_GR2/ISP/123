@@ -250,7 +250,7 @@ int cardValue(int card)
 void BJ()
 {
     srand(time(0)); // Inițializare generator de numere aleatoare
-    if(current_user.cash > 0 )
+    if (current_user.cash > 0)
     {
         cout << "Balanta curenta: $" << current_user.cash << endl;
         int pariu = readBet(current_user.cash);
@@ -291,65 +291,66 @@ void BJ()
         {
             cout << "Blackjack! Jucatorul castiga!" << endl;
             current_user.cash += pariu;
-        } else if (scorDealer == 21)
+        }
+        else if (scorDealer == 21)
         {
             cout << "Blackjack! Dealerul castiga!" << endl;
             current_user.cash -= pariu;
         }
 
         // Jocul efectiv
-    while (scorJucator <= 21)
-    {
-        char alegere;
-        cout << "Doriti sa luati alta carte? (D/N): ";
-        cin >> alegere;
-        if (alegere == 'D' || alegere == 'd')
+        while (scorJucator <= 21)
         {
-            scorJucator += cardValue(pachet.back());
-            pachet.pop_back();
-            cout << "Scorul jucatorului: " << scorJucator << endl;
+            char alegere;
+            cout << "Doriti sa luati alta carte? (D/N): ";
+            cin >> alegere;
+            if (alegere == 'D' || alegere == 'd')
+            {
+                scorJucator += cardValue(pachet.back());
+                pachet.pop_back();
+                cout << "Scorul jucatorului: " << scorJucator << endl;
+            }
+            else if (alegere == 'N' || alegere == 'n')
+            {
+                break;
+            }
+            else
+            {
+                cout << "Va rugam sa introduceti o optiune valida (D/N)!" << endl;
+            }
         }
-        else if (alegere == 'N' || alegere == 'n')
+
+        // Verificare scor jucator
+        if (scorJucator > 21)
         {
-            break;
+            cout << "Ai depasit 21! Dealerul castiga!" << endl;
+            current_user.cash -= pariu;
+            // Jocul se încheie dacă jucătorul depășește 21
+        }
+
+        // Dealerul trage cărți până când scorul său este mai mare sau egal cu 17
+        while (scorDealer < 17)
+        {
+            scorDealer += cardValue(pachet.back());
+            pachet.pop_back();
+            cout << "Scorul dealerului: " << scorDealer << endl;
+        }
+
+        // Verificare scor dealer
+        if (scorDealer > 21 || scorJucator > scorDealer)
+        {
+            cout << "Jucatorul castiga!" << endl;
+            current_user.cash += pariu;
+        }
+        else if (scorDealer > scorJucator)
+        {
+            cout << "Dealerul castia!" << endl;
+            current_user.cash -= pariu;
         }
         else
         {
-            cout << "Va rugam sa introduceti o optiune valida (D/N)!" << endl;
+            cout << "Remiza!" << endl;
         }
-    }
-
-    // Verificare scor jucator
-    if (scorJucator > 21)
-    {
-        cout << "Ai depasit 21! Dealerul castiga!" << endl;
-        current_user.cash -= pariu;
-        // Jocul se încheie dacă jucătorul depășește 21
-    }
-
-    // Dealerul trage cărți până când scorul său este mai mare sau egal cu 17
-    while (scorDealer < 17)
-    {
-        scorDealer += cardValue(pachet.back());
-        pachet.pop_back();
-        cout << "Scorul dealerului: " << scorDealer << endl;
-    }
-
-    // Verificare scor dealer
-    if (scorDealer > 21 ||  scorJucator > scorDealer)
-    {
-        cout << "Jucatorul castiga!" << endl;
-        current_user.cash += pariu;
-    }
-    else if ( scorDealer > scorJucator)
-    {
-        cout << "Dealerul castia!" << endl;
-        current_user.cash -= pariu;
-    }
-    else
-    {
-        cout << "Remiza!" << endl;
-    }
     }
     cout << "Balanta ta finala este $" << current_user.cash << endl;
     Sleep(2500);
@@ -369,129 +370,129 @@ int generateRandomCup()
 void Alba0Neagra()
 {
     srand(time(0)); // Inițializare generator de numere aleatoare
-    if(current_user.cash > 0 )
+    if (current_user.cash > 0)
     {
-    cout << "Balanta curenta: $" << current_user.cash << endl;
-    int pariu = readBet(current_user.cash);
-    bool continuaJocul = true;
+        cout << "Balanta curenta: $" << current_user.cash << endl;
+        int pariu = readBet(current_user.cash);
+        bool continuaJocul = true;
 
-    while (continuaJocul)
-    {
-        int paharCorect = generateRandomCup();
-
-        int alegereJucator;
-        cout << "ALBA NEAGRA" << endl;
-        cout << "__________       __________       __________" << endl;
-        cout << "|        |       |        |       |        |" << endl;
-        cout << "|        |       |        |       |        |" << endl;
-        cout << "|        |       |        |       |        |" << endl;
-        cout << "|        |       |        |       |        |" << endl;
-        cout << "|        |       |        |       |        |" << endl;
-        cout << "|        |       |        |       |        |" << endl;
-        cout << "Alege 0 pentru paharul stang, 1 pentru paharul din mijloc sau 2 pentru paharul drept: ";
-        cin >> alegereJucator;
-
-        if (alegereJucator == paharCorect)
+        while (continuaJocul)
         {
-            cout << "Corect! Bila este sub paharul ";
-            current_user.cash += pariu * 1.5;
-            if (paharCorect == 0)
+            int paharCorect = generateRandomCup();
+
+            int alegereJucator;
+            cout << "ALBA NEAGRA" << endl;
+            cout << "__________       __________       __________" << endl;
+            cout << "|        |       |        |       |        |" << endl;
+            cout << "|        |       |        |       |        |" << endl;
+            cout << "|        |       |        |       |        |" << endl;
+            cout << "|        |       |        |       |        |" << endl;
+            cout << "|        |       |        |       |        |" << endl;
+            cout << "|        |       |        |       |        |" << endl;
+            cout << "Alege 0 pentru paharul stang, 1 pentru paharul din mijloc sau 2 pentru paharul drept: ";
+            cin >> alegereJucator;
+
+            if (alegereJucator == paharCorect)
             {
-                cout << "stang." << endl;
-                cout << "__________       __________       __________" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|   00   |       |        |       |        |" << endl;
-                cout << "   0000                                     " << endl;
-                cout << "    00                                      " << endl;
-            }
-            else if (paharCorect == 1)
-            {
-                cout << "din mijloc." << endl;
-                cout << "__________       __________       __________" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |   00   |       |        |" << endl;
-                cout << "                    0000                    " << endl;
-                cout << "                     00                     " << endl;
+                cout << "Corect! Bila este sub paharul ";
+                current_user.cash += pariu * 1.5;
+                if (paharCorect == 0)
+                {
+                    cout << "stang." << endl;
+                    cout << "__________       __________       __________" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|   00   |       |        |       |        |" << endl;
+                    cout << "   0000                                     " << endl;
+                    cout << "    00                                      " << endl;
+                }
+                else if (paharCorect == 1)
+                {
+                    cout << "din mijloc." << endl;
+                    cout << "__________       __________       __________" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |   00   |       |        |" << endl;
+                    cout << "                    0000                    " << endl;
+                    cout << "                     00                     " << endl;
+                }
+                else
+                {
+                    cout << "drept." << endl;
+                    cout << "__________       __________       __________" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |   00   |" << endl;
+                    cout << "                                     0000   " << endl;
+                    cout << "                                      00    " << endl;
+                }
             }
             else
             {
-                cout << "drept." << endl;
-                cout << "__________       __________       __________" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |   00   |" << endl;
-                cout << "                                     0000   " << endl;
-                cout << "                                      00    " << endl;
-            }
-        }
-        else
-        {
-            cout << "Gresit! Bila era sub paharul ";
-            current_user.cash -= pariu;
-            if (paharCorect == 0)
-            {
-                cout << "stang." << endl;
-                cout << "__________       __________       __________" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|   00   |       |        |       |        |" << endl;
-                cout << "   0000                                     " << endl;
-                cout << "    00                                      " << endl;
-            }
-            else if (paharCorect == 1)
-            {
-                cout << "din mijloc." << endl;
-                cout << "__________       __________       __________" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |   00   |       |        |" << endl;
-                cout << "                    0000                    " << endl;
-                cout << "                     00                     " << endl;
-            }
-            else
-            {
-                cout << "drept." << endl;
-                cout << "__________       __________       __________" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |        |" << endl;
-                cout << "|        |       |        |       |   00   |" << endl;
-                cout << "                                     0000   " << endl;
-                cout << "                                      00    " << endl;
-            }
-            continuaJocul = false;
-        }
-
-        if (continuaJocul)
-        {
-            char continua;
-            cout << "Vrei sa mai joci? (D/N): ";
-            cin >> continua;
-            if (continua != 'D' && continua != 'd')
-            {
+                cout << "Gresit! Bila era sub paharul ";
+                current_user.cash -= pariu;
+                if (paharCorect == 0)
+                {
+                    cout << "stang." << endl;
+                    cout << "__________       __________       __________" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|   00   |       |        |       |        |" << endl;
+                    cout << "   0000                                     " << endl;
+                    cout << "    00                                      " << endl;
+                }
+                else if (paharCorect == 1)
+                {
+                    cout << "din mijloc." << endl;
+                    cout << "__________       __________       __________" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |   00   |       |        |" << endl;
+                    cout << "                    0000                    " << endl;
+                    cout << "                     00                     " << endl;
+                }
+                else
+                {
+                    cout << "drept." << endl;
+                    cout << "__________       __________       __________" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |        |" << endl;
+                    cout << "|        |       |        |       |   00   |" << endl;
+                    cout << "                                     0000   " << endl;
+                    cout << "                                      00    " << endl;
+                }
                 continuaJocul = false;
             }
+
+            if (continuaJocul)
+            {
+                char continua;
+                cout << "Vrei sa mai joci? (D/N): ";
+                cin >> continua;
+                if (continua != 'D' && continua != 'd')
+                {
+                    continuaJocul = false;
+                }
+            }
         }
-    }
     }
     cout << "Balanta ta finala este $" << current_user.cash << endl;
     Sleep(2500);
@@ -509,99 +510,99 @@ int generateRandomCard()
 void Red$Black()
 {
     srand(time(0)); // Inițializare generator de numere aleatoare
-    if(current_user.cash > 0 )
+    if (current_user.cash > 0)
     {
-    bool continuaJocul = true;
+        bool continuaJocul = true;
 
-    while (continuaJocul)
-    {
-        cout << "ROSU sau NEGRU?" << endl;
-        cout << "Balanta curenta: $" << current_user.cash << endl;
-        int pariu = readBet(current_user.cash);
-        int alegereJucator;
-        cout << "Alege 0 pentru cartea rosie sau 1 pentru cartea neagra: ";
-        cin >> alegereJucator;
-
-        int carteCorecta = generateRandomCard();
-
-        // Verificare daca alegerea jucatorului este corecta
-        if (alegereJucator == carteCorecta)
+        while (continuaJocul)
         {
-            cout << "Corect! Cartea este ";
-            current_user.cash += pariu;
-            if (carteCorecta == 0)
+            cout << "ROSU sau NEGRU?" << endl;
+            cout << "Balanta curenta: $" << current_user.cash << endl;
+            int pariu = readBet(current_user.cash);
+            int alegereJucator;
+            cout << "Alege 0 pentru cartea rosie sau 1 pentru cartea neagra: ";
+            cin >> alegereJucator;
+
+            int carteCorecta = generateRandomCard();
+
+            // Verificare daca alegerea jucatorului este corecta
+            if (alegereJucator == carteCorecta)
             {
-                cout << "rosie." << endl;
-                cout << "__________"<<endl;
-                cout << "|       A|"<<endl;
-                cout << "|        |"<<endl;
-                cout << "|  R     |"<<endl;
-                cout << "|    E   |"<<endl;
-                cout << "|      D |"<<endl;
-                cout << "|        |"<<endl;
-                cout << "|A       |"<<endl;
-                cout << "**********"<<endl;
+                cout << "Corect! Cartea este ";
+                current_user.cash += pariu;
+                if (carteCorecta == 0)
+                {
+                    cout << "rosie." << endl;
+                    cout << "__________" << endl;
+                    cout << "|       A|" << endl;
+                    cout << "|        |" << endl;
+                    cout << "|  R     |" << endl;
+                    cout << "|    E   |" << endl;
+                    cout << "|      D |" << endl;
+                    cout << "|        |" << endl;
+                    cout << "|A       |" << endl;
+                    cout << "**********" << endl;
+                }
+                else
+                {
+                    cout << "neagra." << endl;
+                    cout << "__________" << endl;
+                    cout << "|       A|" << endl;
+                    cout << "| B      |" << endl;
+                    cout << "|  L     |" << endl;
+                    cout << "|   A    |" << endl;
+                    cout << "|    C   |" << endl;
+                    cout << "|     K  |" << endl;
+                    cout << "|A       |" << endl;
+                    cout << "**********" << endl;
+                }
             }
             else
             {
-                cout << "neagra." << endl;
-                cout << "__________"<<endl;
-                cout << "|       A|"<<endl;
-                cout << "| B      |"<<endl;
-                cout << "|  L     |"<<endl;
-                cout << "|   A    |"<<endl;
-                cout << "|    C   |"<<endl;
-                cout << "|     K  |"<<endl;
-                cout << "|A       |"<<endl;
-                cout << "**********"<<endl;
-            }
-        }
-        else
-        {
-            cout << "Gresit! Cartea corecta era ";
-            current_user.cash -= pariu;
-            if (carteCorecta == 0)
-            {
-                cout << "rosie." << endl;
-                cout << "__________"<<endl;
-                cout << "|       A|"<<endl;
-                cout << "|        |"<<endl;
-                cout << "|  R     |"<<endl;
-                cout << "|    E   |"<<endl;
-                cout << "|      D |"<<endl;
-                cout << "|        |"<<endl;
-                cout << "|A       |"<<endl;
-                cout << "**********"<<endl;
-            }
-            else
-            {
-                cout << "neagra." << endl;
-                cout << "__________"<<endl;
-                cout << "|       A|"<<endl;
-                cout << "| B      |"<<endl;
-                cout << "|  L     |"<<endl;
-                cout << "|   A    |"<<endl;
-                cout << "|    C   |"<<endl;
-                cout << "|     K  |"<<endl;
-                cout << "|A       |"<<endl;
-                cout << "**********"<<endl;
-            }
-            continuaJocul = false;
-        }
-
-        // Verificare daca jucatorul doreste sa continue
-        if (continuaJocul)
-        {
-            char continua;
-            cout << "Alta incercare? (D/N): ";
-            cin >> continua;
-            if (continua != 'D' && continua != 'd')
-            {
+                cout << "Gresit! Cartea corecta era ";
+                current_user.cash -= pariu;
+                if (carteCorecta == 0)
+                {
+                    cout << "rosie." << endl;
+                    cout << "__________" << endl;
+                    cout << "|       A|" << endl;
+                    cout << "|        |" << endl;
+                    cout << "|  R     |" << endl;
+                    cout << "|    E   |" << endl;
+                    cout << "|      D |" << endl;
+                    cout << "|        |" << endl;
+                    cout << "|A       |" << endl;
+                    cout << "**********" << endl;
+                }
+                else
+                {
+                    cout << "neagra." << endl;
+                    cout << "__________" << endl;
+                    cout << "|       A|" << endl;
+                    cout << "| B      |" << endl;
+                    cout << "|  L     |" << endl;
+                    cout << "|   A    |" << endl;
+                    cout << "|    C   |" << endl;
+                    cout << "|     K  |" << endl;
+                    cout << "|A       |" << endl;
+                    cout << "**********" << endl;
+                }
                 continuaJocul = false;
             }
-        }
 
-    }
+            // Verificare daca jucatorul doreste sa continue
+            if (continuaJocul)
+            {
+                char continua;
+                cout << "Alta incercare? (D/N): ";
+                cin >> continua;
+                if (continua != 'D' && continua != 'd')
+                {
+                    continuaJocul = false;
+                }
+            }
+
+        }
     }
     cout << "Balanta ta finala este $" << current_user.cash << endl;
     Sleep(2500);
@@ -677,7 +678,7 @@ int main() {
         cout << "\t\t=================================\n";
         cout << "\t\t|" << "Selectati ce doriti sa faceti:\t|" << endl << "\t\t|-------------------------------|" << endl
             << "\t\t|\t[1]Register user\t|" << endl << "\t\t|\t[2]Stats\t\t|" << endl << "\t\t|\t[3]Iesire\t\t|" << endl
-            << "\t\t|\t[4]Pacanea\t\t|" << endl // Adaugare optiune pentru jocul de pacanele
+            << "\t\t|\t[4]Pacaneaua lui Tony\t|"<< endl<< "\t\t|\t[5]Black Jack\t\t|"<< endl<<"\t\t|\t[6]Alba Neagra\t\t|" <<endl<< "\t\t|\t[7]Rastanta sau nu\t|" << endl // Adaugare optiune pentru jocul de pacanele
             << "\t\t|\t\t\t\t|" << endl << "\t\t=================================\n" << endl << "\t\t\t   Raspuns:";
         cin >> response;
         switch (response)
