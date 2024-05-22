@@ -13,7 +13,7 @@ using namespace std;
 struct user {
     string username;
     string password;
-    int cash=0;
+    int cash = 1000; // Actualizare pentru a porni cu 1000 in cash
 };
 user current_user;
 
@@ -28,7 +28,7 @@ void regist(fstream& f) {
         cout << "\t|Introduceti parola dorita|" << endl << "\t   Raspuns:";
         cin>>holder;
         f <<holder<< " ";
-        f << "0" << " ";
+        f << "1000" << " "; // Initializare cu 1000 in cash
         f << endl;
         cout << "\t|User has been added successfully|";
         Sleep(1500);
@@ -83,11 +83,6 @@ int login(fstream& f) {
     }
     return checked;
 }
-
-
-
-
-
 
 vector<string> simboluri = {"Cireasa", "Lamaie", "Portocala", "Pruna", "Clopot", "Coroana", "Tiara"};
 
@@ -228,19 +223,6 @@ void pacanea()
     cout << "Balanta ta finala este $" << current_user.cash << endl;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 int main() {
     fstream f("users.txt", ios::in | ios::out | ios::app);
     if (!f.is_open()) {
@@ -300,7 +282,7 @@ int main() {
     }
     while (condition) {
         cout << "    __  __________________       __     ______           _           " << endl;
-        cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ " << endl;
+        cout << "   / / / /_  __/ ____/ __ )___  / /_   / ____/___ ______(_)___  ____ " <<endl;
         cout << "  / / / / / / / /   / __  / _ '/ __/  / /   / __ `/ ___/ / __ '/ __ '" << endl;
         cout << " / /_/ / / / / /___/ /_/ /  __/ /_   / /___/ /_/ (__  ) / / / / /_/ /" << endl;
         cout << "'_____/ /_/ /_____/_____/'___/'__/   '____/'__,_'____/_/_/ /_/'____/ " << endl;
@@ -308,6 +290,7 @@ int main() {
         cout << "\t\t=================================\n";
         cout << "\t\t|" << "Selectati ce doriti sa faceti:\t|" << endl << "\t\t|-------------------------------|" << endl
             << "\t\t|\t[1]Register user\t|" << endl << "\t\t|\t[2]Stats\t\t|" <<endl<< "\t\t|\t[3]Iesire\t\t|" << endl
+            << "\t\t|\t[4]Pacanea\t\t|" << endl // Adaugare optiune pentru jocul de pacanele
             << "\t\t|\t\t\t\t|" << endl << "\t\t=================================\n" << endl << "\t\t\t   Raspuns:";
         cin >> response;
         switch (response)
@@ -346,12 +329,13 @@ int main() {
                 Sleep(2000);
                 system("cls");
                 condition = 0; // exit the loop
+                break;
             }
             case 4:
                 {
                 Sleep(250);
                 system("cls");
-                void pacanea();
+                pacanea(); // Apelam functia de pacanea
                 break;
                 }
             case 69420:
