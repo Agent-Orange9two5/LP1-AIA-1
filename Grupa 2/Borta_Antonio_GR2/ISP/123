@@ -677,7 +677,7 @@ int main() {
         cout << endl;
         cout << "\t\t=================================\n";
         cout << "\t\t|" << "Selectati ce doriti sa faceti:\t|" << endl << "\t\t|-------------------------------|" << endl
-            << "\t\t|\t[1]Register user\t|" << endl << "\t\t|\t[2]Stats\t\t|" << endl << "\t\t|\t[3]Iesire\t\t|" << endl
+            << "\t\t|\t[1]Register user\t|" << endl << "\t\t|\t[2]ISICBet\t\t|" << endl << "\t\t|\t[3]Iesire\t\t|" << endl
             << "\t\t|\t[4]Pacaneaua lui Tony\t|"<< endl<< "\t\t|\t[5]Black Jack\t\t|"<< endl<<"\t\t|\t[6]Alba Neagra\t\t|" <<endl<< "\t\t|\t[7]Rastanta sau nu\t|" << endl // Adaugare optiune pentru jocul de pacanele
             << "\t\t|\t\t\t\t|" << endl << "\t\t=================================\n" << endl << "\t\t\t   Raspuns:";
         cin >> response;
